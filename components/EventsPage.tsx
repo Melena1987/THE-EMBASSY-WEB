@@ -17,6 +17,12 @@ const EventsPage: React.FC<{ onBack: () => void }> = ({ onBack }) => {
     return () => observer.disconnect();
   }, []);
 
+  const handleEventClick = (e: React.MouseEvent, link: string) => {
+    e.preventDefault();
+    window.history.pushState({}, '', link);
+    window.dispatchEvent(new PopStateEvent('popstate'));
+  };
+
   return (
     <div ref={sectionRef} className="bg-black text-white min-h-screen pt-24 pb-16">
       <div className="max-w-[1440px] mx-auto px-6 md:px-12">
@@ -40,7 +46,7 @@ const EventsPage: React.FC<{ onBack: () => void }> = ({ onBack }) => {
           </p>
         </header>
 
-        {/* Events Grid - Ahora más compacto en PC */}
+        {/* Events Grid */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
           {EVENTS.map((event) => (
             <div 
@@ -69,6 +75,7 @@ const EventsPage: React.FC<{ onBack: () => void }> = ({ onBack }) => {
                 
                 <a 
                   href={event.link}
+                  onClick={(e) => handleEventClick(e, event.link)}
                   className="inline-flex items-center gap-3 bg-white text-black px-6 py-3 rounded-full text-[9px] font-black uppercase tracking-[0.15em] hover:bg-gold hover:text-white transition-all w-fit"
                 >
                   Ver detalles

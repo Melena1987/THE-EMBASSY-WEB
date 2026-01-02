@@ -18,7 +18,6 @@ const SkillCampPage: React.FC<{ onBack: () => void }> = ({ onBack }) => {
     const handleScroll = () => {
       scrollRef.current = window.scrollY;
       
-      // Throttling with requestAnimationFrame for smooth parallax
       if (!requestRef.current) {
         requestRef.current = requestAnimationFrame(() => {
           setScrollY(scrollRef.current);

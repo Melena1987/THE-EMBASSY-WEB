@@ -1,7 +1,12 @@
+
 import React from 'react';
 import { LOGOS } from '../constants.tsx';
 
-const Hero: React.FC = () => {
+interface HeroProps {
+  onExplore?: () => void;
+}
+
+const Hero: React.FC<HeroProps> = ({ onExplore }) => {
   return (
     <section className="relative h-[100svh] flex flex-col justify-between overflow-hidden">
       {/* Background with optimized overlay */}
@@ -42,10 +47,13 @@ const Hero: React.FC = () => {
             <div className="absolute inset-0 bg-white translate-y-full group-hover:translate-y-0 transition-transform duration-300"></div>
             <span className="absolute inset-0 z-20 flex items-center justify-center text-black font-black uppercase tracking-[0.2em] opacity-0 group-hover:opacity-100 transition-opacity">Reservar Ahora</span>
           </a>
-          <a href="#instalaciones" className="text-white/80 px-10 py-4 font-bold uppercase tracking-[0.2em] hover:text-gold transition-all flex items-center gap-3 group">
+          <button 
+            onClick={(e) => { e.preventDefault(); onExplore?.(); }}
+            className="text-white/80 px-10 py-4 font-bold uppercase tracking-[0.2em] hover:text-gold transition-all flex items-center gap-3 group"
+          >
             Ver Instalaciones
             <svg className="w-5 h-5 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M17 8l4 4m0 0l-4 4m4-4H3" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/></svg>
-          </a>
+          </button>
         </div>
       </div>
 

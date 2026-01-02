@@ -80,7 +80,7 @@ export const TEAM: TeamMember[] = [
     name: 'Manuel Escobar',
     role: 'CEO',
     description: 'Especialista en gestión deportiva y desarrollo de eventos. Su experiencia en la organización de competiciones de alto nivel garantiza la excelencia en cada proyecto.',
-    imageUrl: 'https://firebasestorage.googleapis.com/v0/b/galeriaoficialapp.firebasestorage.app/o/users%2FI5KZz4BuUEfxcoAvSCAWllkQtwt1%2Fphotos%2F1766961892426_Manuel_Escobar_400x400.jpeg?alt=media&token=db9e49a1-7b8b-4ee7-8afd-2dfd0f79391b',
+    imageUrl: 'https://firebasestorage.googleapis.com/v0/b/galeriaoficialapp.firebasestorage.app/o/users%2FI5KZz4BuUEfxcoAvSCAWllkQtwt1%2Fphotos%2F1766961925716_Manuel_Escobar_400x400.jpeg?alt=media&token=db9e49a1-7b8b-4ee7-8afd-2dfd0f79391b',
     socials: { 
       instagram: 'https://www.instagram.com/manuelcarlosel/' 
     }
@@ -123,7 +123,7 @@ export const EVENTS: EmbassyEvent[] = [
     date: 'Próximamente 2025',
     description: 'Entrenamiento de tecnificación de alto nivel para jugadores que buscan dar el siguiente paso en su carrera profesional.',
     imageUrl: 'https://firebasestorage.googleapis.com/v0/b/galeriaoficialapp.firebasestorage.app/o/users%2FI5KZz4BuUEfxcoAvSCAWllkQtwt1%2Fphotos%2F1761950147664_TheEmbassyTC-imagen_019.jpg?alt=media&token=6bf0b512-e239-4863-af3c-3455d7c77f7a',
-    link: '#skillcamp',
+    link: '/skillcamp',
     status: 'upcoming'
   }
 ];

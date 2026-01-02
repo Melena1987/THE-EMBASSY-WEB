@@ -6,9 +6,17 @@ interface NavbarProps {
   onNavigateClub?: () => void;
   onNavigateHome?: () => void;
   onNavigateEvents?: () => void;
+  onNavigateToSection?: (hash: string) => void;
+  currentPath?: string;
 }
 
-const Navbar: React.FC<NavbarProps> = ({ onNavigateClub, onNavigateHome, onNavigateEvents }) => {
+const Navbar: React.FC<NavbarProps> = ({ 
+  onNavigateClub, 
+  onNavigateHome, 
+  onNavigateEvents, 
+  onNavigateToSection,
+  currentPath 
+}) => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
@@ -31,20 +39,28 @@ const Navbar: React.FC<NavbarProps> = ({ onNavigateClub, onNavigateHome, onNavig
   }, [isMenuOpen]);
 
   const navLinks = [
-    { name: 'Eventos', href: '#eventos', action: onNavigateEvents },
-    { name: 'Servicios', href: '#servicios' },
-    { name: 'Instalaciones', href: '#instalaciones' },
-    { name: 'Equipo', href: '#equipo' },
-    { name: 'Contacto', href: '#contacto' },
+    { name: 'Eventos', path: '/eventos', action: onNavigateEvents },
+    { name: 'Servicios', path: '#servicios', section: '#servicios' },
+    { name: 'Instalaciones', path: '#instalaciones', section: '#instalaciones' },
+    { name: 'Equipo', path: '#equipo', section: '#equipo' },
+    { name: 'Contacto', path: '#contacto', section: '#contacto' },
   ];
 
   const handleLinkClick = (e: React.MouseEvent, link: any) => {
-    if (link.action) {
-      e.preventDefault();
-      link.action();
-    }
-    // Si es un ancla interna (#servicios, etc), el navegador cambiará el hash 
+    e.preventDefault();
     setIsMenuOpen(false);
+
+    if (link.action) {
+      link.action();
+    } else if (link.section) {
+      if (currentPath !== '/') {
+        onNavigateHome?.();
+        setTimeout(() => onNavigateToSection?.(link.section), 100);
+      } else {
+        onNavigateToSection?.(link.section);
+        window.history.pushState({}, '', link.section);
+      }
+    }
   };
 
   const navBackgroundStyles = isMenuOpen 
@@ -57,10 +73,9 @@ const Navbar: React.FC<NavbarProps> = ({ onNavigateClub, onNavigateHome, onNavig
     <nav className={`fixed w-full z-[100] transition-all duration-500 ${navBackgroundStyles}`}>
       <div className="max-w-[1400px] mx-auto px-6 md:px-12 flex justify-between items-center relative z-20">
         <a 
-          href="#" 
+          href="/" 
           onClick={(e) => { 
             e.preventDefault(); 
-            window.location.hash = ''; 
             onNavigateHome?.(); 
             setIsMenuOpen(false); 
           }}
@@ -78,14 +93,18 @@ const Navbar: React.FC<NavbarProps> = ({ onNavigateClub, onNavigateHome, onNavig
           {navLinks.map((link) => (
             <a 
               key={link.name} 
-              href={link.href}
+              href={link.path}
               onClick={(e) => handleLinkClick(e, link)}
               className="text-[11px] font-bold transition-colors tracking-[0.25em] uppercase text-white/70 hover:text-gold"
             >
               {link.name}
             </a>
           ))}
-          <a href="#contacto" className="bg-gold text-white px-8 py-3 rounded-full text-[10px] font-black uppercase tracking-[0.2em] hover:bg-white hover:text-black transition-all shadow-lg shadow-gold/20">
+          <a 
+            href="#contacto" 
+            onClick={(e) => handleLinkClick(e, { section: '#contacto' })}
+            className="bg-gold text-white px-8 py-3 rounded-full text-[10px] font-black uppercase tracking-[0.2em] hover:bg-white hover:text-black transition-all shadow-lg shadow-gold/20"
+          >
             Reservar Ahora
           </a>
         </div>
@@ -109,7 +128,7 @@ const Navbar: React.FC<NavbarProps> = ({ onNavigateClub, onNavigateHome, onNavig
           {navLinks.map((link, i) => (
             <a 
               key={link.name} 
-              href={link.href} 
+              href={link.path} 
               onClick={(e) => handleLinkClick(e, link)}
               className={`text-2xl font-black tracking-[0.2em] uppercase transition-all duration-500 transform ${isMenuOpen ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'}`}
               style={{ transitionDelay: `${isMenuOpen ? i * 75 + 100 : 0}ms` }}
@@ -120,7 +139,7 @@ const Navbar: React.FC<NavbarProps> = ({ onNavigateClub, onNavigateHome, onNavig
           <div className={`pt-8 transition-all duration-500 ${isMenuOpen ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'}`} style={{ transitionDelay: `${isMenuOpen ? navLinks.length * 75 + 150 : 0}ms` }}>
             <a 
               href="#contacto" 
-              onClick={() => setIsMenuOpen(false)}
+              onClick={(e) => handleLinkClick(e, { section: '#contacto' })}
               className="bg-gold text-white px-12 py-5 rounded-full text-xs font-black uppercase tracking-[0.2em] shadow-xl shadow-gold/20"
             >
               Reservar Ahora

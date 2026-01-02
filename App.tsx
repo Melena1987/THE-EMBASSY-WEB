@@ -25,13 +25,11 @@ function App() {
   const [view, setView] = useState<ViewType>('home');
 
   const scrollToSection = useCallback((hash: string) => {
-    if (!hash || hash === '#' || hash === '') {
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-      return;
-    }
+    if (!hash) return;
     
     setTimeout(() => {
-      const element = document.querySelector(hash);
+      const id = hash.replace('#', '');
+      const element = document.getElementById(id) || document.querySelector(hash);
       if (element) {
         const offset = 80; 
         const bodyRect = document.body.getBoundingClientRect().top;
@@ -47,42 +45,37 @@ function App() {
     }, 100);
   }, []);
 
-  useEffect(() => {
-    const handleHashChange = () => {
-      const hash = window.location.hash;
-      
-      if (hash === '#legal') {
-        setView('legal');
-        window.scrollTo(0, 0);
-      } else if (hash === '#club') {
-        setView('club');
-        window.scrollTo(0, 0);
-      } else if (hash === '#eventos') {
-        setView('events');
-        window.scrollTo(0, 0);
-      } else if (hash === '#skillcamp') {
-        setView('skillcamp');
-        window.scrollTo(0, 0);
+  const handleRoute = useCallback(() => {
+    const path = window.location.pathname;
+    const hash = window.location.hash;
+
+    if (path === '/legal') {
+      setView('legal');
+      window.scrollTo(0, 0);
+    } else if (path === '/club') {
+      setView('club');
+      window.scrollTo(0, 0);
+    } else if (path === '/eventos') {
+      setView('events');
+      window.scrollTo(0, 0);
+    } else if (path === '/skillcamp') {
+      setView('skillcamp');
+      window.scrollTo(0, 0);
+    } else {
+      setView('home');
+      if (hash) {
+        scrollToSection(hash);
       } else {
-        const isSection = ['#servicios', '#instalaciones', '#equipo', '#contacto'].includes(hash);
-        const wasNotHome = !['home', 'events', 'skillcamp'].includes(view) && !hash.startsWith('#');
-        
-        // Si estamos en events o skillcamp, no resetamos a home automáticamente a menos que el hash esté vacío
-        if (hash === '' || hash === '#') {
-          setView('home');
-          window.scrollTo(0, 0);
-        } else if (isSection) {
-          setView('home');
-          scrollToSection(hash);
-        }
+        window.scrollTo(0, 0);
       }
-    };
+    }
+  }, [scrollToSection]);
 
-    window.addEventListener('hashchange', handleHashChange);
-    handleHashChange();
-
-    return () => window.removeEventListener('hashchange', handleHashChange);
-  }, [view, scrollToSection]);
+  useEffect(() => {
+    window.addEventListener('popstate', handleRoute);
+    handleRoute();
+    return () => window.removeEventListener('popstate', handleRoute);
+  }, [handleRoute]);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -101,16 +94,16 @@ function App() {
     return () => window.removeEventListener('scroll', handleScroll);
   }, [view]);
 
-  const navigateToLegal = () => { window.location.hash = 'legal'; };
-  const navigateToClub = () => { window.location.hash = 'club'; };
-  const navigateToEvents = () => { window.location.hash = 'eventos'; };
-  const navigateToHome = () => { 
-    if (window.location.hash === '' || window.location.hash === '#') {
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-    } else {
-      window.location.hash = '';
-    }
+  const navigateTo = (path: string) => {
+    window.history.pushState({}, '', path);
+    handleRoute();
   };
+
+  const navigateToLegal = () => navigateTo('/legal');
+  const navigateToClub = () => navigateTo('/club');
+  const navigateToEvents = () => navigateTo('/eventos');
+  const navigateToHome = () => navigateTo('/');
+  const navigateToSkillCamp = () => navigateTo('/skillcamp');
 
   const renderView = () => {
     switch (view) {
@@ -125,7 +118,7 @@ function App() {
       default:
         return (
           <main>
-            <Hero />
+            <Hero onExplore={() => scrollToSection('#instalaciones')} />
             <Vision />
             <Stats />
             <section id="instalaciones" className="py-32 bg-white text-black overflow-hidden relative">
@@ -196,7 +189,13 @@ function App() {
 
   return (
     <div className="min-h-screen bg-black selection:bg-gold selection:text-white">
-      <Navbar onNavigateClub={navigateToClub} onNavigateHome={navigateToHome} onNavigateEvents={navigateToEvents} />
+      <Navbar 
+        onNavigateClub={navigateToClub} 
+        onNavigateHome={navigateToHome} 
+        onNavigateEvents={navigateToEvents} 
+        onNavigateToSection={scrollToSection}
+        currentPath={window.location.pathname}
+      />
       {renderView()}
       <Footer onNavigateLegal={navigateToLegal} onNavigateClub={navigateToClub} />
       <CookieBanner />
