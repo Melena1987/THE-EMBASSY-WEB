@@ -1,17 +1,20 @@
 
-import React from 'react';
+import React, { useState } from 'react';
 
 const SkillCampVenueInfo: React.FC = () => {
+  const [imgLoaded, setImgLoaded] = useState(false);
   const bgImage = "https://firebasestorage.googleapis.com/v0/b/galeriaoficialapp.firebasestorage.app/o/users%2FI5KZz4BuUEfxcoAvSCAWllkQtwt1%2Fphotos%2F1761950147664_TheEmbassyTC-imagen_015.jpg?alt=media&token=2d4244b8-f480-4ff3-adc1-dfc165edaa3a";
 
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden py-24 bg-black">
       {/* Background with Depth */}
-      <div className="absolute inset-0 z-0">
+      <div className="absolute inset-0 z-0 bg-[#050505]">
         <img 
           src={bgImage} 
-          className="w-full h-full object-cover brightness-[0.3] scale-110"
+          onLoad={() => setImgLoaded(true)}
+          className={`w-full h-full object-cover brightness-[0.3] scale-110 transition-opacity duration-1000 ${imgLoaded ? 'opacity-100' : 'opacity-0'}`}
           alt="The Embassy Training Center"
+          loading="lazy"
         />
         <div className="absolute inset-0 bg-gradient-to-b from-black via-transparent to-black"></div>
         {/* Decorative court lines overlay */}

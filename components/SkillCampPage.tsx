@@ -1,5 +1,5 @@
 
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useRef } from 'react';
 import SkillCampHero from './SkillCampHero.tsx';
 import SkillCampLogistics from './SkillCampLogistics.tsx';
 import SkillCampVenueInfo from './SkillCampVenueInfo.tsx';
@@ -9,10 +9,20 @@ import SkillCampFooterCTA from './SkillCampFooterCTA.tsx';
 
 const SkillCampPage: React.FC<{ onBack: () => void }> = ({ onBack }) => {
   const [scrollY, setScrollY] = useState(0);
+  const scrollRef = useRef<number>(0);
+  const requestRef = useRef<number>(null);
 
   useEffect(() => {
     const handleScroll = () => {
-      setScrollY(window.scrollY);
+      scrollRef.current = window.scrollY;
+      
+      // Throttling with requestAnimationFrame for smooth parallax
+      if (!requestRef.current) {
+        requestRef.current = requestAnimationFrame(() => {
+          setScrollY(scrollRef.current);
+          requestRef.current = null;
+        });
+      }
       
       const reveals = document.querySelectorAll('.reveal');
       reveals.forEach((reveal) => {
@@ -27,7 +37,10 @@ const SkillCampPage: React.FC<{ onBack: () => void }> = ({ onBack }) => {
 
     window.addEventListener('scroll', handleScroll, { passive: true });
     handleScroll();
-    return () => window.removeEventListener('scroll', handleScroll);
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+      if (requestRef.current) cancelAnimationFrame(requestRef.current);
+    };
   }, []);
 
   return (
@@ -49,6 +62,9 @@ const SkillCampPage: React.FC<{ onBack: () => void }> = ({ onBack }) => {
         @keyframes fade-in-scale {
           from { opacity: 0; transform: scale(0.9) translateY(20px); }
           to { opacity: 1; transform: scale(1) translateY(0); }
+        }
+        .reveal {
+          will-change: transform, opacity;
         }
       `}</style>
     </div>

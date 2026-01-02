@@ -1,5 +1,5 @@
 
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 
 interface SkillCampHeroProps {
   onBack: () => void;
@@ -7,19 +7,27 @@ interface SkillCampHeroProps {
 }
 
 const SkillCampHero: React.FC<SkillCampHeroProps> = ({ onBack, scrollY }) => {
+  const [isLoaded, setIsLoaded] = useState(false);
   const skillCampLogo = "https://firebasestorage.googleapis.com/v0/b/galeriaoficialapp.firebasestorage.app/o/users%2FI5KZz4BuUEfxcoAvSCAWllkQtwt1%2Fphotos%2F1767138288808_frontal.png?alt=media&token=cd73d94c-6b1a-4d09-b081-309d6d4751b0";
   const heroBg = "https://firebasestorage.googleapis.com/v0/b/galeriaoficialapp.firebasestorage.app/o/users%2FI5KZz4BuUEfxcoAvSCAWllkQtwt1%2Fphotos%2F1761950147664_TheEmbassyTC-imagen_036.jpg?alt=media&token=e35e2655-a8cb-4db4-b527-54e76095b763";
+
+  useEffect(() => {
+    const img = new Image();
+    img.src = heroBg;
+    img.onload = () => setIsLoaded(true);
+  }, []);
 
   return (
     <section className="relative h-[100svh] flex flex-col items-center justify-center overflow-hidden bg-black">
       {/* Parallax Background with deep blue cinematic overlay */}
       <div 
-        className="absolute inset-0 z-0 transition-transform duration-500 ease-out"
+        className={`absolute inset-0 z-0 transition-opacity duration-1000 ease-in-out ${isLoaded ? 'opacity-100' : 'opacity-0'}`}
         style={{ 
-          transform: `translateY(${scrollY * 0.3}px) scale(${1.1 + scrollY * 0.0005})`,
+          transform: `translate3d(0, ${scrollY * 0.3}px, 0) scale(${1.1 + scrollY * 0.0005})`,
           backgroundImage: `url(${heroBg})`,
           backgroundPosition: 'center',
-          backgroundSize: 'cover'
+          backgroundSize: 'cover',
+          willChange: 'transform'
         }}
       >
         {/* Blue Overlays for a deep, winter/elite feel */}
@@ -29,6 +37,11 @@ const SkillCampHero: React.FC<SkillCampHeroProps> = ({ onBack, scrollY }) => {
         {/* Animated Dust/Noise Effect */}
         <div className="absolute inset-0 opacity-[0.03] pointer-events-none bg-[url('https://grainy-gradients.vercel.app/noise.svg')]"></div>
       </div>
+      
+      {/* Skeleton / Placeholder while loading */}
+      {!isLoaded && (
+        <div className="absolute inset-0 bg-[#001021] z-0 animate-pulse"></div>
+      )}
       
       <div className="relative z-10 px-6 w-full max-w-7xl mx-auto flex flex-col items-center">
         <button 
