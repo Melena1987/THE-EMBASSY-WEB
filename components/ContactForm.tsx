@@ -96,6 +96,8 @@ const ContactForm: React.FC = () => {
                   <option value="Eventos Corporativos">Eventos Corporativos</option>
                   <option value="Experiencias VIP">Experiencias VIP</option>
                   <option value="Uso de Instalaciones">Uso de Instalaciones</option>
+                  <option value="Salud / Fisioterapia">Salud / Fisioterapia</option>
+                  <option value="Otro">Otro</option>
                 </select>
               </div>
             </div>
