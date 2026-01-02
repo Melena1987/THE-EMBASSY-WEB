@@ -77,7 +77,7 @@ const SkillCampVenueInfo: React.FC = () => {
               </div>
             </div>
 
-            <div className="bg-white/5 rounded-3xl p-8 border border-white/5 group hover:border-gold/30 transition-all duration-500">
+            <div className="bg-white/5 rounded-3xl p-8 border border-white/5 group transition-all duration-500">
               <div className="flex flex-col md:flex-row items-center gap-8 justify-between">
                 <div>
                   <span className="text-gold text-[10px] font-black tracking-[0.4em] uppercase mb-2 block">Target Audience</span>
@@ -86,12 +86,9 @@ const SkillCampVenueInfo: React.FC = () => {
                   </h3>
                   <p className="text-white/40 text-[10px] font-bold uppercase tracking-widest mt-1">Generaciones: 2003 a 2011</p>
                 </div>
-                <a 
-                  href="#contacto"
-                  className="bg-white text-black px-10 py-5 rounded-full font-black uppercase tracking-[0.2em] text-[10px] hover:bg-gold hover:text-white transition-all shadow-xl shrink-0"
-                >
-                  RESERVAR PLAZA
-                </a>
+                <div className="bg-white/10 text-white/40 px-10 py-5 rounded-full font-black uppercase tracking-[0.2em] text-[10px] border border-white/5 shrink-0 italic cursor-default text-center">
+                  PRÓXIMAMENTE <br/> NUEVA EDICIÓN
+                </div>
               </div>
             </div>
           </div>

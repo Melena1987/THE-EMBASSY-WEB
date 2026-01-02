@@ -17,38 +17,47 @@ const SkillCampStaff: React.FC = () => {
         
         <div className="grid grid-cols-1 md:grid-cols-3 gap-12 lg:gap-20">
           <div className="reveal group">
-            <div className="relative aspect-[4/5] overflow-hidden rounded-[2.5rem] mb-8 bg-neutral-100">
+            <div className="relative aspect-[4/5] overflow-hidden rounded-[2.5rem] mb-6 bg-neutral-100">
               <img src="https://firebasestorage.googleapis.com/v0/b/galeriaoficialapp.firebasestorage.app/o/users%2FI5KZz4BuUEfxcoAvSCAWllkQtwt1%2Fphotos%2F1766962810087_aaron_gordon.jpeg?alt=media&token=c7cd97ad-7a4c-40c7-b9b1-33c22bc3a234" className="w-full h-full object-cover transition-all duration-1000 group-hover:scale-110" alt="Alfonso Sánchez" />
               <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
             </div>
+            <p className="text-[10px] text-gray-400 font-bold uppercase tracking-wider mb-6 leading-relaxed">
+              <span className="text-black">Aaron Gordon</span> (Jugador de Denver Nuggets) entrenando con Alfonso Sánchez.
+            </p>
             <h3 className="text-2xl font-black uppercase italic tracking-tight mb-2">Alfonso Sánchez</h3>
-            <p className="text-gold font-black text-[10px] uppercase tracking-[0.2em] mb-6">Director & Player Development</p>
+            <p className="text-gold font-black text-[10px] uppercase tracking-[0.2em] mb-6">Director y Entrenador</p>
             <p className="text-gray-500 text-xs font-medium uppercase tracking-wider leading-relaxed">
-              Exjugador ACB. Director de técnica individual con experiencia entrenando a estrellas de la NBA como Aaron Gordon.
+              Exjugador de baloncesto profesional. Actualmente entrenador de desarrollo de jugadores en The Embassy y Director de técnica individual en Academia 675.
             </p>
           </div>
 
           <div className="reveal group delay-100">
-            <div className="relative aspect-[4/5] overflow-hidden rounded-[2.5rem] mb-8 bg-neutral-100">
+            <div className="relative aspect-[4/5] overflow-hidden rounded-[2.5rem] mb-6 bg-neutral-100">
               <img src="https://firebasestorage.googleapis.com/v0/b/galeriaoficialapp.firebasestorage.app/o/users%2FI5KZz4BuUEfxcoAvSCAWllkQtwt1%2Fphotos%2F1766962810087_d8dd6927-be46-44d9-a484-a812471d0aec.jpg?alt=media&token=556284d8-55cf-41d2-80ab-23a8b5127d46" className="w-full h-full object-cover transition-all duration-1000 group-hover:scale-110" alt="Fran Vázquez" />
               <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
             </div>
+            <p className="text-[10px] text-gray-400 font-bold uppercase tracking-wider mb-6 leading-relaxed">
+              Fran Vázquez dando indicaciones a <span className="text-black">Alberto Díaz</span> (concentración selección española)
+            </p>
             <h3 className="text-2xl font-black uppercase italic tracking-tight mb-2">Fran Vázquez</h3>
-            <p className="text-gold font-black text-[10px] uppercase tracking-[0.2em] mb-6">Interior Specialist</p>
+            <p className="text-gold font-black text-[10px] uppercase tracking-[0.2em] mb-6">Entrenador</p>
             <p className="text-gray-500 text-xs font-medium uppercase tracking-wider leading-relaxed">
-              Máximo taponador histórico ACB. Leyenda del juego interior y especialista en el desarrollo de pívots de élite.
+              Exjugador de baloncesto profesional, máximo taponador histórico de la ACB y campeón de Euroliga. Entrenador de desarrollo de jugadores interiores en Unicaja y selección española.
             </p>
           </div>
 
           <div className="reveal group delay-200">
-            <div className="relative aspect-[4/5] overflow-hidden rounded-[2.5rem] mb-8 bg-neutral-100">
+            <div className="relative aspect-[4/5] overflow-hidden rounded-[2.5rem] mb-6 bg-neutral-100">
               <img src="https://firebasestorage.googleapis.com/v0/b/galeriaoficialapp.firebasestorage.app/o/users%2FI5KZz4BuUEfxcoAvSCAWllkQtwt1%2Fphotos%2F1766961925716_adam.jpg?alt=media&token=899fec3a-90cf-413c-9865-dbdef355232b" className="w-full h-full object-cover transition-all duration-1000 group-hover:scale-110" alt="Adam Waczynski" />
               <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
             </div>
+            <p className="text-[10px] text-gray-400 font-bold uppercase tracking-wider mb-6 leading-relaxed">
+              Adam Waczynski entrenando en su campus en Polonia.
+            </p>
             <h3 className="text-2xl font-black uppercase italic tracking-tight mb-2">Adam Waczynski</h3>
-            <p className="text-gold font-black text-[10px] uppercase tracking-[0.2em] mb-6">Shooting Skill Coach</p>
+            <p className="text-gold font-black text-[10px] uppercase tracking-[0.2em] mb-6">Entrenador</p>
             <p className="text-gray-500 text-xs font-medium uppercase tracking-wider leading-relaxed">
-              Referente del tiro exterior internacional. Maestro en la mecánica de tiro y eficiencia ofensiva profesional.
+              Exjugador profesional 5x5, actual integrante del equipo The Embassy 3x3. Shooting Skill Coach.
             </p>
           </div>
         </div>

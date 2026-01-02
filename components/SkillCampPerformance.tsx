@@ -50,7 +50,7 @@ const SkillCampPerformance: React.FC = () => {
               </div>
               
               {/* Image Caption */}
-              <p className="text-[10px] md:text-xs text-gray-400 font-medium leading-relaxed mb-6 uppercase tracking-wider">
+              <p className="text-[10px] md:text-xs text-gray-400 font-bold leading-relaxed mb-6 uppercase tracking-wider">
                 {spec.caption}
               </p>
 
