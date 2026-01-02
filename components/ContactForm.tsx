@@ -1,6 +1,46 @@
-import React from 'react';
+
+import React, { useRef, useState } from 'react';
+import emailjs from '@emailjs/browser';
 
 const ContactForm: React.FC = () => {
+  const form = useRef<HTMLFormElement>(null);
+  const [isSending, setIsSending] = useState(false);
+  const [isSent, setIsSent] = useState(false);
+  const [statusMessage, setStatusMessage] = useState<string | null>(null);
+
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+
+    if (form.current) {
+      setIsSending(true);
+      setStatusMessage(null);
+
+      emailjs.sendForm(
+        (import.meta as any).env.VITE_EMAILJS_SERVICE_ID,
+        (import.meta as any).env.VITE_EMAILJS_TEMPLATE_ID,
+        form.current,
+        (import.meta as any).env.VITE_EMAILJS_PUBLIC_KEY
+      )
+      .then(() => {
+          console.log('Email enviado correctamente');
+          setIsSending(false);
+          setIsSent(true);
+          setStatusMessage('¡Solicitud enviada con éxito! Nos pondremos en contacto pronto.');
+          form.current?.reset();
+          // Reset status message after 5 seconds
+          setTimeout(() => {
+            setIsSent(false);
+            setStatusMessage(null);
+          }, 5000);
+      })
+      .catch((error) => {
+          console.error('Error al enviar email:', error);
+          setIsSending(false);
+          setStatusMessage('Hubo un error al enviar el mensaje. Por favor, inténtelo de nuevo.');
+      });
+    }
+  };
+
   return (
     <section id="contacto" className="py-32 bg-white text-black relative overflow-hidden">
       <div className="max-w-[1400px] mx-auto px-6 md:px-12 grid grid-cols-1 lg:grid-cols-2 gap-24 items-center">
@@ -35,15 +75,24 @@ const ContactForm: React.FC = () => {
         </div>
 
         <div className="reveal bg-neutral-50 p-10 md:p-16 rounded-[3rem] shadow-2xl border border-black/5 relative z-10">
-          <form className="space-y-10">
+          <form ref={form} onSubmit={handleSubmit} className="space-y-10">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
               <div className="space-y-2">
                 <label className="text-[10px] font-black uppercase tracking-widest text-gray-400">Nombre Completo *</label>
-                <input type="text" placeholder="Tu nombre" className="w-full bg-transparent border-b-2 border-gray-200 focus:border-gold outline-none py-3 transition-all font-bold placeholder:text-gray-300" required />
+                <input 
+                  type="text" 
+                  name="name"
+                  placeholder="Tu nombre" 
+                  className="w-full bg-transparent border-b-2 border-gray-200 focus:border-gold outline-none py-3 transition-all font-bold placeholder:text-gray-300" 
+                  required 
+                />
               </div>
               <div className="space-y-2">
                 <label className="text-[10px] font-black uppercase tracking-widest text-gray-400">Servicio de Interés</label>
-                <select className="w-full bg-transparent border-b-2 border-gray-200 focus:border-gold outline-none py-3 transition-all font-bold">
+                <select 
+                  name="service"
+                  className="w-full bg-transparent border-b-2 border-gray-200 focus:border-gold outline-none py-3 transition-all font-bold"
+                >
                   <option>Training Individual</option>
                   <option>Eventos Corporativos</option>
                   <option>Experiencias VIP</option>
@@ -51,15 +100,38 @@ const ContactForm: React.FC = () => {
                 </select>
               </div>
             </div>
-            
-            <div className="space-y-2">
-              <label className="text-[10px] font-black uppercase tracking-widest text-gray-400">Email Corporativo / Personal *</label>
-              <input type="email" placeholder="email@ejemplo.com" className="w-full bg-transparent border-b-2 border-gray-200 focus:border-gold outline-none py-3 transition-all font-bold placeholder:text-gray-300" required />
+
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
+              <div className="space-y-2">
+                <label className="text-[10px] font-black uppercase tracking-widest text-gray-400">Email Corporativo / Personal *</label>
+                <input 
+                  type="email" 
+                  name="email"
+                  placeholder="email@ejemplo.com" 
+                  className="w-full bg-transparent border-b-2 border-gray-200 focus:border-gold outline-none py-3 transition-all font-bold placeholder:text-gray-300" 
+                  required 
+                />
+              </div>
+              <div className="space-y-2">
+                <label className="text-[10px] font-black uppercase tracking-widest text-gray-400">Teléfono</label>
+                <input 
+                  type="tel" 
+                  name="phone"
+                  placeholder="+34 ..." 
+                  className="w-full bg-transparent border-b-2 border-gray-200 focus:border-gold outline-none py-3 transition-all font-bold placeholder:text-gray-300" 
+                />
+              </div>
             </div>
 
             <div className="space-y-2">
               <label className="text-[10px] font-black uppercase tracking-widest text-gray-400">Mensaje *</label>
-              <textarea rows={4} placeholder="¿Cómo podemos ayudarte?" className="w-full bg-transparent border-b-2 border-gray-200 focus:border-gold outline-none py-3 transition-all resize-none font-bold placeholder:text-gray-300" required></textarea>
+              <textarea 
+                name="message"
+                rows={4} 
+                placeholder="¿Cómo podemos ayudarte?" 
+                className="w-full bg-transparent border-b-2 border-gray-200 focus:border-gold outline-none py-3 transition-all resize-none font-bold placeholder:text-gray-300" 
+                required
+              ></textarea>
             </div>
 
             <div className="flex items-start space-x-4">
@@ -69,9 +141,21 @@ const ContactForm: React.FC = () => {
               </label>
             </div>
 
-            <button type="submit" className="group w-full bg-black text-white py-6 rounded-full font-black uppercase tracking-[0.3em] hover:bg-gold transition-all shadow-xl hover:shadow-gold/40 flex items-center justify-center gap-4">
-              Enviar Solicitud
-              <svg className="w-5 h-5 group-hover:translate-x-2 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M14 5l7 7-7 7M3 12h18" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/></svg>
+            {statusMessage && (
+              <div className={`text-center font-bold uppercase tracking-widest text-xs p-4 rounded-xl ${isSent ? 'bg-gold/10 text-gold border border-gold/20' : 'bg-red-50 text-red-500 border border-red-100'}`}>
+                {statusMessage}
+              </div>
+            )}
+
+            <button 
+              type="submit" 
+              disabled={isSending}
+              className={`group w-full py-6 rounded-full font-black uppercase tracking-[0.3em] transition-all shadow-xl flex items-center justify-center gap-4 ${isSending ? 'bg-gray-200 text-gray-400 cursor-not-allowed' : 'bg-black text-white hover:bg-gold hover:shadow-gold/40'}`}
+            >
+              {isSending ? 'Enviando...' : 'Enviar Solicitud'}
+              {!isSending && (
+                <svg className="w-5 h-5 group-hover:translate-x-2 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M14 5l7 7-7 7M3 12h18" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/></svg>
+              )}
             </button>
           </form>
         </div>
