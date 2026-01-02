@@ -1,5 +1,5 @@
 
-import React, { useEffect, useState, useRef } from 'react';
+import React, { useEffect } from 'react';
 import SkillCampHero from './SkillCampHero.tsx';
 import SkillCampLogistics from './SkillCampLogistics.tsx';
 import SkillCampVenueInfo from './SkillCampVenueInfo.tsx';
@@ -10,21 +10,8 @@ import SkillCampGallery from './SkillCampGallery.tsx';
 import SkillCampFooterCTA from './SkillCampFooterCTA.tsx';
 
 const SkillCampPage: React.FC<{ onBack: () => void }> = ({ onBack }) => {
-  const [scrollY, setScrollY] = useState(0);
-  const scrollRef = useRef<number>(0);
-  const requestRef = useRef<number>(null);
-
   useEffect(() => {
     const handleScroll = () => {
-      scrollRef.current = window.scrollY;
-      
-      if (!requestRef.current) {
-        requestRef.current = requestAnimationFrame(() => {
-          setScrollY(scrollRef.current);
-          requestRef.current = null;
-        });
-      }
-      
       const reveals = document.querySelectorAll('.reveal');
       reveals.forEach((reveal) => {
         const windowHeight = window.innerHeight;
@@ -40,14 +27,13 @@ const SkillCampPage: React.FC<{ onBack: () => void }> = ({ onBack }) => {
     handleScroll();
     return () => {
       window.removeEventListener('scroll', handleScroll);
-      if (requestRef.current) cancelAnimationFrame(requestRef.current);
     };
   }, []);
 
   return (
     <div className="bg-black text-white min-h-screen font-sans selection:bg-gold overflow-x-hidden">
       
-      <SkillCampHero onBack={onBack} scrollY={scrollY} />
+      <SkillCampHero onBack={onBack} />
       
       <SkillCampLogistics />
 

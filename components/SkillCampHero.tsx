@@ -3,10 +3,9 @@ import React, { useState, useEffect } from 'react';
 
 interface SkillCampHeroProps {
   onBack: () => void;
-  scrollY: number;
 }
 
-const SkillCampHero: React.FC<SkillCampHeroProps> = ({ onBack, scrollY }) => {
+const SkillCampHero: React.FC<SkillCampHeroProps> = ({ onBack }) => {
   const [isLoaded, setIsLoaded] = useState(false);
   const skillCampLogo = "https://firebasestorage.googleapis.com/v0/b/galeriaoficialapp.firebasestorage.app/o/users%2FI5KZz4BuUEfxcoAvSCAWllkQtwt1%2Fphotos%2F1767138288808_frontal.png?alt=media&token=cd73d94c-6b1a-4d09-b081-309d6d4751b0";
   const heroBg = "https://firebasestorage.googleapis.com/v0/b/galeriaoficialapp.firebasestorage.app/o/users%2FI5KZz4BuUEfxcoAvSCAWllkQtwt1%2Fphotos%2F1761950147664_TheEmbassyTC-imagen_036.jpg?alt=media&token=e35e2655-a8cb-4db4-b527-54e76095b763";
@@ -19,15 +18,14 @@ const SkillCampHero: React.FC<SkillCampHeroProps> = ({ onBack, scrollY }) => {
 
   return (
     <section className="relative h-[100svh] flex flex-col items-center justify-center overflow-hidden bg-black">
-      {/* Parallax Background with deep blue cinematic overlay */}
+      {/* Fixed Background Layer using CSS - High Performance */}
       <div 
         className={`absolute inset-0 z-0 transition-opacity duration-1000 ease-in-out ${isLoaded ? 'opacity-100' : 'opacity-0'}`}
         style={{ 
-          transform: `translate3d(0, ${scrollY * 0.3}px, 0) scale(${1.1 + scrollY * 0.0005})`,
           backgroundImage: `url(${heroBg})`,
           backgroundPosition: 'center',
           backgroundSize: 'cover',
-          willChange: 'transform'
+          backgroundAttachment: 'fixed', // This provides the fixed "window" effect natively
         }}
       >
         {/* Blue Overlays for a deep, winter/elite feel */}
@@ -83,6 +81,16 @@ const SkillCampHero: React.FC<SkillCampHeroProps> = ({ onBack, scrollY }) => {
 
       {/* Decorative vertical line */}
       <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[1px] h-20 bg-gradient-to-b from-gold/0 to-gold"></div>
+
+      <style>{`
+        @media (max-width: 1024px) {
+          /* background-attachment: fixed often has issues on mobile browsers, 
+             so we fall back to a standard static background for maximum performance there */
+          .z-0 {
+            background-attachment: scroll !important;
+          }
+        }
+      `}</style>
     </section>
   );
 };

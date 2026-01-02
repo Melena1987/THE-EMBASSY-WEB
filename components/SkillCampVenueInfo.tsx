@@ -7,23 +7,25 @@ const SkillCampVenueInfo: React.FC = () => {
 
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden py-24 bg-black">
-      {/* Background with Depth */}
-      <div className="absolute inset-0 z-0 bg-[#050505]">
+      {/* Background with Fixed Depth */}
+      <div 
+        className={`absolute inset-0 z-0 bg-[#050505] transition-opacity duration-1000 ${imgLoaded ? 'opacity-100' : 'opacity-0'}`}
+        style={{ 
+          backgroundImage: `url(${bgImage})`,
+          backgroundPosition: 'center',
+          backgroundSize: 'cover',
+          backgroundAttachment: 'fixed',
+          filter: 'brightness(0.3)'
+        }}
+      >
+        {/* Preload hidden image to trigger onLoad */}
         <img 
           src={bgImage} 
           onLoad={() => setImgLoaded(true)}
-          className={`w-full h-full object-cover brightness-[0.3] scale-110 transition-opacity duration-1000 ${imgLoaded ? 'opacity-100' : 'opacity-0'}`}
-          alt="The Embassy Training Center"
-          loading="lazy"
+          className="hidden"
+          alt="Preloader"
         />
         <div className="absolute inset-0 bg-gradient-to-b from-black via-transparent to-black"></div>
-        {/* Decorative court lines overlay */}
-        <div className="absolute inset-0 opacity-10 pointer-events-none">
-          <svg className="w-full h-full" viewBox="0 0 100 100" preserveAspectRatio="none">
-            <circle cx="50" cy="50" r="30" fill="none" stroke="white" strokeWidth="0.1" />
-            <rect x="20" y="0" width="60" height="100" fill="none" stroke="white" strokeWidth="0.1" />
-          </svg>
-        </div>
       </div>
 
       {/* The "Tactical Card" */}
