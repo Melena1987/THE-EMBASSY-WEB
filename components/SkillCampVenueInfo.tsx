@@ -34,7 +34,7 @@ const SkillCampVenueInfo: React.FC = () => {
           <div className="lg:w-1/3 bg-gold p-12 flex flex-col justify-between text-white relative overflow-hidden">
             <div className="relative z-10">
               <span className="text-[10px] font-black tracking-[0.5em] uppercase opacity-60">Location</span>
-              <h2 className="text-4xl md:text-5xl font-black uppercase italic tracking-tighter mt-2 leading-none">THE <br/> SANCTUARY</h2>
+              <h2 className="text-4xl md:text-5xl font-black uppercase italic tracking-tighter mt-2 leading-none">THE <br/> EMBASSY</h2>
             </div>
             
             <div className="relative z-10 mt-20">

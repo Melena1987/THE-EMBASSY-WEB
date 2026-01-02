@@ -18,7 +18,7 @@ const SkillCampStaff: React.FC = () => {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-12 lg:gap-20">
           <div className="reveal group">
             <div className="relative aspect-[4/5] overflow-hidden rounded-[2.5rem] mb-8 bg-neutral-100">
-              <img src="https://firebasestorage.googleapis.com/v0/b/galeriaoficialapp.firebasestorage.app/o/users%2FI5KZz4BuUEfxcoAvSCAWllkQtwt1%2Fphotos%2F1766961892425_Alfonso_S_nchez_THE_EMBASSY_400x400.jpg?alt=media&token=89499cfd-ad20-441a-95ca-16e16cdbf709" className="w-full h-full object-cover transition-all duration-1000 group-hover:scale-110" alt="Alfonso Sánchez" />
+              <img src="https://firebasestorage.googleapis.com/v0/b/galeriaoficialapp.firebasestorage.app/o/users%2FI5KZz4BuUEfxcoAvSCAWllkQtwt1%2Fphotos%2F1766962810087_aaron_gordon.jpeg?alt=media&token=c7cd97ad-7a4c-40c7-b9b1-33c22bc3a234" className="w-full h-full object-cover transition-all duration-1000 group-hover:scale-110" alt="Alfonso Sánchez" />
               <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
             </div>
             <h3 className="text-2xl font-black uppercase italic tracking-tight mb-2">Alfonso Sánchez</h3>
@@ -30,7 +30,7 @@ const SkillCampStaff: React.FC = () => {
 
           <div className="reveal group delay-100">
             <div className="relative aspect-[4/5] overflow-hidden rounded-[2.5rem] mb-8 bg-neutral-100">
-              <img src="https://firebasestorage.googleapis.com/v0/b/galeriaoficialapp.firebasestorage.app/o/users%2FI5KZz4BuUEfxcoAvSCAWllkQtwt1%2Fphotos%2F1757441458744_THE_EMBASSY_FUENGIROLA_NBA_13_400x400.jpg?alt=media&token=47aeffdb-a5b2-4be0-a4ba-4d11d1263796" className="w-full h-full object-cover transition-all duration-1000 group-hover:scale-110" alt="Fran Vázquez" />
+              <img src="https://firebasestorage.googleapis.com/v0/b/galeriaoficialapp.firebasestorage.app/o/users%2FI5KZz4BuUEfxcoAvSCAWllkQtwt1%2Fphotos%2F1766962810087_d8dd6927-be46-44d9-a484-a812471d0aec.jpg?alt=media&token=556284d8-55cf-41d2-80ab-23a8b5127d46" className="w-full h-full object-cover transition-all duration-1000 group-hover:scale-110" alt="Fran Vázquez" />
               <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
             </div>
             <h3 className="text-2xl font-black uppercase italic tracking-tight mb-2">Fran Vázquez</h3>
@@ -42,7 +42,7 @@ const SkillCampStaff: React.FC = () => {
 
           <div className="reveal group delay-200">
             <div className="relative aspect-[4/5] overflow-hidden rounded-[2.5rem] mb-8 bg-neutral-100">
-              <img src="https://firebasestorage.googleapis.com/v0/b/galeriaoficialapp.firebasestorage.app/o/users%2FI5KZz4BuUEfxcoAvSCAWllkQtwt1%2Fphotos%2F1757441458744_THE_EMBASSY_FUENGIROLA_NBA_15_400x400.jpg?alt=media&token=4b7eb880-1c3c-4ebb-90ad-e88f2c67d8ce" className="w-full h-full object-cover transition-all duration-1000 group-hover:scale-110" alt="Adam Waczynski" />
+              <img src="https://firebasestorage.googleapis.com/v0/b/galeriaoficialapp.firebasestorage.app/o/users%2FI5KZz4BuUEfxcoAvSCAWllkQtwt1%2Fphotos%2F1766961925716_adam.jpg?alt=media&token=899fec3a-90cf-413c-9865-dbdef355232b" className="w-full h-full object-cover transition-all duration-1000 group-hover:scale-110" alt="Adam Waczynski" />
               <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
             </div>
             <h3 className="text-2xl font-black uppercase italic tracking-tight mb-2">Adam Waczynski</h3>
