@@ -2,6 +2,7 @@
 import React, { useEffect, useState } from 'react';
 import SkillCampHero from './SkillCampHero.tsx';
 import SkillCampLogistics from './SkillCampLogistics.tsx';
+import SkillCampVenueInfo from './SkillCampVenueInfo.tsx';
 import SkillCampStaff from './SkillCampStaff.tsx';
 import SkillCampPerformance from './SkillCampPerformance.tsx';
 import SkillCampFooterCTA from './SkillCampFooterCTA.tsx';
@@ -35,6 +36,8 @@ const SkillCampPage: React.FC<{ onBack: () => void }> = ({ onBack }) => {
       <SkillCampHero onBack={onBack} scrollY={scrollY} />
       
       <SkillCampLogistics />
+
+      <SkillCampVenueInfo />
       
       <SkillCampStaff />
       
