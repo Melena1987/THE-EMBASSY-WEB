@@ -77,12 +77,12 @@ export const TEAM: TeamMember[] = [
     }
   },
   {
-    name: 'Adriana Rodríguez',
-    role: 'Especialista en rendimiento deportivo',
-    description: 'Especialista en rendimiento deportivo. Aplica su experiencia profesional en el baloncesto élite para optimizar la salud física del jugador/a y su actuación en la pista.',
-    imageUrl: 'https://firebasestorage.googleapis.com/v0/b/galeriaoficialapp.firebasestorage.app/o/users%2FI5KZz4BuUEfxcoAvSCAWllkQtwt1%2Fphotos%2F1766961892425_Adriana_THE_EMBASSY__2__400x400.jpg?alt=media&token=851f872c-f868-4493-9503-70ab89bd09a4',
+    name: 'Manuel Escobar',
+    role: 'CEO',
+    description: 'Especialista en gestión deportiva y desarrollo de eventos. Su experiencia en la organización de competiciones de alto nivel garantiza la excelencia en cada proyecto.',
+    imageUrl: 'https://firebasestorage.googleapis.com/v0/b/galeriaoficialapp.firebasestorage.app/o/users%2FI5KZz4BuUEfxcoAvSCAWllkQtwt1%2Fphotos%2F1766961892426_Manuel_Escobar_400x400.jpeg?alt=media&token=db9e49a1-7b8b-4ee7-8afd-2dfd0f79391b',
     socials: { 
-      instagram: 'https://www.instagram.com/adrileslie/' 
+      instagram: 'https://www.instagram.com/manuelcarlosel/' 
     }
   },
   {
@@ -96,12 +96,12 @@ export const TEAM: TeamMember[] = [
     }
   },
   {
-    name: 'Manuel Escobar',
-    role: 'CEO',
-    description: 'Especialista en gestión deportiva y desarrollo de eventos. Su experiencia en la organización de competiciones de alto nivel garantiza la excelencia en cada proyecto.',
-    imageUrl: 'https://firebasestorage.googleapis.com/v0/b/galeriaoficialapp.firebasestorage.app/o/users%2FI5KZz4BuUEfxcoAvSCAWllkQtwt1%2Fphotos%2F1766961892426_Manuel_Escobar_400x400.jpeg?alt=media&token=db9e49a1-7b8b-4ee7-8afd-2dfd0f79391b',
+    name: 'Adriana Rodríguez',
+    role: 'Especialista en rendimiento deportivo',
+    description: 'Especialista en rendimiento deportivo. Aplica su experiencia profesional en el baloncesto élite para optimizar la salud física del jugador/a y su actuación en la pista.',
+    imageUrl: 'https://firebasestorage.googleapis.com/v0/b/galeriaoficialapp.firebasestorage.app/o/users%2FI5KZz4BuUEfxcoAvSCAWllkQtwt1%2Fphotos%2F1766961892425_Adriana_THE_EMBASSY__2__400x400.jpg?alt=media&token=851f872c-f868-4493-9503-70ab89bd09a4',
     socials: { 
-      instagram: 'https://www.instagram.com/manuelcarlosel/' 
+      instagram: 'https://www.instagram.com/adrileslie/' 
     }
   },
   {
