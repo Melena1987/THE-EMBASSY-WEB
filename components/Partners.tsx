@@ -39,12 +39,12 @@ const Partners: React.FC<PartnersProps> = ({ onSponsorshipClick }) => {
                   href={partner.url}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="h-32 md:h-40 bg-white/[0.03] border border-white/5 rounded-2xl flex items-center justify-center grayscale hover:grayscale-0 hover:bg-white/5 hover:border-gold/30 transition-all cursor-pointer group overflow-hidden p-6"
+                  className={`h-32 md:h-40 bg-white/[0.03] border border-white/5 rounded-2xl flex items-center justify-center grayscale hover:grayscale-0 hover:bg-white/5 hover:border-gold/30 transition-all cursor-pointer group overflow-hidden ${isQuiron ? 'p-2' : 'p-6'}`}
                 >
                   <img 
                     src={partner.logoUrl} 
                     alt={partner.name} 
-                    className={`max-h-full max-w-full object-contain opacity-50 group-hover:opacity-100 transition-all duration-500 transform group-hover:scale-110 ${isQuiron ? 'scale-150 group-hover:scale-[1.6]' : ''}`} 
+                    className={`max-h-full max-w-full object-contain opacity-50 group-hover:opacity-100 transition-all duration-500 transform ${isQuiron ? 'scale-[2.4] group-hover:scale-[2.6]' : 'group-hover:scale-110'}`} 
                   />
                 </a>
               );
