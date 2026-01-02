@@ -15,6 +15,7 @@ const ContactForm: React.FC = () => {
       setIsSending(true);
       setStatusMessage(null);
 
+      // Usamos variables de entorno para las credenciales de EmailJS
       emailjs.sendForm(
         (import.meta as any).env.VITE_EMAILJS_SERVICE_ID,
         (import.meta as any).env.VITE_EMAILJS_TEMPLATE_ID,
@@ -22,12 +23,10 @@ const ContactForm: React.FC = () => {
         (import.meta as any).env.VITE_EMAILJS_PUBLIC_KEY
       )
       .then(() => {
-          console.log('Email enviado correctamente');
           setIsSending(false);
           setIsSent(true);
           setStatusMessage('¡Solicitud enviada con éxito! Nos pondremos en contacto pronto.');
           form.current?.reset();
-          // Reset status message after 5 seconds
           setTimeout(() => {
             setIsSent(false);
             setStatusMessage(null);
@@ -81,22 +80,22 @@ const ContactForm: React.FC = () => {
                 <label className="text-[10px] font-black uppercase tracking-widest text-gray-400">Nombre Completo *</label>
                 <input 
                   type="text" 
-                  name="name"
+                  name="name" 
                   placeholder="Tu nombre" 
                   className="w-full bg-transparent border-b-2 border-gray-200 focus:border-gold outline-none py-3 transition-all font-bold placeholder:text-gray-300" 
                   required 
                 />
               </div>
               <div className="space-y-2">
-                <label className="text-[10px] font-black uppercase tracking-widest text-gray-400">Servicio de Interés</label>
+                <label className="text-[10px] font-black uppercase tracking-widest text-gray-400">Asunto / Servicio</label>
                 <select 
-                  name="service"
+                  name="subject"
                   className="w-full bg-transparent border-b-2 border-gray-200 focus:border-gold outline-none py-3 transition-all font-bold"
                 >
-                  <option>Training Individual</option>
-                  <option>Eventos Corporativos</option>
-                  <option>Experiencias VIP</option>
-                  <option>Uso de Instalaciones</option>
+                  <option value="Training Individual">Training Individual</option>
+                  <option value="Eventos Corporativos">Eventos Corporativos</option>
+                  <option value="Experiencias VIP">Experiencias VIP</option>
+                  <option value="Uso de Instalaciones">Uso de Instalaciones</option>
                 </select>
               </div>
             </div>
@@ -106,7 +105,7 @@ const ContactForm: React.FC = () => {
                 <label className="text-[10px] font-black uppercase tracking-widest text-gray-400">Email Corporativo / Personal *</label>
                 <input 
                   type="email" 
-                  name="email"
+                  name="email" 
                   placeholder="email@ejemplo.com" 
                   className="w-full bg-transparent border-b-2 border-gray-200 focus:border-gold outline-none py-3 transition-all font-bold placeholder:text-gray-300" 
                   required 
@@ -116,7 +115,7 @@ const ContactForm: React.FC = () => {
                 <label className="text-[10px] font-black uppercase tracking-widest text-gray-400">Teléfono</label>
                 <input 
                   type="tel" 
-                  name="phone"
+                  name="phone" 
                   placeholder="+34 ..." 
                   className="w-full bg-transparent border-b-2 border-gray-200 focus:border-gold outline-none py-3 transition-all font-bold placeholder:text-gray-300" 
                 />
@@ -126,7 +125,7 @@ const ContactForm: React.FC = () => {
             <div className="space-y-2">
               <label className="text-[10px] font-black uppercase tracking-widest text-gray-400">Mensaje *</label>
               <textarea 
-                name="message"
+                name="message" 
                 rows={4} 
                 placeholder="¿Cómo podemos ayudarte?" 
                 className="w-full bg-transparent border-b-2 border-gray-200 focus:border-gold outline-none py-3 transition-all resize-none font-bold placeholder:text-gray-300" 
@@ -135,7 +134,7 @@ const ContactForm: React.FC = () => {
             </div>
 
             <div className="flex items-start space-x-4">
-              <input type="checkbox" className="mt-1 w-5 h-5 accent-gold border-gray-300 rounded" id="privacy" required />
+              <input type="checkbox" name="privacy" className="mt-1 w-5 h-5 accent-gold border-gray-300 rounded" id="privacy" required />
               <label htmlFor="privacy" className="text-[10px] font-bold text-gray-400 uppercase tracking-wider leading-relaxed">
                 Acepto la cesión de mis datos a THE EMBASSY TC según la política de privacidad. *
               </label>

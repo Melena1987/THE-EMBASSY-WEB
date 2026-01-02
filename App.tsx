@@ -1,4 +1,5 @@
-import React, { useEffect, useState } from 'react';
+
+import React, { useEffect, useState, useCallback } from 'react';
 import Navbar from './components/Navbar.tsx';
 import Hero from './components/Hero.tsx';
 import Vision from './components/Vision.tsx';
@@ -19,31 +20,62 @@ import { LOGOS } from './constants.tsx';
 type ViewType = 'home' | 'legal' | 'club';
 
 function App() {
-  const [view, setView] = useState<ViewType>(() => {
-    const hash = window.location.hash;
-    if (hash === '#legal') return 'legal';
-    if (hash === '#club') return 'club';
-    return 'home';
-  });
+  const [view, setView] = useState<ViewType>('home');
+
+  const scrollToSection = useCallback((hash: string) => {
+    if (!hash || hash === '#' || hash === '') {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+      return;
+    }
+    
+    // Pequeño timeout para asegurar que el DOM de 'home' esté listo si venimos de otra vista
+    setTimeout(() => {
+      const element = document.querySelector(hash);
+      if (element) {
+        const offset = 80; // Compensación por el navbar fixed
+        const bodyRect = document.body.getBoundingClientRect().top;
+        const elementRect = element.getBoundingClientRect().top;
+        const elementPosition = elementRect - bodyRect;
+        const offsetPosition = elementPosition - offset;
+
+        window.scrollTo({
+          top: offsetPosition,
+          behavior: 'smooth'
+        });
+      }
+    }, 100);
+  }, []);
 
   useEffect(() => {
     const handleHashChange = () => {
       const hash = window.location.hash;
+      
       if (hash === '#legal') {
         setView('legal');
+        window.scrollTo(0, 0);
       } else if (hash === '#club') {
         setView('club');
+        window.scrollTo(0, 0);
       } else {
+        const isSection = ['#servicios', '#instalaciones', '#equipo', '#contacto'].includes(hash);
+        const wasNotHome = view !== 'home';
+        
         setView('home');
+
+        if (isSection) {
+          scrollToSection(hash);
+        } else if (hash === '' || hash === '#' || wasNotHome) {
+          window.scrollTo(0, 0);
+        }
       }
-      window.scrollTo(0, 0);
     };
 
     window.addEventListener('hashchange', handleHashChange);
+    // Ejecución inicial para detectar la ruta al cargar
     handleHashChange();
 
     return () => window.removeEventListener('hashchange', handleHashChange);
-  }, []);
+  }, [view, scrollToSection]);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -58,7 +90,6 @@ function App() {
       });
     };
     window.addEventListener('scroll', handleScroll);
-    // Ejecución inicial para elementos en el viewport superior
     setTimeout(handleScroll, 500);
     return () => window.removeEventListener('scroll', handleScroll);
   }, [view]);
@@ -66,10 +97,11 @@ function App() {
   const navigateToLegal = () => { window.location.hash = 'legal'; };
   const navigateToClub = () => { window.location.hash = 'club'; };
   const navigateToHome = () => { 
-    window.location.hash = '';
-    window.history.pushState("", document.title, window.location.pathname + window.location.search);
-    setView('home');
-    window.scrollTo(0, 0);
+    if (window.location.hash === '' || window.location.hash === '#') {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    } else {
+      window.location.hash = '';
+    }
   };
 
   const renderView = () => {

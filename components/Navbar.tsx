@@ -1,3 +1,4 @@
+
 import React, { useState, useEffect } from 'react';
 import { LOGOS } from '../constants.tsx';
 
@@ -42,6 +43,8 @@ const Navbar: React.FC<NavbarProps> = ({ onNavigateClub, onNavigateHome }) => {
       e.preventDefault();
       link.action();
     }
+    // Si es un ancla interna (#servicios, etc), el navegador cambiará el hash 
+    // y App.tsx detectará el cambio gracias al listener de hashchange.
     setIsMenuOpen(false);
   };
 
@@ -56,7 +59,12 @@ const Navbar: React.FC<NavbarProps> = ({ onNavigateClub, onNavigateHome }) => {
       <div className="max-w-[1400px] mx-auto px-6 md:px-12 flex justify-between items-center relative z-20">
         <a 
           href="#" 
-          onClick={(e) => { e.preventDefault(); onNavigateHome?.(); setIsMenuOpen(false); }}
+          onClick={(e) => { 
+            e.preventDefault(); 
+            window.location.hash = ''; 
+            onNavigateHome?.(); 
+            setIsMenuOpen(false); 
+          }}
           className="flex items-center group"
         >
           <img 
