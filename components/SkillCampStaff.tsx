@@ -7,7 +7,7 @@ const SkillCampStaff: React.FC = () => {
       <div className="max-w-7xl mx-auto">
         <div className="flex flex-col md:flex-row justify-between items-end mb-24 gap-8">
           <div className="reveal">
-            <span className="text-orange-600 text-[10px] font-black tracking-[0.5em] uppercase mb-4 block italic">Top Level Coaching</span>
+            <span className="text-gold text-[10px] font-black tracking-[0.5em] uppercase mb-4 block italic">Top Level Coaching</span>
             <h2 className="text-5xl md:text-8xl font-black uppercase italic tracking-tighter leading-none">STAFF <br/> TÉCNICO</h2>
           </div>
           <p className="reveal max-w-sm text-gray-400 font-bold text-xs uppercase tracking-widest leading-loose">
@@ -22,7 +22,7 @@ const SkillCampStaff: React.FC = () => {
               <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
             </div>
             <h3 className="text-2xl font-black uppercase italic tracking-tight mb-2">Alfonso Sánchez</h3>
-            <p className="text-orange-600 font-black text-[10px] uppercase tracking-[0.2em] mb-6">Director & Player Development</p>
+            <p className="text-gold font-black text-[10px] uppercase tracking-[0.2em] mb-6">Director & Player Development</p>
             <p className="text-gray-500 text-xs font-medium uppercase tracking-wider leading-relaxed">
               Exjugador ACB. Director de técnica individual con experiencia entrenando a estrellas de la NBA como Aaron Gordon.
             </p>
@@ -34,7 +34,7 @@ const SkillCampStaff: React.FC = () => {
               <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
             </div>
             <h3 className="text-2xl font-black uppercase italic tracking-tight mb-2">Fran Vázquez</h3>
-            <p className="text-orange-600 font-black text-[10px] uppercase tracking-[0.2em] mb-6">Interior Specialist</p>
+            <p className="text-gold font-black text-[10px] uppercase tracking-[0.2em] mb-6">Interior Specialist</p>
             <p className="text-gray-500 text-xs font-medium uppercase tracking-wider leading-relaxed">
               Máximo taponador histórico ACB. Leyenda del juego interior y especialista en el desarrollo de pívots de élite.
             </p>
@@ -46,7 +46,7 @@ const SkillCampStaff: React.FC = () => {
               <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
             </div>
             <h3 className="text-2xl font-black uppercase italic tracking-tight mb-2">Adam Waczynski</h3>
-            <p className="text-orange-600 font-black text-[10px] uppercase tracking-[0.2em] mb-6">Shooting Skill Coach</p>
+            <p className="text-gold font-black text-[10px] uppercase tracking-[0.2em] mb-6">Shooting Skill Coach</p>
             <p className="text-gray-500 text-xs font-medium uppercase tracking-wider leading-relaxed">
               Referente del tiro exterior internacional. Maestro en la mecánica de tiro y eficiencia ofensiva profesional.
             </p>

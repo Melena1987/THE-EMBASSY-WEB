@@ -11,56 +11,65 @@ const SkillCampHero: React.FC<SkillCampHeroProps> = ({ onBack, scrollY }) => {
   const heroBg = "https://firebasestorage.googleapis.com/v0/b/galeriaoficialapp.firebasestorage.app/o/users%2FI5KZz4BuUEfxcoAvSCAWllkQtwt1%2Fphotos%2F1761950147664_TheEmbassyTC-imagen_036.jpg?alt=media&token=e35e2655-a8cb-4db4-b527-54e76095b763";
 
   return (
-    <section className="relative h-[100svh] flex flex-col items-center justify-center overflow-hidden">
-      {/* Parallax Background */}
+    <section className="relative h-[100svh] flex flex-col items-center justify-center overflow-hidden bg-black">
+      {/* Parallax Background with deep blue cinematic overlay */}
       <div 
-        className="absolute inset-0 z-0 transition-transform duration-300 ease-out scale-110"
+        className="absolute inset-0 z-0 transition-transform duration-500 ease-out"
         style={{ 
-          transform: `translateY(${scrollY * 0.2}px) scale(1.1)`,
+          transform: `translateY(${scrollY * 0.3}px) scale(${1.1 + scrollY * 0.0005})`,
           backgroundImage: `url(${heroBg})`,
           backgroundPosition: 'center',
           backgroundSize: 'cover'
         }}
       >
-        {/* Blue Overlays for the requested "más azulada" effect */}
-        <div className="absolute inset-0 bg-[#002B5B]/70 mix-blend-multiply"></div>
-        <div className="absolute inset-0 bg-gradient-to-b from-[#003d82]/40 via-transparent to-black"></div>
+        {/* Blue Overlays for a deep, winter/elite feel */}
+        <div className="absolute inset-0 bg-[#001021]/85 mix-blend-multiply"></div>
+        <div className="absolute inset-0 bg-gradient-to-b from-transparent via-[#002B5B]/20 to-black"></div>
+        
+        {/* Animated Dust/Noise Effect */}
+        <div className="absolute inset-0 opacity-[0.03] pointer-events-none bg-[url('https://grainy-gradients.vercel.app/noise.svg')]"></div>
       </div>
       
       <div className="relative z-10 px-6 w-full max-w-7xl mx-auto flex flex-col items-center">
         <button 
           onClick={onBack}
-          className="absolute top-[-10svh] md:top-[-15svh] left-0 md:left-6 inline-flex items-center gap-3 text-white/40 hover:text-white transition-all uppercase text-[10px] font-black tracking-[0.4em] group py-4"
+          className="absolute top-[-10svh] md:top-[-12svh] left-0 md:left-6 inline-flex items-center gap-4 text-white/30 hover:text-white transition-all uppercase text-[10px] font-black tracking-[0.5em] group py-4"
         >
-          <svg className="w-4 h-4 group-hover:-translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <svg className="w-4 h-4 group-hover:-translate-x-2 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path d="M10 19l-7-7m0 0l7-7m-7 7h18" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
           </svg>
-          VOLVER
+          BACK TO HUB
         </button>
 
         <div className="reveal active flex flex-col items-center justify-center w-full">
-          {/* Logo made smaller as requested: max-w reduced from 320/600 to 260/480 */}
-          <div className="relative group max-w-[260px] md:max-w-[480px] w-full animate-[fade-in-scale_1.5s_ease-out]">
+          <div className="relative group max-w-[240px] md:max-w-[440px] w-full animate-[fade-in-scale_1.8s_cubic-bezier(0.22,1,0.36,1)]">
+            {/* Glow behind logo */}
+            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[140%] h-[140%] bg-blue-500/20 blur-[120px] rounded-full -z-10 animate-pulse"></div>
+            
             <img 
               src={skillCampLogo} 
               alt="THE EMBASSY SKILL CAMP" 
-              className="w-full h-auto drop-shadow-[0_0_80px_rgba(255,255,255,0.15)] transition-transform duration-700 group-hover:scale-[1.02]"
+              className="w-full h-auto drop-shadow-[0_0_50px_rgba(0,123,255,0.3)] transition-transform duration-1000 group-hover:scale-[1.03]"
             />
-            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full bg-blue-500/10 blur-[100px] rounded-full -z-10"></div>
           </div>
         </div>
         
-        <div className="reveal active mt-12 md:mt-16 text-center">
-           <div className="inline-block px-8 py-3 bg-white/5 backdrop-blur-md border border-white/10 rounded-full mb-6">
-              <p className="text-white text-[10px] md:text-xs font-black uppercase tracking-[0.5em] italic">
-                 EDICIÓN INVIERNO 2025
+        <div className="reveal active mt-16 md:mt-24 text-center">
+           <div className="inline-flex items-center gap-4 px-8 py-3 bg-white/[0.03] backdrop-blur-xl border border-white/10 rounded-full mb-8">
+              <span className="w-2 h-2 bg-gold rounded-full animate-ping"></span>
+              <p className="text-white text-[10px] md:text-xs font-black uppercase tracking-[0.6em] italic">
+                 WINTER EDITION 2025
               </p>
            </div>
-           <p className="text-white/60 text-xs md:text-sm font-bold uppercase tracking-[0.3em] max-w-2xl mx-auto leading-loose">
-              TECNIFICACIÓN DE ÉLITE <span className="text-white">COSTA DEL SOL</span>
-           </p>
+           
+           <h1 className="text-white/40 text-[10px] md:text-xs font-bold uppercase tracking-[0.4em] max-w-2xl mx-auto leading-loose">
+              <span className="text-white">COSTA DEL SOL</span> • ELITE TRAINING EXPERIENCE
+           </h1>
         </div>
       </div>
+
+      {/* Decorative vertical line */}
+      <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[1px] h-20 bg-gradient-to-b from-gold/0 to-gold"></div>
     </section>
   );
 };

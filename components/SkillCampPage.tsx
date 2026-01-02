@@ -31,7 +31,7 @@ const SkillCampPage: React.FC<{ onBack: () => void }> = ({ onBack }) => {
   }, []);
 
   return (
-    <div className="bg-black text-white min-h-screen font-sans selection:bg-orange-600 overflow-x-hidden">
+    <div className="bg-black text-white min-h-screen font-sans selection:bg-gold overflow-x-hidden">
       
       <SkillCampHero onBack={onBack} scrollY={scrollY} />
       
