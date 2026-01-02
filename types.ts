@@ -32,3 +32,13 @@ export interface Partner {
   logoUrl: string;
   url: string;
 }
+
+export interface EmbassyEvent {
+  id: string;
+  title: string;
+  date: string;
+  description: string;
+  imageUrl: string;
+  link: string;
+  status: 'upcoming' | 'past';
+}

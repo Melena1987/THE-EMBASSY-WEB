@@ -12,12 +12,14 @@ import InstallationCarousel from './components/InstallationCarousel.tsx';
 import StarsCarousel from './components/StarsCarousel.tsx';
 import LegalPage from './components/LegalPage.tsx';
 import ClubPage from './components/ClubPage.tsx';
+import EventsPage from './components/EventsPage.tsx';
+import SkillCampPage from './components/SkillCampPage.tsx';
 import CookieBanner from './components/CookieBanner.tsx';
 import Partners from './components/Partners.tsx';
 import SocialImpact from './components/SocialImpact.tsx';
 import { LOGOS } from './constants.tsx';
 
-type ViewType = 'home' | 'legal' | 'club';
+type ViewType = 'home' | 'legal' | 'club' | 'events' | 'skillcamp';
 
 function App() {
   const [view, setView] = useState<ViewType>('home');
@@ -28,11 +30,10 @@ function App() {
       return;
     }
     
-    // Pequeño timeout para asegurar que el DOM de 'home' esté listo si venimos de otra vista
     setTimeout(() => {
       const element = document.querySelector(hash);
       if (element) {
-        const offset = 80; // Compensación por el navbar fixed
+        const offset = 80; 
         const bodyRect = document.body.getBoundingClientRect().top;
         const elementRect = element.getBoundingClientRect().top;
         const elementPosition = elementRect - bodyRect;
@@ -56,22 +57,28 @@ function App() {
       } else if (hash === '#club') {
         setView('club');
         window.scrollTo(0, 0);
+      } else if (hash === '#eventos') {
+        setView('events');
+        window.scrollTo(0, 0);
+      } else if (hash === '#skillcamp') {
+        setView('skillcamp');
+        window.scrollTo(0, 0);
       } else {
         const isSection = ['#servicios', '#instalaciones', '#equipo', '#contacto'].includes(hash);
-        const wasNotHome = view !== 'home';
+        const wasNotHome = !['home', 'events', 'skillcamp'].includes(view) && !hash.startsWith('#');
         
-        setView('home');
-
-        if (isSection) {
-          scrollToSection(hash);
-        } else if (hash === '' || hash === '#' || wasNotHome) {
+        // Si estamos en events o skillcamp, no resetamos a home automáticamente a menos que el hash esté vacío
+        if (hash === '' || hash === '#') {
+          setView('home');
           window.scrollTo(0, 0);
+        } else if (isSection) {
+          setView('home');
+          scrollToSection(hash);
         }
       }
     };
 
     window.addEventListener('hashchange', handleHashChange);
-    // Ejecución inicial para detectar la ruta al cargar
     handleHashChange();
 
     return () => window.removeEventListener('hashchange', handleHashChange);
@@ -96,6 +103,7 @@ function App() {
 
   const navigateToLegal = () => { window.location.hash = 'legal'; };
   const navigateToClub = () => { window.location.hash = 'club'; };
+  const navigateToEvents = () => { window.location.hash = 'eventos'; };
   const navigateToHome = () => { 
     if (window.location.hash === '' || window.location.hash === '#') {
       window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -110,6 +118,10 @@ function App() {
         return <LegalPage onBack={navigateToHome} />;
       case 'club':
         return <ClubPage onBack={navigateToHome} />;
+      case 'events':
+        return <EventsPage onBack={navigateToHome} />;
+      case 'skillcamp':
+        return <SkillCampPage onBack={navigateToEvents} />;
       default:
         return (
           <main>
@@ -123,7 +135,6 @@ function App() {
                     <div className="aspect-square rounded-[3rem] overflow-hidden shadow-[0_50px_100px_-20px_rgba(212,140,0,0.15)] relative z-10">
                       <InstallationCarousel />
                     </div>
-                    {/* FIBA Approved Badge overlaying the gallery */}
                     <div className="absolute -bottom-8 -right-8 bg-white p-6 rounded-3xl shadow-[0_20px_50px_rgba(0,0,0,0.4)] rotate-[4deg] group-hover:rotate-0 transition-all duration-500 hidden md:flex flex-col items-center gap-2 border border-black/5 z-20">
                       <img 
                         src="https://firebasestorage.googleapis.com/v0/b/galeriaoficialapp.firebasestorage.app/o/users%2FI5KZz4BuUEfxcoAvSCAWllkQtwt1%2Fphotos%2F1761953861247_fiba.png?alt=media&token=9bfb33df-5c09-4d97-a105-72d20dad3436" 
@@ -185,7 +196,7 @@ function App() {
 
   return (
     <div className="min-h-screen bg-black selection:bg-gold selection:text-white">
-      <Navbar onNavigateClub={navigateToClub} onNavigateHome={navigateToHome} />
+      <Navbar onNavigateClub={navigateToClub} onNavigateHome={navigateToHome} onNavigateEvents={navigateToEvents} />
       {renderView()}
       <Footer onNavigateLegal={navigateToLegal} onNavigateClub={navigateToClub} />
       <CookieBanner />

@@ -5,9 +5,10 @@ import { LOGOS } from '../constants.tsx';
 interface NavbarProps {
   onNavigateClub?: () => void;
   onNavigateHome?: () => void;
+  onNavigateEvents?: () => void;
 }
 
-const Navbar: React.FC<NavbarProps> = ({ onNavigateClub, onNavigateHome }) => {
+const Navbar: React.FC<NavbarProps> = ({ onNavigateClub, onNavigateHome, onNavigateEvents }) => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
@@ -30,10 +31,9 @@ const Navbar: React.FC<NavbarProps> = ({ onNavigateClub, onNavigateHome }) => {
   }, [isMenuOpen]);
 
   const navLinks = [
-    { name: 'Inicio', href: '#', action: onNavigateHome },
-    { name: 'The Club', href: '#club', action: onNavigateClub },
+    { name: 'Eventos', href: '#eventos', action: onNavigateEvents },
     { name: 'Servicios', href: '#servicios' },
-    { name: 'The Sanctuary', href: '#instalaciones' },
+    { name: 'Instalaciones', href: '#instalaciones' },
     { name: 'Equipo', href: '#equipo' },
     { name: 'Contacto', href: '#contacto' },
   ];
@@ -44,7 +44,6 @@ const Navbar: React.FC<NavbarProps> = ({ onNavigateClub, onNavigateHome }) => {
       link.action();
     }
     // Si es un ancla interna (#servicios, etc), el navegador cambiará el hash 
-    // y App.tsx detectará el cambio gracias al listener de hashchange.
     setIsMenuOpen(false);
   };
 
