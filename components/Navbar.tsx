@@ -69,7 +69,7 @@ const Navbar: React.FC<NavbarProps> = ({ onNavigateClub, onNavigateHome, onNavig
           <img 
             src={LOGOS.main} 
             alt="THE EMBASSY" 
-            className={`transition-all duration-500 w-auto ${isScrolled || isMenuOpen ? 'h-6 md:h-7' : 'h-8 md:h-10'} brightness-0 invert`}
+            className={`transition-all duration-500 w-auto object-contain ${isScrolled || isMenuOpen ? 'h-6 md:h-7' : 'h-8 md:h-10'} brightness-0 invert`}
           />
         </a>
 

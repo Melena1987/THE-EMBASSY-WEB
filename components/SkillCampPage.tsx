@@ -6,6 +6,7 @@ import SkillCampVenueInfo from './SkillCampVenueInfo.tsx';
 import SkillCampStaff from './SkillCampStaff.tsx';
 import SkillCampPerformance from './SkillCampPerformance.tsx';
 import SkillCampVisualMedia from './SkillCampVisualMedia.tsx';
+import SkillCampGallery from './SkillCampGallery.tsx';
 import SkillCampFooterCTA from './SkillCampFooterCTA.tsx';
 
 const SkillCampPage: React.FC<{ onBack: () => void }> = ({ onBack }) => {
@@ -58,6 +59,8 @@ const SkillCampPage: React.FC<{ onBack: () => void }> = ({ onBack }) => {
       <SkillCampPerformance />
 
       <SkillCampVisualMedia />
+
+      <SkillCampGallery />
       
       <SkillCampFooterCTA onBack={onBack} />
 

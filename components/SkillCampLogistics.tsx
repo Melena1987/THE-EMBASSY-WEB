@@ -31,7 +31,7 @@ const SkillCampLogistics: React.FC = () => {
         {/* CTA Button Group */}
         <div className="reveal mt-16 flex flex-col items-center gap-8">
           <a 
-            href="#" 
+            href="#galeria" 
             className="bg-gold text-white px-12 py-5 rounded-none font-black uppercase tracking-[0.1em] text-sm md:text-base hover:bg-white hover:text-black transition-all shadow-2xl"
           >
             Galería Oficial
