@@ -1,6 +1,5 @@
-
 import React from 'react';
-import { LOGOS } from '../constants';
+import { LOGOS } from '../constants.tsx';
 
 const Hero: React.FC = () => {
   return (
@@ -21,7 +20,7 @@ const Hero: React.FC = () => {
           <span className="text-gold text-[10px] md:text-xs font-black uppercase tracking-[0.4em]">THE SANCTUARY FOR PERFORMANCE</span>
         </div>
         
-        <div className="reveal active flex justify-center">
+        <div className="reveal active flex justify-center px-6">
           <img 
             src={LOGOS.main} 
             alt="THE EMBASSY" 
@@ -30,11 +29,9 @@ const Hero: React.FC = () => {
         </div>
       </div>
 
-      {/* MID SPACE: Automatic spacing due to flex-col justify-between */}
-
       {/* BOTTOM GROUP: Description & CTAs */}
       <div className="relative z-10 pb-20 md:pb-32 text-center px-6">
-        <p className="reveal active text-base md:text-2xl text-white/80 max-w-4xl mx-auto mb-10 font-light leading-relaxed tracking-wide">
+        <p className="reveal active text-base md:text-2xl text-white/80 max-w-4xl mx-auto mb-10 font-light leading-relaxed tracking-wide uppercase">
           Diseñado por <span className="text-white font-bold italic border-b border-gold pb-1">Berni Rodríguez</span> y <span className="text-white font-bold italic border-b border-gold pb-1">José Manuel Calderón</span>. <br className="hidden md:block" />
           1500m2 de alto rendimiento FIBA/NBA en la Costa del Sol.
         </p>
@@ -61,7 +58,7 @@ const Hero: React.FC = () => {
       <style>{`
         @keyframes subtle-zoom {
           from { transform: scale(1); }
-          to { transform: scale(1.15); }
+          to { transform: scale(1.1); }
         }
       `}</style>
     </section>

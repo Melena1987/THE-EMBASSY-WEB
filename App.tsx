@@ -1,21 +1,20 @@
-
 import React, { useEffect, useState } from 'react';
-import Navbar from './components/Navbar';
-import Hero from './components/Hero';
-import Vision from './components/Vision';
-import Stats from './components/Stats';
-import Services from './components/Services';
-import Team from './components/Team';
-import ContactForm from './components/ContactForm';
-import Footer from './components/Footer';
-import InstallationCarousel from './components/InstallationCarousel';
-import StarsCarousel from './components/StarsCarousel';
-import LegalPage from './components/LegalPage';
-import ClubPage from './components/ClubPage';
-import CookieBanner from './components/CookieBanner';
-import Partners from './components/Partners';
-import SocialImpact from './components/SocialImpact';
-import { LOGOS } from './constants';
+import Navbar from './components/Navbar.tsx';
+import Hero from './components/Hero.tsx';
+import Vision from './components/Vision.tsx';
+import Stats from './components/Stats.tsx';
+import Services from './components/Services.tsx';
+import Team from './components/Team.tsx';
+import ContactForm from './components/ContactForm.tsx';
+import Footer from './components/Footer.tsx';
+import InstallationCarousel from './components/InstallationCarousel.tsx';
+import StarsCarousel from './components/StarsCarousel.tsx';
+import LegalPage from './components/LegalPage.tsx';
+import ClubPage from './components/ClubPage.tsx';
+import CookieBanner from './components/CookieBanner.tsx';
+import Partners from './components/Partners.tsx';
+import SocialImpact from './components/SocialImpact.tsx';
+import { LOGOS } from './constants.tsx';
 
 type ViewType = 'home' | 'legal' | 'club';
 
@@ -52,18 +51,16 @@ function App() {
       reveals.forEach((reveal) => {
         const windowHeight = window.innerHeight;
         const revealTop = reveal.getBoundingClientRect().top;
-        const revealPoint = 80;
+        const revealPoint = 100;
         if (revealTop < windowHeight - revealPoint) {
           reveal.classList.add('active');
         }
       });
     };
     window.addEventListener('scroll', handleScroll);
-    const timer = setTimeout(handleScroll, 100);
-    return () => {
-      window.removeEventListener('scroll', handleScroll);
-      clearTimeout(timer);
-    };
+    // Ejecución inicial para elementos en el viewport superior
+    setTimeout(handleScroll, 500);
+    return () => window.removeEventListener('scroll', handleScroll);
   }, [view]);
 
   const navigateToLegal = () => { window.location.hash = 'legal'; };
@@ -136,10 +133,8 @@ function App() {
                 <StarsCarousel />
               </div>
             </section>
-            
             <Partners onSponsorshipClick={navigateToClub} />
             <SocialImpact />
-            
             <ContactForm />
           </main>
         );

@@ -11,45 +11,50 @@
     body {
       font-family: 'Inter', sans-serif;
       scroll-behavior: smooth;
+      background-color: black;
     }
     h1, h2, h3, .font-heading {
       font-family: 'Montserrat', sans-serif;
     }
-    .text-gold {
-      color: #D48C00;
-    }
-    .bg-gold {
-      background-color: #D48C00;
-    }
-    .border-gold {
-      border-color: #D48C00;
-    }
+    .text-gold { color: #D48C00; }
+    .bg-gold { background-color: #D48C00; }
+    .border-gold { border-color: #D48C00; }
+    
     ::selection {
       background: #D48C00;
       color: white;
     }
-    /* Smooth reveal animations */
+
+    /* Animaciones de revelado */
     .reveal {
       opacity: 0;
       transform: translateY(30px);
-      transition: all 0.8s ease-out;
+      transition: all 1s cubic-bezier(0.22, 1, 0.36, 1);
     }
     .reveal.active {
       opacity: 1;
       transform: translateY(0);
     }
+    
+    /* Scrollbar minimalista */
+    ::-webkit-scrollbar { width: 8px; }
+    ::-webkit-scrollbar-track { background: #000; }
+    ::-webkit-scrollbar-thumb { background: #333; border-radius: 10px; }
+    ::-webkit-scrollbar-thumb:hover { background: #D48C00; }
   </style>
-<script type="importmap">
-{
-  "imports": {
-    "react/": "https://esm.sh/react@^19.2.3/",
-    "react": "https://esm.sh/react@^19.2.3",
-    "react-dom/": "https://esm.sh/react-dom@^19.2.3/"
+  <script type="importmap">
+  {
+    "imports": {
+      "react/": "https://esm.sh/react@^19.2.3/",
+      "react": "https://esm.sh/react@^19.2.3",
+      "react-dom/": "https://esm.sh/react-dom@^19.2.3/"
+    }
   }
-}
-</script>
+  </script>
 </head>
 <body class="bg-black text-white antialiased overflow-x-hidden">
   <div id="root"></div>
+  <!-- Script de entrada explícito para evitar pantallas en blanco en Netlify -->
+  <script type="module" src="./index.tsx"></script>
 </body>
 </html>
