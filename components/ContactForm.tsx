@@ -51,25 +51,25 @@ const ContactForm: React.FC = () => {
           </p>
           
           <div className="space-y-10">
-            <div className="group flex items-center space-x-6">
+            <a href="mailto:comunicacion@theembassytc.com" className="group flex items-center space-x-6 w-fit">
               <div className="w-16 h-16 bg-black text-white rounded-2xl flex items-center justify-center group-hover:bg-gold transition-colors duration-500">
                 <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/></svg>
               </div>
               <div>
                 <p className="text-[10px] font-black uppercase tracking-widest text-gray-400 mb-1">Email Directo</p>
-                <span className="text-xl font-black italic tracking-tight">comunicacion@theembassytc.com</span>
+                <span className="text-xl font-black italic tracking-tight group-hover:text-gold transition-colors">comunicacion@theembassytc.com</span>
               </div>
-            </div>
+            </a>
             
-            <div className="group flex items-center space-x-6">
+            <a href="https://maps.app.goo.gl/KrjSLJUoYmrJtqes7" target="_blank" rel="noopener noreferrer" className="group flex items-center space-x-6 w-fit">
               <div className="w-16 h-16 bg-black text-white rounded-2xl flex items-center justify-center group-hover:bg-gold transition-colors duration-500">
                 <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/><path d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/></svg>
               </div>
               <div>
                 <p className="text-[10px] font-black uppercase tracking-widest text-gray-400 mb-1">Ubicación</p>
-                <span className="text-xl font-black italic tracking-tight uppercase">La Costa del Sol, España</span>
+                <span className="text-xl font-black italic tracking-tight uppercase group-hover:text-gold transition-colors">La Costa del Sol, España</span>
               </div>
-            </div>
+            </a>
           </div>
         </div>
 
