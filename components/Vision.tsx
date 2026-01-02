@@ -58,16 +58,6 @@ const Vision: React.FC = () => {
             </video>
           </div>
           <div className="absolute -top-6 -right-6 w-full h-full border border-gold/30 rounded-[2rem] -z-10 group-hover:translate-x-3 group-hover:-translate-y-3 transition-transform duration-700"></div>
-          
-          <div className="absolute -bottom-10 -left-10 bg-white p-6 rounded-3xl shadow-[0_20px_50px_rgba(0,0,0,0.4)] rotate-[-4deg] group-hover:rotate-0 transition-all duration-500 hidden md:flex flex-col items-center gap-2 border border-black/5 z-20">
-            <img 
-              src="https://firebasestorage.googleapis.com/v0/b/galeriaoficialapp.firebasestorage.app/o/users%2FI5KZz4BuUEfxcoAvSCAWllkQtwt1%2Fphotos%2F1761953861247_fiba.png?alt=media&token=9bfb33df-5c09-4d97-a105-72d20dad3436" 
-              className="h-14 w-auto object-contain"
-              alt="FIBA Logo"
-            />
-            <div className="h-[2px] w-8 bg-gold mb-1"></div>
-            <p className="text-black font-black uppercase tracking-tighter text-[10px] italic">EQUIPMENT APPROVED</p>
-          </div>
         </div>
       </div>
     </section>
