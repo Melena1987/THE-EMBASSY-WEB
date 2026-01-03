@@ -1,6 +1,6 @@
 
 import React, { useState, useEffect } from 'react';
-import { LOGOS } from '../constants.tsx';
+import { LOGOS, SERVICES, EVENTS } from '../constants.tsx';
 
 interface NavbarProps {
   onNavigateClub?: () => void;
@@ -38,26 +38,27 @@ const Navbar: React.FC<NavbarProps> = ({
     }
   }, [isMenuOpen]);
 
-  const navLinks = [
-    { name: 'Eventos', path: '/eventos', action: onNavigateEvents },
-    { name: 'Servicios', path: '#servicios', section: '#servicios' },
-    { name: 'Instalaciones', path: '#instalaciones', section: '#instalaciones' },
-    { name: 'Equipo', path: '#equipo', section: '#equipo' },
-  ];
-
   const handleLinkClick = (e: React.MouseEvent, link: any) => {
     e.preventDefault();
     setIsMenuOpen(false);
 
     if (link.action) {
       link.action();
-    } else if (link.section) {
-      if (currentPath !== '/') {
-        onNavigateHome?.();
-        setTimeout(() => onNavigateToSection?.(link.section), 100);
+    } else if (link.externalLink) {
+      window.open(link.externalLink, '_blank', 'noopener,noreferrer');
+    } else if (link.path || link.link) {
+      const targetPath = link.path || link.link;
+      if (targetPath.startsWith('#')) {
+        if (currentPath !== '/') {
+          onNavigateHome?.();
+          setTimeout(() => onNavigateToSection?.(targetPath), 150);
+        } else {
+          onNavigateToSection?.(targetPath);
+          window.history.pushState({}, '', targetPath);
+        }
       } else {
-        onNavigateToSection?.(link.section);
-        window.history.pushState({}, '', link.section);
+        window.history.pushState({}, '', targetPath);
+        window.dispatchEvent(new PopStateEvent('popstate'));
       }
     }
   };
@@ -65,12 +66,12 @@ const Navbar: React.FC<NavbarProps> = ({
   const navBackgroundStyles = isMenuOpen 
     ? 'bg-black py-4 border-b border-white/10' 
     : isScrolled 
-      ? 'bg-black/80 backdrop-blur-xl py-3 border-b border-white/10' 
+      ? 'bg-black/90 backdrop-blur-xl py-3 border-b border-white/10' 
       : 'bg-transparent py-6';
 
   return (
     <nav className={`fixed w-full z-[100] transition-all duration-500 ${navBackgroundStyles}`}>
-      <div className="max-w-[1400px] mx-auto px-6 md:px-12 flex justify-between items-center relative z-20">
+      <div className="max-w-[1400px] mx-auto px-6 md:px-12 flex justify-between items-center relative z-[110]">
         <a 
           href="/" 
           onClick={(e) => { 
@@ -89,19 +90,79 @@ const Navbar: React.FC<NavbarProps> = ({
 
         {/* Desktop Menu */}
         <div className="hidden lg:flex items-center space-x-10">
-          {navLinks.map((link) => (
-            <a 
-              key={link.name} 
-              href={link.path}
-              onClick={(e) => handleLinkClick(e, link)}
-              className="text-[11px] font-bold transition-colors tracking-[0.25em] uppercase text-white/70 hover:text-gold"
+          
+          {/* Dropdown Eventos */}
+          <div className="relative group py-2">
+            <button 
+              onClick={onNavigateEvents}
+              className="text-[11px] font-bold transition-colors tracking-[0.25em] uppercase text-white/70 hover:text-gold flex items-center gap-2"
             >
-              {link.name}
-            </a>
-          ))}
+              Eventos
+              <svg className="w-3 h-3 transition-transform group-hover:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M19 9l-7 7-7-7" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"/></svg>
+            </button>
+            <div className="absolute top-full left-0 mt-2 w-72 bg-black/95 backdrop-blur-2xl border border-white/10 rounded-2xl p-4 opacity-0 invisible translate-y-2 group-hover:opacity-100 group-hover:visible group-hover:translate-y-0 transition-all duration-300 shadow-2xl z-50">
+              <div className="space-y-1">
+                {EVENTS.map((event) => (
+                  <a 
+                    key={event.id}
+                    href={event.link}
+                    onClick={(e) => handleLinkClick(e, event)}
+                    className="block p-3 rounded-xl hover:bg-white/5 transition-colors group/item"
+                  >
+                    <span className="text-[9px] font-black text-gold uppercase tracking-[0.2em] block mb-1">{event.category}</span>
+                    <span className="text-xs font-black uppercase text-white group-hover/item:text-gold transition-colors">{event.title}</span>
+                  </a>
+                ))}
+              </div>
+            </div>
+          </div>
+
+          {/* Dropdown Servicios */}
+          <div className="relative group py-2">
+            <button 
+              className="text-[11px] font-bold transition-colors tracking-[0.25em] uppercase text-white/70 hover:text-gold flex items-center gap-2"
+            >
+              Servicios
+              <svg className="w-3 h-3 transition-transform group-hover:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M19 9l-7 7-7-7" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"/></svg>
+            </button>
+            <div className="absolute top-full left-0 mt-2 w-80 bg-black/95 backdrop-blur-2xl border border-white/10 rounded-2xl p-4 opacity-0 invisible translate-y-2 group-hover:opacity-100 group-hover:visible group-hover:translate-y-0 transition-all duration-300 shadow-2xl z-50">
+              <div className="grid grid-cols-1 gap-1">
+                {SERVICES.map((service, idx) => (
+                  <a 
+                    key={idx}
+                    href={service.path || service.externalLink || '#'}
+                    onClick={(e) => handleLinkClick(e, service)}
+                    className="flex items-center gap-4 p-3 rounded-xl hover:bg-white/5 transition-colors group/item text-left"
+                  >
+                    <span className="text-xl shrink-0 group-hover/item:scale-110 transition-transform">{service.icon}</span>
+                    <span className="text-xs font-black uppercase text-white group-hover/item:text-gold transition-colors leading-tight">
+                      {service.title}
+                    </span>
+                  </a>
+                ))}
+              </div>
+            </div>
+          </div>
+
+          <a 
+            href="#instalaciones" 
+            onClick={(e) => handleLinkClick(e, { path: '#instalaciones' })}
+            className="text-[11px] font-bold transition-colors tracking-[0.25em] uppercase text-white/70 hover:text-gold"
+          >
+            Instalaciones
+          </a>
+
+          <a 
+            href="#equipo" 
+            onClick={(e) => handleLinkClick(e, { path: '#equipo' })}
+            className="text-[11px] font-bold transition-colors tracking-[0.25em] uppercase text-white/70 hover:text-gold"
+          >
+            Equipo
+          </a>
+
           <a 
             href="#contacto" 
-            onClick={(e) => handleLinkClick(e, { section: '#contacto' })}
+            onClick={(e) => handleLinkClick(e, { path: '#contacto' })}
             className="bg-gold text-white px-8 py-3 rounded-full text-[10px] font-black uppercase tracking-[0.2em] hover:bg-white hover:text-black transition-all shadow-lg shadow-gold/20"
           >
             Reservar Ahora
@@ -111,7 +172,8 @@ const Navbar: React.FC<NavbarProps> = ({
         {/* Mobile toggle */}
         <button 
           onClick={() => setIsMenuOpen(!isMenuOpen)} 
-          className="lg:hidden text-white p-2 relative z-50 focus:outline-none" 
+          className="lg:hidden text-white p-2 relative z-[120] focus:outline-none" 
+          aria-label="Toggle Menu"
         >
           <div className="w-6 h-5 flex flex-col justify-between">
             <span className={`w-full h-0.5 bg-white transition-all duration-300 origin-center ${isMenuOpen ? 'rotate-45 translate-y-[9px]' : ''}`}></span>
@@ -122,28 +184,51 @@ const Navbar: React.FC<NavbarProps> = ({
       </div>
 
       {/* Mobile Menu Overlay */}
-      <div className={`lg:hidden fixed inset-0 bg-black z-10 flex flex-col items-center justify-center transition-all duration-500 ease-in-out ${isMenuOpen ? 'translate-y-0 opacity-100 pointer-events-auto' : '-translate-y-full opacity-0 pointer-events-none'}`}>
-        <div className="flex flex-col items-center justify-center space-y-8 px-6 w-full">
-          {navLinks.map((link, i) => (
-            <a 
-              key={link.name} 
-              href={link.path} 
-              onClick={(e) => handleLinkClick(e, link)}
-              className={`text-2xl font-black tracking-[0.2em] uppercase transition-all duration-500 transform ${isMenuOpen ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'}`}
-              style={{ transitionDelay: `${isMenuOpen ? i * 75 + 100 : 0}ms` }}
-            >
-              {link.name}
-            </a>
-          ))}
-          <div className={`pt-8 transition-all duration-500 ${isMenuOpen ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'}`} style={{ transitionDelay: `${isMenuOpen ? navLinks.length * 75 + 150 : 0}ms` }}>
+      <div className={`lg:hidden fixed inset-0 bg-black z-[100] flex flex-col items-center justify-center transition-all duration-500 ease-in-out h-[100dvh] w-full ${isMenuOpen ? 'translate-y-0 opacity-100 pointer-events-auto' : '-translate-y-full opacity-0 pointer-events-none'}`}>
+        <div className="flex flex-col items-center justify-center space-y-10 px-6 w-full text-center">
+          <a 
+            href="/eventos" 
+            onClick={(e) => handleLinkClick(e, { path: '/eventos' })}
+            className={`text-3xl font-black tracking-[0.25em] uppercase transition-all duration-500 delay-[100ms] transform ${isMenuOpen ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'}`}
+          >
+            Eventos
+          </a>
+          <a 
+            href="#servicios" 
+            onClick={(e) => handleLinkClick(e, { path: '#servicios' })}
+            className={`text-3xl font-black tracking-[0.25em] uppercase transition-all duration-500 delay-[150ms] transform ${isMenuOpen ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'}`}
+          >
+            Servicios
+          </a>
+          <a 
+            href="#instalaciones" 
+            onClick={(e) => handleLinkClick(e, { path: '#instalaciones' })}
+            className={`text-3xl font-black tracking-[0.25em] uppercase transition-all duration-500 delay-[200ms] transform ${isMenuOpen ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'}`}
+          >
+            Instalaciones
+          </a>
+          <a 
+            href="#equipo" 
+            onClick={(e) => handleLinkClick(e, { path: '#equipo' })}
+            className={`text-3xl font-black tracking-[0.25em] uppercase transition-all duration-500 delay-[250ms] transform ${isMenuOpen ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'}`}
+          >
+            Equipo
+          </a>
+          
+          <div className={`pt-10 transition-all duration-500 delay-[300ms] ${isMenuOpen ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'}`}>
             <a 
               href="#contacto" 
-              onClick={(e) => handleLinkClick(e, { section: '#contacto' })}
-              className="bg-gold text-white px-12 py-5 rounded-full text-xs font-black uppercase tracking-[0.2em] shadow-xl shadow-gold/20"
+              onClick={(e) => handleLinkClick(e, { path: '#contacto' })}
+              className="bg-gold text-white px-14 py-6 rounded-full text-xs font-black uppercase tracking-[0.3em] shadow-xl shadow-gold/20 inline-block"
             >
               Reservar Ahora
             </a>
           </div>
+        </div>
+        
+        {/* Background visual flair for mobile menu */}
+        <div className="absolute bottom-10 left-1/2 -translate-x-1/2 opacity-10 pointer-events-none">
+          <img src={LOGOS.simple} className="h-20 w-auto" alt="" />
         </div>
       </div>
     </nav>
