@@ -45,6 +45,21 @@
     ::-webkit-scrollbar-track { background: #000; }
     ::-webkit-scrollbar-thumb { background: #333; border-radius: 10px; }
     ::-webkit-scrollbar-thumb:hover { background: #D48C00; }
+
+    /* Utility para carruseles */
+    .scrollbar-hide::-webkit-scrollbar {
+      display: none;
+    }
+    .scrollbar-hide {
+      -ms-overflow-style: none;
+      scrollbar-width: none;
+    }
+    .snap-x {
+      scroll-snap-type: x mandatory;
+    }
+    .snap-center {
+      scroll-snap-align: center;
+    }
   </style>
   <script type="importmap">
 {
@@ -61,7 +76,6 @@
 </head>
 <body class="bg-black text-white antialiased overflow-x-hidden">
   <div id="root"></div>
-  <!-- Script de entrada explícito para evitar pantallas en blanco en Netlify -->
   <script type="module" src="./index.tsx"></script>
 </body>
 </html>

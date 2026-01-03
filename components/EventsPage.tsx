@@ -1,9 +1,11 @@
 
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { EVENTS } from '../constants';
 
 const EventsPage: React.FC<{ onBack: () => void }> = ({ onBack }) => {
   const sectionRef = useRef<HTMLDivElement>(null);
+  const scrollContainerRef = useRef<HTMLDivElement>(null);
+  const [activeIndex, setActiveIndex] = useState(0);
 
   useEffect(() => {
     const observer = new IntersectionObserver((entries) => {
@@ -16,6 +18,25 @@ const EventsPage: React.FC<{ onBack: () => void }> = ({ onBack }) => {
     elements?.forEach(el => observer.observe(el));
     return () => observer.disconnect();
   }, []);
+
+  const handleScroll = () => {
+    if (scrollContainerRef.current) {
+      const scrollPosition = scrollContainerRef.current.scrollLeft;
+      const cardWidth = scrollContainerRef.current.children[0].clientWidth + 24; // width + gap
+      const index = Math.round(scrollPosition / cardWidth);
+      setActiveIndex(index);
+    }
+  };
+
+  const scrollToIndex = (index: number) => {
+    if (scrollContainerRef.current) {
+      const cardWidth = scrollContainerRef.current.children[0].clientWidth + 24;
+      scrollContainerRef.current.scrollTo({
+        left: index * cardWidth,
+        behavior: 'smooth'
+      });
+    }
+  };
 
   const handleEventClick = (e: React.MouseEvent, link: string) => {
     e.preventDefault();
@@ -57,65 +78,60 @@ const EventsPage: React.FC<{ onBack: () => void }> = ({ onBack }) => {
           </p>
         </header>
 
-        {/* Events Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
-          {EVENTS.map((event) => {
-            const badge = getStatusBadge(event.status);
-            return (
-              <div 
-                key={event.id} 
-                className="reveal group relative bg-[#080808] rounded-[2.5rem] overflow-hidden border border-white/5 hover:border-gold/30 transition-all duration-700 flex flex-col h-[480px] shadow-2xl"
-              >
-                {/* Background Image Container */}
-                <div className="absolute inset-0 z-0 overflow-hidden">
-                  <img 
-                    src={event.imageUrl} 
-                    alt={event.title} 
-                    className="w-full h-full object-cover grayscale opacity-60 group-hover:scale-110 group-hover:grayscale-0 group-hover:opacity-40 transition-all duration-[1.5s] ease-out"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black via-black/80 to-black/20"></div>
-                </div>
-
-                {/* Content Overlay */}
-                <div className="relative z-10 flex flex-col h-full p-8 justify-between">
-                  {/* Top: Status Badge */}
-                  <div className="flex justify-between items-start">
-                    <span className={`inline-block px-4 py-1.5 rounded-full text-[8px] font-black uppercase tracking-[0.2em] border ${badge.classes} transition-colors duration-500`}>
-                      {badge.text}
-                    </span>
+        <div className="relative">
+          <div 
+            ref={scrollContainerRef}
+            onScroll={handleScroll}
+            className="flex md:grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 overflow-x-auto snap-x snap-mandatory scrollbar-hide no-scrollbar pb-4 md:pb-0"
+          >
+            {EVENTS.map((event) => {
+              const badge = getStatusBadge(event.status);
+              return (
+                <div 
+                  key={event.id} 
+                  className="reveal flex-none w-[85vw] md:w-auto snap-center group relative bg-[#080808] rounded-[2.5rem] overflow-hidden border border-white/5 hover:border-gold/30 transition-all duration-700 flex flex-col h-[480px] shadow-2xl"
+                >
+                  <div className="absolute inset-0 z-0 overflow-hidden">
+                    <img src={event.imageUrl} alt={event.title} className="w-full h-full object-cover grayscale opacity-60 group-hover:scale-110 transition-all duration-[1.5s]" />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black via-black/80 to-black/20"></div>
                   </div>
-                  
-                  {/* Bottom: Information */}
-                  <div className="space-y-5">
-                    <div>
-                      {event.category && (
-                        <span className="text-gold text-[9px] font-black italic uppercase tracking-[0.4em] mb-2 block">
-                          {event.category === 'ANUALMENTE' ? 'CITY EVENT' : event.category}
-                        </span>
-                      )}
-                      <h3 className="text-2xl md:text-3xl font-black uppercase italic tracking-tighter leading-none text-white transition-colors duration-500">
-                        {event.title}
-                      </h3>
+                  <div className="relative z-10 flex flex-col h-full p-8 justify-between">
+                    <div className="flex justify-between items-start">
+                      <span className={`inline-block px-4 py-1.5 rounded-full text-[8px] font-black uppercase tracking-[0.2em] border ${badge.classes}`}>
+                        {badge.text}
+                      </span>
                     </div>
-
-                    <p className="text-white/40 text-[10px] font-bold uppercase tracking-[0.1em] leading-relaxed line-clamp-3 group-hover:text-white/60 transition-colors duration-500">
-                      {event.description}
-                    </p>
-                    
-                    <button 
-                      onClick={(e) => handleEventClick(e as any, event.link)}
-                      className="inline-flex items-center gap-4 bg-white text-black px-8 py-4 rounded-full text-[10px] font-black uppercase tracking-[0.2em] transition-all duration-300 hover:bg-gold hover:text-white active:scale-95 shadow-xl group/btn"
-                    >
-                      <span className="relative">Ver Detalles</span>
-                      <svg className="w-4 h-4 transition-transform duration-300 group-hover/btn:translate-x-1.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path d="M14 5l7 7-7 7M3 12h18" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"/>
-                      </svg>
-                    </button>
+                    <div className="space-y-5">
+                      <div>
+                        {event.category && <span className="text-gold text-[9px] font-black italic uppercase tracking-[0.4em] mb-2 block">{event.category}</span>}
+                        <h3 className="text-2xl md:text-3xl font-black uppercase italic tracking-tighter leading-none text-white">{event.title}</h3>
+                      </div>
+                      <p className="text-white/40 text-[10px] font-bold uppercase tracking-[0.1em] leading-relaxed line-clamp-3">{event.description}</p>
+                      <button onClick={(e) => handleEventClick(e as any, event.link)} className="inline-flex items-center gap-4 bg-white text-black px-8 py-4 rounded-full text-[10px] font-black uppercase tracking-[0.2em] transition-all hover:bg-gold hover:text-white">
+                        <span>Ver Detalles</span>
+                      </button>
+                    </div>
                   </div>
                 </div>
-              </div>
-            );
-          })}
+              );
+            })}
+          </div>
+
+          <div className="flex flex-col md:hidden items-center gap-6 mt-8">
+            <div className="flex justify-center gap-2">
+              {EVENTS.map((_, i) => (
+                <button key={i} onClick={() => scrollToIndex(i)} className={`h-1 rounded-full transition-all duration-300 ${i === activeIndex ? 'w-8 bg-gold' : 'w-2 bg-white/20'}`} />
+              ))}
+            </div>
+            <div className="flex gap-4">
+              <button onClick={() => scrollToIndex(activeIndex - 1)} disabled={activeIndex === 0} className="w-12 h-12 rounded-full border border-white/10 flex items-center justify-center disabled:opacity-20 text-gold">
+                <svg className="w-5 h-5 rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M9 5l7 7-7 7" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"/></svg>
+              </button>
+              <button onClick={() => scrollToIndex(activeIndex + 1)} disabled={activeIndex === EVENTS.length - 1} className="w-12 h-12 rounded-full border border-white/10 flex items-center justify-center disabled:opacity-20 text-gold">
+                <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M9 5l7 7-7 7" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"/></svg>
+              </button>
+            </div>
+          </div>
         </div>
       </div>
     </div>
