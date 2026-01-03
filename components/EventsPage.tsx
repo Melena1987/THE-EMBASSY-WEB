@@ -1,4 +1,3 @@
-
 import React, { useEffect, useRef, useState } from 'react';
 import { EVENTS } from '../constants';
 
@@ -40,6 +39,10 @@ const EventsPage: React.FC<{ onBack: () => void }> = ({ onBack }) => {
 
   const handleEventClick = (e: React.MouseEvent, link: string) => {
     e.preventDefault();
+    if (link.startsWith('http')) {
+      window.open(link, '_blank', 'noopener,noreferrer');
+      return;
+    }
     window.history.pushState({}, '', link);
     window.dispatchEvent(new PopStateEvent('popstate'));
   };
@@ -105,6 +108,7 @@ const EventsPage: React.FC<{ onBack: () => void }> = ({ onBack }) => {
                       <div>
                         {event.category && <span className="text-gold text-[9px] font-black italic uppercase tracking-[0.4em] mb-2 block">{event.category}</span>}
                         <h3 className="text-2xl md:text-3xl font-black uppercase italic tracking-tighter leading-none text-white">{event.title}</h3>
+                        <p className="text-gold text-[9px] font-black tracking-widest uppercase mt-1">{event.date}</p>
                       </div>
                       <p className="text-white/40 text-[10px] font-bold uppercase tracking-[0.1em] leading-relaxed line-clamp-3">{event.description}</p>
                       <button onClick={(e) => handleEventClick(e as any, event.link)} className="inline-flex items-center gap-4 bg-white text-black px-8 py-4 rounded-full text-[10px] font-black uppercase tracking-[0.2em] transition-all hover:bg-gold hover:text-white">

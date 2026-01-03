@@ -1,7 +1,16 @@
-
 import { EmbassyEvent } from '../types';
 
 export const EVENTS: EmbassyEvent[] = [
+  {
+    id: 'avance-global-cup',
+    title: 'AVANCE GLOBAL CUP',
+    category: 'NBA APPROVED',
+    date: '29-31 Enero 2026',
+    description: 'TORNEO INTERNACIONAL JUNIOR/HIGH SCHOOL APROBADO POR LA NBA. 10 EQUIPOS DE ÉLITE DE 5 CONTINENTES COMPITIENDO EN LA COSTA DEL SOL.',
+    imageUrl: 'https://firebasestorage.googleapis.com/v0/b/galeriaoficialapp.firebasestorage.app/o/users%2FI5KZz4BuUEfxcoAvSCAWllkQtwt1%2Fphotos%2F1761945946387_AVANCE_BASKETBALL_SanDiego_D2-7_400x400.jpg?alt=media&token=41ae9627-db76-4a89-a9ef-4e6460eeaca9',
+    link: 'https://avanceglobalcup.com',
+    status: 'upcoming'
+  },
   {
     id: 'the-sanctuary',
     title: 'THE SANCTUARY',

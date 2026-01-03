@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from 'react';
 import { LOGOS, SERVICES, EVENTS } from '../constants.tsx';
 
@@ -48,6 +47,13 @@ const Navbar: React.FC<NavbarProps> = ({
       window.open(link.externalLink, '_blank', 'noopener,noreferrer');
     } else if (link.path || link.link) {
       const targetPath = link.path || link.link;
+      
+      // If the target path is an absolute URL, open it in a new tab
+      if (targetPath.startsWith('http')) {
+        window.open(targetPath, '_blank', 'noopener,noreferrer');
+        return;
+      }
+
       if (targetPath.startsWith('#')) {
         if (currentPath !== '/') {
           onNavigateHome?.();
