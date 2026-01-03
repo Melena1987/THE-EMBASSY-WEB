@@ -1,9 +1,10 @@
 
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { LOGOS } from '../constants';
 
 const TheSanctuaryPage: React.FC<{ onBack: () => void }> = ({ onBack }) => {
   const sectionRef = useRef<HTMLDivElement>(null);
+  const [isLoaded, setIsLoaded] = useState(false);
 
   const assets = {
     heroBg: 'https://firebasestorage.googleapis.com/v0/b/galeriaoficialapp.firebasestorage.app/o/users%2FI5KZz4BuUEfxcoAvSCAWllkQtwt1%2Fphotos%2F1766961925716__DSC7048_edited.jpg?alt=media&token=cb61fbf4-d4ab-4c2e-85a9-38ca402943e9',
@@ -14,6 +15,12 @@ const TheSanctuaryPage: React.FC<{ onBack: () => void }> = ({ onBack }) => {
 
   useEffect(() => {
     window.scrollTo(0, 0);
+    
+    // Preload hero image
+    const img = new Image();
+    img.src = assets.heroBg;
+    img.onload = () => setIsLoaded(true);
+
     const observer = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
         if (entry.isIntersecting) entry.target.classList.add('active');
@@ -35,12 +42,26 @@ const TheSanctuaryPage: React.FC<{ onBack: () => void }> = ({ onBack }) => {
   return (
     <div ref={sectionRef} className="bg-black text-white min-h-screen selection:bg-gold overflow-x-hidden">
       
-      {/* HERO SECTION */}
-      <section className="relative h-screen flex flex-col items-center justify-center">
-        <div className="absolute inset-0 z-0">
-          <img src={assets.heroBg} className="w-full h-full object-cover brightness-50" alt="Sanctuary Training" />
-          <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-transparent to-black"></div>
+      {/* HERO SECTION - REPLICA SKILL CAMP EFFECT */}
+      <section className="relative h-screen flex flex-col items-center justify-center overflow-hidden">
+        <div 
+          className={`absolute inset-0 z-0 transition-opacity duration-1000 ease-in-out ${isLoaded ? 'opacity-100' : 'opacity-0'}`}
+          style={{ 
+            backgroundImage: `url(${assets.heroBg})`,
+            backgroundPosition: 'center',
+            backgroundSize: 'cover',
+            backgroundAttachment: 'fixed',
+          }}
+        >
+          {/* Overlay to match high-performance aesthetic */}
+          <div className="absolute inset-0 bg-black/60"></div>
+          <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-transparent to-black"></div>
         </div>
+
+        {/* Skeleton while loading */}
+        {!isLoaded && (
+          <div className="absolute inset-0 bg-neutral-900 z-0 animate-pulse"></div>
+        )}
         
         <div className="relative z-10 text-center px-6 max-w-5xl">
           <button 
@@ -53,24 +74,21 @@ const TheSanctuaryPage: React.FC<{ onBack: () => void }> = ({ onBack }) => {
             BACK TO EVENTS
           </button>
 
-          <div className="flex flex-col md:flex-row items-center justify-center gap-8 md:gap-16 mb-12 reveal">
+          <div className="flex flex-col md:flex-row items-center justify-center gap-8 md:gap-16 mb-12 reveal active">
             <img src={LOGOS.main} className="h-10 md:h-16 w-auto brightness-0 invert" alt="The Embassy" />
             <div className="hidden md:block w-[1px] h-12 bg-white/20"></div>
             <img src={assets.nbpaLogo} className="h-16 md:h-24 w-auto" alt="NBPA" />
           </div>
 
-          <h1 className="reveal text-5xl md:text-9xl font-black uppercase italic tracking-tighter leading-none mb-6">
+          <h1 className="reveal active text-5xl md:text-9xl font-black uppercase italic tracking-tighter leading-none mb-6">
             THE <span className="text-gold">SANCTUARY</span>
           </h1>
-          <p className="reveal text-lg md:text-2xl font-light uppercase tracking-[0.2em] text-white/70 max-w-3xl mx-auto italic">
+          <p className="reveal active text-lg md:text-2xl font-light uppercase tracking-[0.2em] text-white/70 max-w-3xl mx-auto italic">
             EL PROGRAMA GLOBAL DE ALTO RENDIMIENTO DE LA NBPA EN ANDALUCÍA.
           </p>
         </div>
 
-        <div className="absolute bottom-12 left-1/2 -translate-x-1/2 flex flex-col items-center gap-4 opacity-30">
-          <span className="text-[10px] font-black tracking-[0.5em] uppercase">Scroll to explore</span>
-          <div className="w-[1px] h-12 bg-white animate-bounce"></div>
-        </div>
+        {/* Removed Scroll indicator div as requested */}
       </section>
 
       {/* INTRO: WHAT & WHERE */}
@@ -192,6 +210,14 @@ const TheSanctuaryPage: React.FC<{ onBack: () => void }> = ({ onBack }) => {
           </button>
         </div>
       </section>
+
+      <style>{`
+        @media (max-width: 1024px) {
+          .z-0 {
+            background-attachment: scroll !important;
+          }
+        }
+      `}</style>
     </div>
   );
 };
