@@ -54,7 +54,7 @@ const Footer: React.FC<FooterProps> = ({ onNavigateLegal, onNavigateClub }) => {
           <div>
             <h4 className="text-gold text-[10px] font-black tracking-[0.4em] uppercase mb-8 italic">Contacto</h4>
             <div className="space-y-4">
-              <a href="mailto:comunicacion@theembassytc.com" className="block text-xl font-black italic hover:text-gold transition-colors tracking-tight">comunicacion@theembassytc.com</a>
+              <a href="mailto:comunicacion@theembassytc.com" className="block text-lg sm:text-xl font-black italic hover:text-gold transition-colors tracking-tight break-all">comunicacion@theembassytc.com</a>
               <p className="text-white/40 text-[11px] font-bold uppercase tracking-widest">Fuengirola, Málaga (Spain)</p>
             </div>
           </div>
