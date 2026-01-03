@@ -57,7 +57,7 @@ const EventsPage: React.FC<{ onBack: () => void }> = ({ onBack }) => {
           </p>
         </header>
 
-        {/* Events Grid - Compacted for better visibility */}
+        {/* Events Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
           {EVENTS.map((event) => {
             const badge = getStatusBadge(event.status);
@@ -76,7 +76,7 @@ const EventsPage: React.FC<{ onBack: () => void }> = ({ onBack }) => {
                   <div className="absolute inset-0 bg-gradient-to-t from-black via-black/80 to-black/20"></div>
                 </div>
 
-                {/* Content Overlay - Reduced Padding for smaller feel */}
+                {/* Content Overlay */}
                 <div className="relative z-10 flex flex-col h-full p-8 justify-between">
                   {/* Top: Status Badge */}
                   <div className="flex justify-between items-start">
@@ -104,10 +104,10 @@ const EventsPage: React.FC<{ onBack: () => void }> = ({ onBack }) => {
                     
                     <button 
                       onClick={(e) => handleEventClick(e as any, event.link)}
-                      className="inline-flex items-center gap-4 bg-white text-black px-8 py-4 rounded-full text-[9px] font-black uppercase tracking-[0.2em] transition-all hover:bg-gold hover:text-white active:scale-95 shadow-xl group/btn overflow-hidden"
+                      className="inline-flex items-center gap-4 bg-white text-black px-8 py-4 rounded-full text-[10px] font-black uppercase tracking-[0.2em] transition-all duration-300 hover:bg-gold hover:text-white active:scale-95 shadow-xl group/btn"
                     >
-                      <span className="relative z-10">Ver Detalles</span>
-                      <svg className="w-3.5 h-3.5 transition-transform duration-300 group-hover/btn:translate-x-1.5 relative z-10" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <span className="relative">Ver Detalles</span>
+                      <svg className="w-4 h-4 transition-transform duration-300 group-hover/btn:translate-x-1.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path d="M14 5l7 7-7 7M3 12h18" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"/>
                       </svg>
                     </button>
