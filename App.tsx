@@ -13,8 +13,9 @@ import SkillCampPage from './components/SkillCampPage.tsx';
 import MVPPage from './components/MVPPage.tsx';
 import CIBAPage from './components/CIBAPage.tsx';
 import TheSanctuaryPage from './components/TheSanctuaryPage.tsx';
+import TeamBuildingPage from './components/TeamBuildingPage.tsx';
 
-type ViewType = 'home' | 'legal' | 'club' | 'events' | 'skillcamp' | 'mvp' | 'ciba' | 'sanctuary';
+type ViewType = 'home' | 'legal' | 'club' | 'events' | 'skillcamp' | 'mvp' | 'ciba' | 'sanctuary' | 'teambuilding';
 
 function App() {
   const [view, setView] = useState<ViewType>('home');
@@ -65,6 +66,9 @@ function App() {
     } else if (path === '/the-sanctuary') {
       setView('sanctuary');
       window.scrollTo(0, 0);
+    } else if (path === '/team-building') {
+      setView('teambuilding');
+      window.scrollTo(0, 0);
     } else {
       setView('home');
       if (hash) {
@@ -90,6 +94,7 @@ function App() {
   const navigateToClub = () => navigateTo('/club');
   const navigateToEvents = () => navigateTo('/eventos');
   const navigateToHome = () => navigateTo('/');
+  const navigateToTeamBuilding = () => navigateTo('/team-building');
 
   const renderView = () => {
     switch (view) {
@@ -107,6 +112,8 @@ function App() {
         return <CIBAPage onBack={navigateToEvents} />;
       case 'sanctuary':
         return <TheSanctuaryPage onBack={navigateToEvents} />;
+      case 'teambuilding':
+        return <TeamBuildingPage onBack={navigateToHome} />;
       default:
         return <HomePage scrollToSection={scrollToSection} navigateToClub={navigateToClub} />;
     }

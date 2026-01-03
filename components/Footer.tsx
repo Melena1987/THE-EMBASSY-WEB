@@ -80,26 +80,29 @@ const Footer: React.FC<FooterProps> = ({ onNavigateLegal, onNavigateClub }) => {
 
         {/* Legal & Credits */}
         <div className="border-t border-white/5 pt-10">
-          <div className="flex flex-col md:flex-row justify-between items-center text-[9px] text-white/20 uppercase tracking-[0.25em] font-black text-center md:text-left">
-            <p>© {new Date().getFullYear()} THE EMBASSY TRAINING CENTER. ALL RIGHTS RESERVED.</p>
-            <div className="flex space-x-6 md:space-x-10 mt-6 md:mt-0">
+          <div className="flex flex-col md:flex-row justify-between items-center gap-8">
+            <div className="flex flex-col items-center md:items-start space-y-3">
+              <p className="text-[9px] text-white/20 uppercase tracking-[0.25em] font-black text-center md:text-left">
+                © {new Date().getFullYear()} THE EMBASSY TRAINING CENTER. ALL RIGHTS RESERVED.
+              </p>
+              
+              {/* Developer Credit - Forzado a una sola línea con whitespace-nowrap */}
+              <a 
+                href="https://melenamarketing.com" 
+                target="_blank" 
+                rel="noopener noreferrer" 
+                className="group flex flex-nowrap items-center gap-1 md:gap-2 text-[7px] md:text-[9px] uppercase tracking-[0.2em] md:tracking-[0.4em] font-black transition-all duration-500 whitespace-nowrap"
+              >
+                <span className="text-white/10">Digital Experience by</span>
+                <span className="text-white/30 group-hover:text-gold transition-colors">Melena Marketing</span>
+              </a>
+            </div>
+
+            <div className="flex space-x-6 md:space-x-10 text-[9px] text-white/20 uppercase tracking-[0.25em] font-black">
               <button onClick={onNavigateLegal} className="hover:text-gold transition-colors">Privacidad</button>
               <button onClick={onNavigateLegal} className="hover:text-gold transition-colors">Aviso Legal</button>
               <button onClick={onNavigateClub} className="hover:text-gold transition-colors">The Club</button>
             </div>
-          </div>
-          
-          {/* Developer Credit - Forzado a una sola línea con whitespace-nowrap */}
-          <div className="mt-8 text-center flex justify-center overflow-hidden">
-            <a 
-              href="https://melenamarketing.com" 
-              target="_blank" 
-              rel="noopener noreferrer" 
-              className="group flex flex-nowrap items-center gap-1 md:gap-2 text-[7px] md:text-[9px] uppercase tracking-[0.2em] md:tracking-[0.4em] font-black transition-all duration-500 whitespace-nowrap"
-            >
-              <span className="text-white/20">Digital Experience by</span>
-              <span className="text-white/40 group-hover:text-gold transition-colors">Melena Marketing</span>
-            </a>
           </div>
         </div>
       </div>

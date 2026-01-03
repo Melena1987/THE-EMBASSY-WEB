@@ -17,6 +17,11 @@ const Services: React.FC = () => {
     return () => observer.disconnect();
   }, []);
 
+  const handleNavigate = (path: string) => {
+    window.history.pushState({}, '', path);
+    window.dispatchEvent(new PopStateEvent('popstate'));
+  };
+
   return (
     <section id="servicios" ref={sectionRef} className="py-24 bg-black relative">
       <div className="max-w-7xl mx-auto px-6 md:px-12">
@@ -32,17 +37,28 @@ const Services: React.FC = () => {
           {SERVICES.map((service, idx) => (
             <div 
               key={idx} 
-              className={`reveal group p-8 bg-white/[0.02] border border-white/5 rounded-[2rem] hover:border-gold/50 transition-all duration-700 hover:bg-white/[0.04] transition-all delay-${(idx % 4) * 100}`}
+              className={`reveal group p-8 bg-white/[0.02] border border-white/5 rounded-[2rem] hover:border-gold/50 transition-all duration-700 hover:bg-white/[0.04] transition-all flex flex-col justify-between delay-${(idx % 4) * 100}`}
             >
-              <div className="w-14 h-14 bg-white/5 rounded-2xl flex items-center justify-center text-2xl mb-6 group-hover:scale-110 group-hover:bg-gold/20 transition-all duration-500">
-                {service.icon}
+              <div>
+                <div className="w-14 h-14 bg-white/5 rounded-2xl flex items-center justify-center text-2xl mb-6 group-hover:scale-110 group-hover:bg-gold/20 transition-all duration-500">
+                  {service.icon}
+                </div>
+                <h3 className="text-2xl font-black uppercase tracking-tight mb-4 group-hover:text-gold transition-colors italic leading-none">
+                  {service.title}
+                </h3>
+                <p className="text-white/40 font-medium leading-relaxed text-sm uppercase tracking-wider group-hover:text-white/70 transition-colors mb-6">
+                  {service.description}
+                </p>
               </div>
-              <h3 className="text-2xl font-black uppercase tracking-tight mb-4 group-hover:text-gold transition-colors italic leading-none">
-                {service.title}
-              </h3>
-              <p className="text-white/40 font-medium leading-relaxed text-sm uppercase tracking-wider group-hover:text-white/70 transition-colors">
-                {service.description}
-              </p>
+              
+              {service.title === 'Eventos Corporativos' && (
+                <button 
+                  onClick={() => handleNavigate('/team-building')}
+                  className="mt-auto w-full py-3 border border-gold/30 rounded-xl text-[10px] font-black uppercase tracking-widest text-gold hover:bg-gold hover:text-white transition-all"
+                >
+                  Ver Team Building
+                </button>
+              )}
             </div>
           ))}
         </div>
