@@ -42,7 +42,7 @@ const Team: React.FC = () => {
           <div 
             ref={scrollContainerRef}
             onScroll={handleScroll}
-            className="flex md:grid md:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-12 overflow-x-auto snap-x snap-mandatory scrollbar-hide no-scrollbar pb-4 md:pb-0"
+            className="flex md:grid md:grid-cols-2 lg:grid-cols-4 gap-x-6 gap-y-12 overflow-x-auto snap-x snap-mandatory scrollbar-hide no-scrollbar pb-4 md:pb-0"
           >
             {TEAM.map((member, idx) => (
               <div key={idx} className="reveal flex-none w-[85vw] md:w-auto snap-center group">
@@ -87,7 +87,7 @@ const Team: React.FC = () => {
                 </div>
                 
                 <div className="px-1">
-                  <p className="text-white/40 font-medium text-xs leading-[1.6] uppercase tracking-[0.05em] mb-4 transition-all duration-500 line-clamp-3 group-hover:line-clamp-none">
+                  <p className="text-white/40 font-medium text-xs leading-[1.6] uppercase tracking-[0.05em] mb-4 transition-all duration-500">
                     {member.description}
                   </p>
                   <div className="h-[2px] w-8 bg-gold group-hover:w-full transition-all duration-700"></div>
