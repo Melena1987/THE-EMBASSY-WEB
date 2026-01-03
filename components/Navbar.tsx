@@ -43,7 +43,6 @@ const Navbar: React.FC<NavbarProps> = ({
     { name: 'Servicios', path: '#servicios', section: '#servicios' },
     { name: 'Instalaciones', path: '#instalaciones', section: '#instalaciones' },
     { name: 'Equipo', path: '#equipo', section: '#equipo' },
-    { name: 'Contacto', path: '#contacto', section: '#contacto' },
   ];
 
   const handleLinkClick = (e: React.MouseEvent, link: any) => {
