@@ -1,4 +1,3 @@
-
 import React, { useRef, useState, useEffect } from 'react';
 import emailjs from '@emailjs/browser';
 import { useLanguage } from '../context/LanguageContext.tsx';
@@ -86,7 +85,12 @@ const ContactForm: React.FC<ContactFormProps> = ({ initialSubject }) => {
             </div>
 
             {/* Location Block */}
-            <div className="group flex items-center gap-6">
+            <a 
+              href="https://maps.app.goo.gl/JFgHpoMBcKUqSJuP6" 
+              target="_blank" 
+              rel="noopener noreferrer" 
+              className="group flex items-center gap-6 transition-all hover:translate-x-2 w-fit cursor-pointer"
+            >
               <div className="w-16 h-16 bg-black text-white rounded-2xl flex items-center justify-center group-hover:bg-gold transition-all duration-500 shadow-xl">
                 <svg className="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
@@ -97,11 +101,11 @@ const ContactForm: React.FC<ContactFormProps> = ({ initialSubject }) => {
                 <span className="text-[10px] font-black uppercase tracking-widest text-gray-400 block mb-1">
                   {t('contact', 'info_location')}
                 </span>
-                <span className="text-lg md:text-2xl font-black italic uppercase tracking-tighter block leading-none">
+                <span className="text-lg md:text-2xl font-black italic uppercase tracking-tighter block leading-none group-hover:text-gold transition-colors">
                   {t('contact', 'info_location_val')}
                 </span>
               </div>
-            </div>
+            </a>
           </div>
         </div>
 

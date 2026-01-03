@@ -1,4 +1,3 @@
-
 import React, { createContext, useContext, useState, ReactNode, useEffect } from 'react';
 
 type Language = 'es' | 'en';
@@ -187,7 +186,7 @@ const translations: any = {
       info_location: 'UBICACIÓN',
       info_location_val: 'LA COSTA DEL SOL, ESPAÑA',
       form_name: 'Nombre Completo',
-      form_email: 'Email Corporativo',
+      form_email: 'Email',
       form_subject: 'Asunto / Servicio',
       form_phone: 'Teléfono',
       form_message: 'Mensaje',
@@ -354,7 +353,7 @@ const translations: any = {
       info_location: 'LOCATION',
       info_location_val: 'THE COSTA DEL SOL, SPAIN',
       form_name: 'Full Name',
-      form_email: 'Corporate Email',
+      form_email: 'Email',
       form_subject: 'Subject / Service',
       form_phone: 'Phone',
       form_message: 'Message',
