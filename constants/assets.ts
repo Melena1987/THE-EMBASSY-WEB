@@ -3,7 +3,8 @@ export const LOGOS = {
   main: 'https://firebasestorage.googleapis.com/v0/b/galeriaoficialapp.firebasestorage.app/o/users%2FI5KZz4BuUEfxcoAvSCAWllkQtwt1%2Fphotos%2F1762685212137_logo_THE_EMBASSY.png?alt=media&token=8ebc6425-e3ce-4eb3-8a14-1799ca68b869',
   simple: 'https://firebasestorage.googleapis.com/v0/b/galeriaoficialapp.firebasestorage.app/o/users%2FI5KZz4BuUEfxcoAvSCAWllkQtwt1%2Fphotos%2F1762686328016_LOGO_simple_blanco.png?alt=media&token=e096f7cc-678d-48b8-9e93-d937b0e3612b',
   heroBg: 'https://firebasestorage.googleapis.com/v0/b/galeriaoficialapp.firebasestorage.app/o/users%2FI5KZz4BuUEfxcoAvSCAWllkQtwt1%2Fphotos%2F1761950147664_WhatsApp-Image-2021-12-13-at-10.15.51-AM.jpeg?alt=media&token=147a429f-4059-47c3-8b1a-cb8782f922b0',
-  sanctuary: 'https://firebasestorage.googleapis.com/v0/b/galeriaoficialapp.firebasestorage.app/o/users%2FI5KZz4BuUEfxcoAvSCAWllkQtwt1%2Fphotos%2F1766961925716_image_edited.png?alt=media&token=ccf90cd0-a791-4071-b083-85b7cf6cf358'
+  sanctuary: 'https://firebasestorage.googleapis.com/v0/b/galeriaoficialapp.firebasestorage.app/o/users%2FI5KZz4BuUEfxcoAvSCAWllkQtwt1%2Fphotos%2F1766961925716_image_edited.png?alt=media&token=ccf90cd0-a791-4071-b083-85b7cf6cf358',
+  nextEvent: 'https://firebasestorage.googleapis.com/v0/b/galeriaoficialapp.firebasestorage.app/o/users%2FI5KZz4BuUEfxcoAvSCAWllkQtwt1%2Fphotos%2F1761946347121_avance_global_cup_logo.png?alt=media&token=b4d7d75a-dc46-436c-b5c5-81edd0ba6154'
 };
 
 export const INSTALLATION_IMAGES = [

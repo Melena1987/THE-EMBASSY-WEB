@@ -8,7 +8,6 @@ interface HeroProps {
 
 const Hero: React.FC<HeroProps> = ({ onExplore }) => {
   const [isLoaded, setIsLoaded] = useState(false);
-  const nextEventLogo = "https://firebasestorage.googleapis.com/v0/b/galeriaoficialapp.firebasestorage.app/o/users%2FI5KZz4BuUEfxcoAvSCAWllkQtwt1%2Fphotos%2F1761946347121_avance_global_cup_logo.png?alt=media&token=b4d7d75a-dc46-436c-b5c5-81edd0ba6154";
 
   useEffect(() => {
     const img = new Image();
@@ -33,8 +32,8 @@ const Hero: React.FC<HeroProps> = ({ onExplore }) => {
         <div className="absolute inset-0 bg-gradient-to-b from-black/80 via-transparent to-black"></div>
       </div>
 
-      {/* TOP GROUP: Badge & Logo */}
-      <div className="relative z-10 pt-24 md:pt-32 text-center">
+      {/* TOP GROUP: Badge & Logo - Refined paddings for mobile/tablet/desktop */}
+      <div className="relative z-10 pt-40 lg:pt-48 xl:pt-32 text-center">
         <div className="reveal active inline-block bg-white/5 backdrop-blur-md border border-white/10 px-6 py-2 rounded-full mb-8">
           <span className="text-gold text-[10px] md:text-xs font-black uppercase tracking-[0.4em]">THE SANCTUARY FOR PERFORMANCE</span>
         </div>
@@ -43,44 +42,14 @@ const Hero: React.FC<HeroProps> = ({ onExplore }) => {
           <img 
             src={LOGOS.main} 
             alt="THE EMBASSY" 
-            className="w-full max-w-[280px] md:max-w-[550px] h-auto object-contain brightness-0 invert"
+            className="w-full max-w-[240px] md:max-w-[380px] lg:max-w-[480px] h-auto object-contain brightness-0 invert"
           />
         </div>
       </div>
 
-      {/* Robust Next Event Widget with Moving Gold Border */}
-      <div className="reveal active absolute inset-x-0 bottom-10 md:inset-x-auto md:bottom-auto md:top-32 md:right-12 z-20 flex justify-center md:block px-6 md:px-0">
-        <a 
-          href="https://avanceglobalcup.com" 
-          target="_blank" 
-          rel="noopener noreferrer"
-          className="group block max-w-[90vw] md:max-w-none"
-        >
-          <div className="moving-gold-border flex items-center gap-3 md:gap-5 bg-black/60 backdrop-blur-2xl p-2 pr-6 md:p-3 md:pr-8 rounded-full transition-all duration-500 hover:bg-black/80 hover:scale-105 shadow-2xl">
-            <div className="w-12 h-12 md:w-16 md:h-16 flex-shrink-0 flex items-center justify-center bg-white/5 rounded-full p-1.5">
-              <img 
-                src={nextEventLogo} 
-                alt="Avance Global Cup" 
-                className="w-full h-full object-contain" 
-              />
-            </div>
-            
-            <div className="text-left overflow-hidden">
-              <div className="flex items-center gap-2 mb-0.5 whitespace-nowrap">
-                <span className="text-gold text-[8px] md:text-[9px] font-black uppercase tracking-[0.3em] md:tracking-[0.4em]">PRÓXIMO EVENTO</span>
-                <span className="w-1 h-1 md:w-1.5 md:h-1.5 bg-gold rounded-full animate-pulse flex-shrink-0"></span>
-              </div>
-              <p className="text-white text-[10px] md:text-sm font-black uppercase tracking-tighter italic leading-none truncate md:whitespace-normal">
-                AVANCE GLOBAL CUP
-              </p>
-            </div>
-          </div>
-        </a>
-      </div>
-
       {/* BOTTOM GROUP: Description & CTAs */}
-      <div className="relative z-10 pb-44 md:pb-32 text-center px-6">
-        <p className="reveal active text-base md:text-2xl text-white/80 max-w-4xl mx-auto mb-10 font-light leading-relaxed tracking-wide uppercase">
+      <div className="relative z-10 pb-20 md:pb-24 lg:pb-32 text-center px-8 md:px-16">
+        <p className="reveal active text-base md:text-xl lg:text-2xl text-white/80 max-w-4xl mx-auto mb-10 md:mb-12 font-light leading-relaxed tracking-wide uppercase">
           Diseñado por <span className="text-white font-bold italic border-b border-gold pb-1">Berni Rodríguez</span> y <span className="text-white font-bold italic border-b border-gold pb-1">José Manuel Calderón</span>. <br className="hidden md:block" />
           1500m2 de alto rendimiento FIBA/NBA en la Costa del Sol.
         </p>
@@ -100,8 +69,8 @@ const Hero: React.FC<HeroProps> = ({ onExplore }) => {
         </div>
       </div>
 
-      {/* Decorative vertical lines (Left) */}
-      <div className="absolute left-6 md:left-12 bottom-12 hidden md:flex flex-col space-y-4 opacity-30">
+      {/* Decorative vertical lines - Now visible only on large desktop screens to avoid collisions on tablets */}
+      <div className="absolute left-6 lg:left-12 bottom-12 hidden lg:flex flex-col space-y-4 opacity-30">
         <span className="[writing-mode:vertical-lr] text-[10px] uppercase tracking-[0.5em] font-bold">Costa del Sol</span>
         <div className="w-[1px] h-32 bg-white mx-auto"></div>
       </div>
