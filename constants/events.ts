@@ -28,7 +28,7 @@ export const EVENTS: EmbassyEvent[] = [
     category: 'TALENT PROGRAM',
     date: 'Programación Periódica',
     description: 'Tres días intensos para 24 talentos andaluces: entrenamientos de alto nivel con Berni Rodríguez y José Manuel Calderón en un entorno profesional.',
-    imageUrl: 'https://firebasestorage.googleapis.com/v0/b/galeriaoficialapp.firebasestorage.app/o/users%2FI5KZz4BuUEfxcoAvSCAWllkQtwt1%2Fphotos%2F1761950147664_TheEmbassyTC-imagen_050.jpg?alt=media&token=91bbf74f-6cad-4f7c-9bfb-8c020278973a',
+    imageUrl: 'https://firebasestorage.googleapis.com/v0/b/galeriaoficialapp.firebasestorage.app/o/users%2FI5KZz4BuUEfxcoAvSCAWllkQtwt1%2Fphotos%2F1767396606225_experiencia_MVP_400x400.png?alt=media&token=71a55c39-8106-40d0-9b81-38b4667ef571',
     link: '/experiencia-mvp',
     status: 'past'
   },
