@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from 'react';
 import { LOGOS } from '../constants.tsx';
 import { useLanguage } from '../context/LanguageContext.tsx';
@@ -47,9 +46,10 @@ const Hero: React.FC<HeroProps> = ({ onExplore }) => {
       </div>
 
       <div className="relative z-10 pb-20 md:pb-24 lg:pb-32 text-center px-8 md:px-16">
-        <p className="reveal active text-base md:text-xl lg:text-2xl text-white/80 max-w-4xl mx-auto mb-10 md:mb-12 font-light leading-relaxed tracking-wide uppercase">
-          {t('hero', 'description')}
-        </p>
+        <p 
+          className="reveal active text-base md:text-xl lg:text-2xl text-white/80 max-w-4xl mx-auto mb-10 md:mb-12 font-light leading-relaxed tracking-wide uppercase"
+          dangerouslySetInnerHTML={{ __html: t('hero', 'description') }}
+        />
         
         <div className="reveal active flex flex-col sm:flex-row items-center justify-center gap-6 md:gap-8">
           <a href="#contacto" className="w-full sm:w-auto bg-gold text-white px-12 py-5 rounded-full font-black uppercase tracking-[0.2em] transition-all hover:scale-105 hover:bg-white hover:text-black shadow-xl shadow-gold/20 text-center text-sm md:text-base">

@@ -72,7 +72,7 @@ const translations: any = {
     },
     hero: {
       badge: 'THE SANCTUARY FOR PERFORMANCE',
-      description: 'Designed by Berni Rodríguez and José Manuel Calderón. 1500m2 of FIBA/NBA high performance in Costa del Sol.',
+      description: 'Designed by <b class="font-black">Berni Rodríguez</b> and <b class="font-black">José Manuel Calderón</b>. 1500m2 of FIBA/NBA high performance in Costa del Sol.',
       cta: 'Book Court',
       explore: 'Explore Training Center'
     },
@@ -139,7 +139,7 @@ const translations: any = {
     },
     team: {
       subtitle: 'Elite Performance Staff',
-      title: 'NUESTRO EQUIPO',
+      title: 'NUESTROS EQUIPO',
       desc: 'Liderado por campeones del mundo y especialistas de élite, uniendo la visión global de la NBA con el rigor táctico europeo.'
     },
     team_members: {
@@ -239,7 +239,7 @@ const translations: any = {
     },
     hero: {
       badge: 'THE SANCTUARY FOR PERFORMANCE',
-      description: 'Designed by Berni Rodríguez and José Manuel Calderón. 1500m2 of FIBA/NBA high performance in Costa del Sol.',
+      description: 'Designed by <b class="font-black">Berni Rodríguez</b> and <b class="font-black">José Manuel Calderón</b>. 1500m2 of FIBA/NBA high performance in Costa del Sol.',
       cta: 'Book Court',
       explore: 'Explore Training Center'
     },
