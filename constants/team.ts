@@ -26,7 +26,7 @@ export const TEAM: TeamMember[] = [
     name: 'Manuel Escobar',
     role: 'CEO',
     description: 'Especialista en gestión deportiva y desarrollo de eventos. Su experiencia en la organización de competiciones de alto nivel garantiza la excelencia en cada proyecto.',
-    imageUrl: 'https://firebasestorage.googleapis.com/v0/b/galeriaoficialapp.firebasestorage.app/o/users%2FI5KZz4BuUEfxcoAvSCAWllkQtwt1%2Fphotos%2F1766961925716_Manuel_Escobar.jpeg?alt=media&token=db9e49a1-7b8b-4ee7-8afd-2dfd0f79391b',
+    imageUrl: 'https://firebasestorage.googleapis.com/v0/b/galeriaoficialapp.firebasestorage.app/o/users%2FI5KZz4BuUEfxcoAvSCAWllkQtwt1%2Fphotos%2F1766961892426_Manuel_Escobar.jpeg?alt=media&token=db9e49a1-7b8b-4ee7-8afd-2dfd0f79391b',
     socials: { 
       instagram: 'https://www.instagram.com/manuelcarlosel/' 
     }
@@ -35,7 +35,7 @@ export const TEAM: TeamMember[] = [
     name: 'Manuel Elena',
     role: 'Gerente de Instalaciones',
     description: 'Intersección entre tecnología y negocio. Desarrollador informático y marketing, gestión de la comunicación y el desarrollo digital, con especial énfasis en el sector de eventos deportivos. Gerente de las instalaciones de THE EMBASSY.',
-    imageUrl: 'https://firebasestorage.googleapis.com/v0/b/galeriaoficialapp.firebasestorage.app/o/users%2FI5KZz4BuUEfxcoAvSCAWllkQtwt1%2Fphotos%2F1766961925716_Manu_-_melenamarketing_400x400.png?alt=media&token=d4b2e8ab-f99d-424a-87a4-ebcaae89ef29',
+    imageUrl: 'https://firebasestorage.googleapis.com/v0/b/galeriaoficialapp.firebasestorage.app/o/users%2FI5KZz4BuUEfxcoAvSCAWllkQtwt1%2Fphotos%2F1766961892425_Manu_-_melenamarketing.png?alt=media&token=d4b2e8ab-f99d-424a-87a4-ebcaae89ef29',
     socials: { 
       instagram: 'https://www.instagram.com/manu.melenamarketing/', 
       twitter: 'https://x.com/Manolo_Ele' 
