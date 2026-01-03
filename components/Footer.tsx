@@ -39,13 +39,13 @@ interface FooterProps {
 
 const Footer: React.FC<FooterProps> = ({ onNavigateLegal, onNavigateClub }) => {
   return (
-    <footer className="bg-black py-24 border-t border-white/5">
+    <footer className="bg-black py-24 border-t border-white/5 relative z-10">
       <div className="max-w-7xl mx-auto px-6 md:px-12">
         
         {/* Main Footer Info */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-16 mb-20 items-start">
           <div className="flex flex-col items-start">
-            <img src={LOGOS.main} alt="THE EMBASSY" className="h-12 w-auto object-contain mb-8" />
+            <img src={LOGOS.main} alt="THE EMBASSY" className="h-12 w-auto object-contain mb-8 brightness-0 invert" />
             <p className="text-white/30 text-[10px] font-black uppercase tracking-[0.3em] leading-loose max-w-xs">
               El santuario del baloncesto profesional en la Costa del Sol. Rendimiento, exclusividad y excelencia técnica.
             </p>
@@ -79,22 +79,24 @@ const Footer: React.FC<FooterProps> = ({ onNavigateLegal, onNavigateClub }) => {
         </div>
 
         {/* Legal & Credits */}
-        <div className="border-t border-white/5 pt-10">
-          <div className="flex flex-col md:flex-row justify-between items-center gap-8">
-            <div className="flex flex-col items-center md:items-start space-y-3">
-              <p className="text-[9px] text-white/20 uppercase tracking-[0.25em] font-black text-center md:text-left">
+        <div className="border-t border-white/5 pt-12">
+          <div className="flex flex-col md:flex-row justify-between items-center gap-10">
+            <div className="flex flex-col items-center md:items-start space-y-4">
+              <p className="text-[9px] text-white/20 uppercase tracking-[0.3em] font-black text-center md:text-left">
                 © {new Date().getFullYear()} THE EMBASSY TRAINING CENTER. ALL RIGHTS RESERVED.
               </p>
               
-              {/* Developer Credit - Forzado a una sola línea con whitespace-nowrap */}
+              {/* Refined Developer Credit */}
               <a 
                 href="https://melenamarketing.com" 
                 target="_blank" 
                 rel="noopener noreferrer" 
-                className="group flex flex-nowrap items-center gap-1 md:gap-2 text-[7px] md:text-[9px] uppercase tracking-[0.2em] md:tracking-[0.4em] font-black transition-all duration-500 whitespace-nowrap"
+                className="melena-signature group flex items-center gap-2 text-[8px] md:text-[10px] uppercase tracking-[0.4em] font-black transition-all duration-500 whitespace-nowrap"
               >
-                <span className="text-white/10">Digital Experience by</span>
-                <span className="text-white/30 group-hover:text-gold transition-colors">Melena Marketing</span>
+                <span className="text-white/10 group-hover:text-white/20 transition-colors">Digital Experience by</span>
+                <span className="split-text text-white/30 group-hover:text-gold transition-all duration-300 relative">
+                  Melena Marketing
+                </span>
               </a>
             </div>
 
