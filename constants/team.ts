@@ -33,7 +33,7 @@ export const TEAM: TeamMember[] = [
   },
   {
     name: 'Manuel Elena',
-    role: 'Gerente de Instalaciones',
+    role: 'Manager & Digital',
     description: 'Intersección entre tecnología y negocio. Desarrollador informático y marketing, gestión de la comunicación y el desarrollo digital, con especial énfasis en el sector de eventos deportivos. Gerente de las instalaciones de THE EMBASSY.',
     imageUrl: 'https://firebasestorage.googleapis.com/v0/b/galeriaoficialapp.firebasestorage.app/o/users%2FI5KZz4BuUEfxcoAvSCAWllkQtwt1%2Fphotos%2F1766961892425_Manu_-_melenamarketing.png?alt=media&token=d4b2e8ab-f99d-424a-87a4-ebcaae89ef29',
     socials: { 
