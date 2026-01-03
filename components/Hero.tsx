@@ -1,3 +1,4 @@
+
 import React, { useState, useEffect } from 'react';
 import { LOGOS } from '../constants.tsx';
 
@@ -47,6 +48,36 @@ const Hero: React.FC<HeroProps> = ({ onExplore }) => {
         </div>
       </div>
 
+      {/* Robust Next Event Widget (FIXED MOBILE OVERFLOW) */}
+      <div className="reveal active absolute inset-x-0 bottom-10 md:inset-x-auto md:bottom-auto md:top-32 md:right-12 z-20 flex justify-center md:block px-6 md:px-0">
+        <a 
+          href="https://avanceglobalcup.com" 
+          target="_blank" 
+          rel="noopener noreferrer"
+          className="group block max-w-[90vw] md:max-w-none"
+        >
+          <div className="flex items-center gap-3 md:gap-5 bg-black/50 backdrop-blur-2xl border border-white/10 p-2 pr-6 md:p-3 md:pr-8 rounded-full transition-all duration-500 hover:bg-black/70 hover:border-gold/50 hover:scale-105 shadow-2xl">
+            <div className="w-12 h-12 md:w-16 md:h-16 flex-shrink-0 flex items-center justify-center bg-white/5 rounded-full p-1.5">
+              <img 
+                src={nextEventLogo} 
+                alt="Avance Global Cup" 
+                className="w-full h-full object-contain" 
+              />
+            </div>
+            
+            <div className="text-left overflow-hidden">
+              <div className="flex items-center gap-2 mb-0.5 whitespace-nowrap">
+                <span className="text-gold text-[8px] md:text-[9px] font-black uppercase tracking-[0.3em] md:tracking-[0.4em]">PRÓXIMO EVENTO</span>
+                <span className="w-1 h-1 md:w-1.5 md:h-1.5 bg-gold rounded-full animate-pulse flex-shrink-0"></span>
+              </div>
+              <p className="text-white text-[10px] md:text-sm font-black uppercase tracking-tighter italic leading-none truncate md:whitespace-normal">
+                AVANCE GLOBAL CUP
+              </p>
+            </div>
+          </div>
+        </a>
+      </div>
+
       {/* BOTTOM GROUP: Description & CTAs */}
       <div className="relative z-10 pb-44 md:pb-32 text-center px-6">
         <p className="reveal active text-base md:text-2xl text-white/80 max-w-4xl mx-auto mb-10 font-light leading-relaxed tracking-wide uppercase">
@@ -74,32 +105,6 @@ const Hero: React.FC<HeroProps> = ({ onExplore }) => {
         <span className="[writing-mode:vertical-lr] text-[10px] uppercase tracking-[0.5em] font-bold">Costa del Sol</span>
         <div className="w-[1px] h-32 bg-white mx-auto"></div>
       </div>
-
-      {/* Discreet Next Event Widget (Right) */}
-      <a 
-        href="https://avanceglobalcup.com" 
-        target="_blank" 
-        rel="noopener noreferrer"
-        className="reveal active absolute right-6 md:right-12 bottom-8 md:bottom-12 z-20 group"
-      >
-        <div className="flex items-center gap-4 md:gap-6 bg-black/40 backdrop-blur-xl border border-white/10 p-2 pr-6 md:p-4 md:pr-12 rounded-full transition-all duration-500 hover:bg-black/60 hover:border-gold/50 hover:scale-105 shadow-2xl">
-          <div className="w-12 h-12 md:w-24 md:h-24 flex-shrink-0 flex items-center justify-center">
-            <img 
-              src={nextEventLogo} 
-              alt="Avance Global Cup" 
-              className="w-full h-full object-contain" 
-            />
-          </div>
-          
-          <div className="text-left">
-            <div className="flex items-center gap-2 mb-0.5 md:mb-1">
-              <span className="text-gold text-[8px] md:text-[10px] font-black uppercase tracking-[0.3em] md:tracking-[0.4em]">PRÓXIMO EVENTO</span>
-              <span className="w-1.5 h-1.5 md:w-2 md:h-2 bg-gold rounded-full animate-pulse"></span>
-            </div>
-            <p className="text-white text-[11px] md:text-xl font-black uppercase tracking-tighter italic leading-none">AVANCE GLOBAL CUP</p>
-          </div>
-        </div>
-      </a>
 
       <style>{`
         @media (max-width: 1024px) {
