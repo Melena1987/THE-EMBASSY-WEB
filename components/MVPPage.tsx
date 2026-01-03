@@ -5,6 +5,7 @@ import { LOGOS } from '../constants';
 const MVPPage: React.FC<{ onBack: () => void }> = ({ onBack }) => {
   const sectionRef = useRef<HTMLDivElement>(null);
   const [isLoaded, setIsLoaded] = useState(false);
+  const [isVideoPlaying, setIsVideoPlaying] = useState(false);
   const videoRef = useRef<HTMLVideoElement>(null);
 
   const assets = {
@@ -12,7 +13,8 @@ const MVPPage: React.FC<{ onBack: () => void }> = ({ onBack }) => {
     secondaryImg: 'https://firebasestorage.googleapis.com/v0/b/galeriaoficialapp.firebasestorage.app/o/users%2FI5KZz4BuUEfxcoAvSCAWllkQtwt1%2Fphotos%2F1767434979651_experiencia_MVP.png?alt=media&token=634c8622-a6c2-4ade-ab87-f1b2611d4dbd',
     video: 'https://firebasestorage.googleapis.com/v0/b/galeriaoficialapp.firebasestorage.app/o/users%2FI5KZz4BuUEfxcoAvSCAWllkQtwt1%2Fphotos%2F1766961925716_15_-_Testimonios_MVP_2025.mp4?alt=media&token=b96cbae8-b2bd-4add-a60c-62bfa5ae0acf',
     academia675Logo: 'https://firebasestorage.googleapis.com/v0/b/galeriaoficialapp.firebasestorage.app/o/users%2FI5KZz4BuUEfxcoAvSCAWllkQtwt1%2Fphotos%2F1766961925716_Captura_de_pantalla_2025-09-07_210933_edited_400x400.png?alt=media&token=78acf2f8-433f-4b85-ad38-2227080e6f2b',
-    andaluciaLogo: 'https://firebasestorage.googleapis.com/v0/b/galeriaoficialapp.firebasestorage.app/o/users%2FI5KZz4BuUEfxcoAvSCAWllkQtwt1%2Fphotos%2F1766961908083_Logo_Andaluc_a___Junta.png?alt=media&token=270b8c03-9c10-4cda-a299-1c0e790c997a'
+    andaluciaLogo: 'https://firebasestorage.googleapis.com/v0/b/galeriaoficialapp.firebasestorage.app/o/users%2FI5KZz4BuUEfxcoAvSCAWllkQtwt1%2Fphotos%2F1766961908083_Logo_Andaluc_a___Junta.png?alt=media&token=270b8c03-9c10-4cda-a299-1c0e790c997a',
+    berniPhoto: 'https://firebasestorage.googleapis.com/v0/b/galeriaoficialapp.firebasestorage.app/o/users%2FI5KZz4BuUEfxcoAvSCAWllkQtwt1%2Fphotos%2F1766961892425_Berni_Rodr_guez_THE_EMBASSY_400x400.jpg?alt=media&token=839e65db-8149-4bf4-89ec-b4e595fa33ba'
   };
 
   useEffect(() => {
@@ -33,8 +35,19 @@ const MVPPage: React.FC<{ onBack: () => void }> = ({ onBack }) => {
     return () => observer.disconnect();
   }, []);
 
+  const handlePlayVideo = () => {
+    if (videoRef.current) {
+      if (isVideoPlaying) {
+        videoRef.current.pause();
+      } else {
+        videoRef.current.play();
+      }
+      setIsVideoPlaying(!isVideoPlaying);
+    }
+  };
+
   return (
-    <div ref={sectionRef} className="bg-black text-white min-h-screen selection:bg-gold overflow-x-hidden">
+    <div ref={sectionRef} className="bg-black text-white min-h-screen selection:bg-gold overflow-x-hidden font-sans">
       
       {/* HERO SECTION - PARALLAX EFFECT */}
       <section className="relative h-screen flex flex-col items-center justify-center overflow-hidden">
@@ -107,10 +120,12 @@ const MVPPage: React.FC<{ onBack: () => void }> = ({ onBack }) => {
               </p>
             </div>
             <div className="mt-12 flex flex-wrap items-center gap-x-12 gap-y-8">
-               <div className="flex items-center gap-6">
-                 <img src={assets.academia675Logo} className="h-16 w-auto brightness-0 invert opacity-50" alt="Academia 675" />
+               <div className="flex items-center gap-6 group">
+                 <div className="relative w-16 h-16 rounded-full overflow-hidden border-2 border-gold/50 transition-all duration-500 group-hover:scale-110 group-hover:border-gold">
+                   <img src={assets.berniPhoto} className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-500" alt="Berni Rodríguez" />
+                 </div>
                  <div className="h-10 w-[1px] bg-white/20"></div>
-                 <p className="text-[10px] font-black uppercase tracking-widest text-white/40">Liderado por <br/> Berni Rodríguez</p>
+                 <p className="text-[10px] font-black uppercase tracking-widest text-white/40">Liderado por <br/> <span className="text-white">Berni Rodríguez</span></p>
                </div>
                <div className="flex items-center gap-6">
                  <img src={assets.andaluciaLogo} className="h-12 w-auto brightness-0 invert opacity-50" alt="Junta de Andalucía" />
@@ -133,14 +148,32 @@ const MVPPage: React.FC<{ onBack: () => void }> = ({ onBack }) => {
             </p>
           </div>
 
-          <div className="reveal relative aspect-video max-w-5xl mx-auto rounded-[3rem] overflow-hidden shadow-[0_50px_100px_-20px_rgba(0,0,0,0.3)] bg-black group cursor-pointer">
+          <div 
+            onClick={handlePlayVideo}
+            className="reveal relative aspect-video max-w-5xl mx-auto rounded-[3rem] overflow-hidden shadow-[0_50px_100px_-20px_rgba(0,0,0,0.3)] bg-black group cursor-pointer"
+          >
             <video 
               ref={videoRef}
               src={assets.video} 
               className="w-full h-full object-cover"
-              controls
+              controls={isVideoPlaying}
               poster={assets.heroBg}
+              onPlay={() => setIsVideoPlaying(true)}
+              onPause={() => setIsVideoPlaying(false)}
             />
+            
+            {!isVideoPlaying && (
+              <div className="absolute inset-0 flex items-center justify-center bg-black/30 group-hover:bg-black/10 transition-all duration-500">
+                <div className="w-24 h-24 bg-gold text-white rounded-full flex items-center justify-center shadow-2xl transform group-hover:scale-110 transition-transform duration-500">
+                  <svg className="w-10 h-10 translate-x-1" fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M8 5v14l11-7z" />
+                  </svg>
+                </div>
+                <div className="absolute bottom-12 left-1/2 -translate-x-1/2">
+                   <span className="text-white text-[10px] font-black uppercase tracking-[0.5em] opacity-80 group-hover:opacity-100 transition-opacity">Haz clic para reproducir</span>
+                </div>
+              </div>
+            )}
           </div>
         </div>
       </section>
