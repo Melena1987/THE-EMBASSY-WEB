@@ -132,8 +132,19 @@ const ContactForm: React.FC<ContactFormProps> = ({ initialSubject }) => {
               </div>
             </div>
 
-            <div className="grid grid-cols-1 gap-10">
-              {/* Subject - Adjusted to take full width after removing email */}
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
+              {/* Email */}
+              <div className="space-y-2">
+                <label className="text-[10px] font-black uppercase tracking-widest text-gray-400">{t('contact', 'form_email')} *</label>
+                <input 
+                  type="email" 
+                  name="email" 
+                  placeholder="email@ejemplo.com"
+                  className="w-full bg-transparent border-b-2 border-gray-200 focus:border-gold outline-none py-3 font-bold transition-all placeholder:text-gray-300" 
+                  required 
+                />
+              </div>
+              {/* Subject */}
               <div className="space-y-2">
                 <label className="text-[10px] font-black uppercase tracking-widest text-gray-400">{t('contact', 'form_subject')}</label>
                 <div className="relative">
