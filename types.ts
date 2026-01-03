@@ -36,9 +36,10 @@ export interface Partner {
 export interface EmbassyEvent {
   id: string;
   title: string;
+  category?: string;
   date: string;
   description: string;
   imageUrl: string;
   link: string;
-  status: 'upcoming' | 'past';
+  status: 'upcoming' | 'past' | 'private';
 }
