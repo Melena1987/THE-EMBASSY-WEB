@@ -35,10 +35,10 @@ export const EVENTS: EmbassyEvent[] = [
   {
     id: 'ciba-basketball',
     title: 'CIBA BASKETBALL',
-    category: 'CITY EVENT',
+    category: 'ANUALMENTE',
     date: 'Evento Fuengirola',
     description: 'La gran fiesta del baloncesto en Fuengirola: más de 500 jugadores, torneos 3x3 y la entrega de los prestigiosos Premios Huella.',
-    imageUrl: 'https://firebasestorage.googleapis.com/v0/b/galeriaoficialapp.firebasestorage.app/o/users%2FI5KZz4BuUEfxcoAvSCAWllkQtwt1%2Fphotos%2F1761950147664_TheEmbassyTC-imagen_031.jpg?alt=media&token=1484f778-a8dd-4cff-9e23-780295ae2092',
+    imageUrl: 'https://firebasestorage.googleapis.com/v0/b/galeriaoficialapp.firebasestorage.app/o/users%2FI5KZz4BuUEfxcoAvSCAWllkQtwt1%2Fphotos%2F1766961925716_CIBA_forum_400x400.jpeg?alt=media&token=4fd454d0-0c52-4d38-8bbc-baa152c653af',
     link: '/ciba-basketball',
     status: 'past'
   }
