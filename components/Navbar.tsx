@@ -117,7 +117,7 @@ const Navbar: React.FC<NavbarProps> = ({
             </div>
           </div>
 
-          {/* Dropdown Servicios */}
+          {/* Dropdown Servicios (Actualizado para coincidir con el diseño visual solicitado) */}
           <div className="relative group py-2">
             <button 
               className="text-[11px] font-bold transition-colors tracking-[0.25em] uppercase text-white/70 hover:text-gold flex items-center gap-2"
@@ -125,17 +125,19 @@ const Navbar: React.FC<NavbarProps> = ({
               Servicios
               <svg className="w-3 h-3 transition-transform group-hover:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M19 9l-7 7-7-7" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"/></svg>
             </button>
-            <div className="absolute top-full left-0 mt-2 w-80 bg-black/95 backdrop-blur-2xl border border-white/10 rounded-2xl p-4 opacity-0 invisible translate-y-2 group-hover:opacity-100 group-hover:visible group-hover:translate-y-0 transition-all duration-300 shadow-2xl z-50">
-              <div className="grid grid-cols-1 gap-1">
+            <div className="absolute top-full left-0 mt-2 w-72 bg-black/95 backdrop-blur-2xl border border-white/10 rounded-2xl p-4 opacity-0 invisible translate-y-2 group-hover:opacity-100 group-hover:visible group-hover:translate-y-0 transition-all duration-300 shadow-2xl z-50">
+              <div className="space-y-1">
                 {SERVICES.map((service, idx) => (
                   <a 
                     key={idx}
                     href={service.path || service.externalLink || '#'}
                     onClick={(e) => handleLinkClick(e, service)}
-                    className="flex items-center gap-4 p-3 rounded-xl hover:bg-white/5 transition-colors group/item text-left"
+                    className="block p-3 rounded-xl hover:bg-white/5 transition-colors group/item"
                   >
-                    <span className="text-xl shrink-0 group-hover/item:scale-110 transition-transform">{service.icon}</span>
-                    <span className="text-xs font-black uppercase text-white group-hover/item:text-gold transition-colors leading-tight">
+                    <span className="text-[9px] font-black text-gold uppercase tracking-[0.2em] block mb-1">
+                      {service.buttonLabel ? service.buttonLabel : "SERVICIO PREMIUM"}
+                    </span>
+                    <span className="text-xs font-black uppercase text-white group-hover/item:text-gold transition-colors">
                       {service.title}
                     </span>
                   </a>
