@@ -19,6 +19,7 @@ type ViewType = 'home' | 'legal' | 'club' | 'events' | 'skillcamp' | 'mvp' | 'ci
 
 function App() {
   const [view, setView] = useState<ViewType>('home');
+  const [preselectedSubject, setPreselectedSubject] = useState<string>('Training Individual');
 
   const scrollToSection = useCallback((hash: string) => {
     if (!hash) return;
@@ -94,7 +95,12 @@ function App() {
   const navigateToClub = () => navigateTo('/club');
   const navigateToEvents = () => navigateTo('/eventos');
   const navigateToHome = () => navigateTo('/');
-  const navigateToTeamBuilding = () => navigateTo('/team-building');
+  
+  const handleContactNavigation = (subject: string) => {
+    setPreselectedSubject(subject);
+    navigateToHome();
+    scrollToSection('#contacto');
+  };
 
   const renderView = () => {
     switch (view) {
@@ -113,9 +119,13 @@ function App() {
       case 'sanctuary':
         return <TheSanctuaryPage onBack={navigateToEvents} />;
       case 'teambuilding':
-        return <TeamBuildingPage onBack={navigateToHome} />;
+        return <TeamBuildingPage onBack={navigateToHome} onContact={() => handleContactNavigation('Team Building')} />;
       default:
-        return <HomePage scrollToSection={scrollToSection} navigateToClub={navigateToClub} />;
+        return <HomePage 
+          scrollToSection={scrollToSection} 
+          navigateToClub={navigateToClub} 
+          preselectedSubject={preselectedSubject}
+        />;
     }
   };
 

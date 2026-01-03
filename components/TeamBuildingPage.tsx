@@ -2,7 +2,7 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { LOGOS } from '../constants';
 
-const TeamBuildingPage: React.FC<{ onBack: () => void }> = ({ onBack }) => {
+const TeamBuildingPage: React.FC<{ onBack: () => void, onContact?: () => void }> = ({ onBack, onContact }) => {
   const sectionRef = useRef<HTMLDivElement>(null);
   const [isLoaded, setIsLoaded] = useState(false);
 
@@ -36,10 +36,16 @@ const TeamBuildingPage: React.FC<{ onBack: () => void }> = ({ onBack }) => {
     { time: '14:00', title: '"La prórroga" y cierre', desc: 'Conclusiones finales y tentempié para todos los participantes.' }
   ];
 
+  const teamImages = {
+    group: 'https://firebasestorage.googleapis.com/v0/b/galeriaoficialapp.firebasestorage.app/o/users%2FI5KZz4BuUEfxcoAvSCAWllkQtwt1%2Fphotos%2F1767437310784_PHOTO-2025-01-29-10-56-38_2.jpg?alt=media&token=fe971921-3f10-4d72-bfd8-7d49e7f1f75a',
+    action1: 'https://firebasestorage.googleapis.com/v0/b/galeriaoficialapp.firebasestorage.app/o/users%2FI5KZz4BuUEfxcoAvSCAWllkQtwt1%2Fphotos%2F1767437310784_PHOTO-2025-01-29-10-56-38_10.jpg?alt=media&token=92c21ea3-0c6d-41a3-bdae-08242847e822',
+    action2: 'https://firebasestorage.googleapis.com/v0/b/galeriaoficialapp.firebasestorage.app/o/users%2FI5KZz4BuUEfxcoAvSCAWllkQtwt1%2Fphotos%2F1767437310784_PHOTO-2025-01-29-10-56-38_4.jpg?alt=media&token=b85bfc20-b7ea-4cd2-b767-ad59e825a363'
+  };
+
   return (
     <div ref={sectionRef} className="bg-black text-white min-h-screen selection:bg-gold overflow-x-hidden font-sans">
       
-      {/* HERO SECTION */}
+      {/* HERO SECTION - NO TOCADO */}
       <section className="relative h-[85svh] flex flex-col items-center justify-center overflow-hidden">
         <div className="absolute inset-0 z-0">
           <img 
@@ -71,7 +77,7 @@ const TeamBuildingPage: React.FC<{ onBack: () => void }> = ({ onBack }) => {
         </div>
       </section>
 
-      {/* QUIÉNES SOMOS */}
+      {/* QUIÉNES SOMOS - FOTO ACTUALIZADA */}
       <section className="py-32 bg-white text-black px-6 md:px-12">
         <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-24 items-center">
           <div className="reveal">
@@ -96,12 +102,8 @@ const TeamBuildingPage: React.FC<{ onBack: () => void }> = ({ onBack }) => {
             </div>
           </div>
           <div className="reveal relative aspect-video rounded-[3rem] overflow-hidden shadow-2xl bg-black">
-             <img src="https://firebasestorage.googleapis.com/v0/b/galeriaoficialapp.firebasestorage.app/o/users%2FI5KZz4BuUEfxcoAvSCAWllkQtwt1%2Fphotos%2F1761950147664_TheEmbassyTC-imagen_050.jpg?alt=media&token=91bbf74f-6cad-4f7c-9bfb-8c020278973a" className="w-full h-full object-cover opacity-80" alt="Team Building Practice" />
-             <div className="absolute inset-0 flex items-center justify-center">
-                <div className="w-20 h-20 bg-gold rounded-full flex items-center justify-center text-white shadow-xl animate-pulse">
-                   <svg className="w-8 h-8 translate-x-1" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
-                </div>
-             </div>
+             <img src={teamImages.group} className="w-full h-full object-cover opacity-90 group-hover:scale-105 transition-transform duration-1000" alt="Team Building Interaction" />
+             <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent"></div>
           </div>
         </div>
       </section>
@@ -155,6 +157,28 @@ const TeamBuildingPage: React.FC<{ onBack: () => void }> = ({ onBack }) => {
                 <p className="text-gray-400 text-xs font-bold uppercase tracking-widest leading-relaxed">{obj.desc}</p>
               </div>
             ))}
+          </div>
+        </div>
+      </section>
+
+      {/* METODOLOGÍA EN ACCIÓN - NUEVAS FOTOS */}
+      <section className="py-24 bg-[#050505] overflow-hidden">
+        <div className="max-w-7xl mx-auto px-6 md:px-12">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
+             <div className="reveal aspect-[4/5] rounded-[3rem] overflow-hidden relative group">
+                <img src={teamImages.action1} className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-[1.5s]" alt="Team Building Action 1" />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent"></div>
+                <div className="absolute bottom-10 left-10">
+                   <p className="text-white text-xs font-black uppercase tracking-[0.3em]">Coordinación y Foco</p>
+                </div>
+             </div>
+             <div className="reveal aspect-[4/5] rounded-[3rem] overflow-hidden relative group mt-12 lg:mt-24">
+                <img src={teamImages.action2} className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-[1.5s]" alt="Team Building Action 2" />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent"></div>
+                <div className="absolute bottom-10 left-10">
+                   <p className="text-white text-xs font-black uppercase tracking-[0.3em]">Liderazgo Compartido</p>
+                </div>
+             </div>
           </div>
         </div>
       </section>
@@ -265,7 +289,7 @@ const TeamBuildingPage: React.FC<{ onBack: () => void }> = ({ onBack }) => {
              { val: '100%', label: 'PERSONALIZACIÓN', desc: 'Adaptamos cada aspecto' }
            ].map((stat, i) => (
              <div key={i} className="reveal group">
-                <span className="text-6xl font-black italic tracking-tighter text-gold group-hover:text-black transition-colors">{stat.val}</span>
+                <span className="text-6xl font-black italic tracking-tighter text-gold group-hover:text-gold/80 transition-colors">{stat.val}</span>
                 <h4 className="text-[10px] font-black uppercase tracking-widest mt-4 mb-2">{stat.label}</h4>
                 <p className="text-[9px] text-gray-400 uppercase tracking-widest">{stat.desc}</p>
              </div>
@@ -273,24 +297,28 @@ const TeamBuildingPage: React.FC<{ onBack: () => void }> = ({ onBack }) => {
         </div>
       </section>
 
-      {/* FINAL CTA */}
+      {/* FINAL CTA - ACTUALIZADO CON ACCIÓN DE CONTACTO Y DATOS CLIQUEABLES */}
       <section className="py-32 bg-gold text-white text-center">
         <div className="max-w-4xl mx-auto px-6 reveal">
           <span className="text-black text-[10px] font-black tracking-[0.5em] uppercase mb-8 block">Ready for the challenge?</span>
           <h2 className="text-4xl md:text-8xl font-black uppercase italic tracking-tighter mb-12 leading-none">VIVE EL TEAM <br/> BUILDING DE <br/> CAMPEONES</h2>
-          <a href="#contacto" className="inline-flex items-center gap-6 bg-black text-white px-16 py-8 rounded-full text-sm font-black uppercase tracking-[0.4em] hover:bg-white hover:text-black transition-all shadow-2xl">
+          <button 
+            onClick={() => onContact ? onContact() : (window.location.href = '#contacto')}
+            className="inline-flex items-center gap-6 bg-black text-white px-16 py-8 rounded-full text-sm font-black uppercase tracking-[0.4em] hover:bg-white hover:text-black transition-all shadow-2xl"
+          >
             SOLICITAR PRESUPUESTO
             <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M17 8l4 4m0 0l-4 4m4-4H3" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/></svg>
-          </a>
-          <div className="mt-16 flex flex-wrap justify-center gap-10 opacity-60 text-black">
-             <div className="flex flex-col">
-                <span className="text-[10px] font-black uppercase tracking-widest">Email</span>
-                <span className="text-lg font-black italic">info@theembassytc.com</span>
-             </div>
-             <div className="flex flex-col">
-                <span className="text-[10px] font-black uppercase tracking-widest">Teléfono</span>
+          </button>
+          
+          <div className="mt-16 flex flex-wrap justify-center gap-10 text-black">
+             <a href="mailto:comunicacion@theembassytc.com" className="flex flex-col hover:text-white transition-colors group">
+                <span className="text-[10px] font-black uppercase tracking-widest opacity-60 group-hover:opacity-100">Email</span>
+                <span className="text-lg font-black italic">comunicacion@theembassytc.com</span>
+             </a>
+             <a href="tel:+34640232212" className="flex flex-col hover:text-white transition-colors group">
+                <span className="text-[10px] font-black uppercase tracking-widest opacity-60 group-hover:opacity-100">Teléfono</span>
                 <span className="text-lg font-black italic">+34 640 232 212</span>
-             </div>
+             </a>
           </div>
         </div>
       </section>

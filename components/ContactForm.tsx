@@ -1,12 +1,23 @@
 
-import React, { useRef, useState } from 'react';
+import React, { useRef, useState, useEffect } from 'react';
 import emailjs from '@emailjs/browser';
 
-const ContactForm: React.FC = () => {
+interface ContactFormProps {
+  initialSubject?: string;
+}
+
+const ContactForm: React.FC<ContactFormProps> = ({ initialSubject }) => {
   const form = useRef<HTMLFormElement>(null);
   const [isSending, setIsSending] = useState(false);
   const [isSent, setIsSent] = useState(false);
   const [statusMessage, setStatusMessage] = useState<string | null>(null);
+  const [subject, setSubject] = useState('Training Individual');
+
+  useEffect(() => {
+    if (initialSubject) {
+      setSubject(initialSubject);
+    }
+  }, [initialSubject]);
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -15,7 +26,6 @@ const ContactForm: React.FC = () => {
       setIsSending(true);
       setStatusMessage(null);
 
-      // Usamos variables de entorno para las credenciales de EmailJS
       emailjs.sendForm(
         (import.meta as any).env.VITE_EMAILJS_SERVICE_ID,
         (import.meta as any).env.VITE_EMAILJS_TEMPLATE_ID,
@@ -90,6 +100,8 @@ const ContactForm: React.FC = () => {
                 <label className="text-[10px] font-black uppercase tracking-widest text-gray-400">Asunto / Servicio</label>
                 <select 
                   name="subject"
+                  value={subject}
+                  onChange={(e) => setSubject(e.target.value)}
                   className="w-full bg-transparent border-b-2 border-gray-200 focus:border-gold outline-none py-3 transition-all font-bold"
                 >
                   <option value="Training Individual">Training Individual</option>

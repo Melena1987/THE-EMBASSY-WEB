@@ -14,9 +14,10 @@ import ContactForm from '../components/ContactForm.tsx';
 interface HomePageProps {
   scrollToSection: (hash: string) => void;
   navigateToClub: () => void;
+  preselectedSubject?: string;
 }
 
-const HomePage: React.FC<HomePageProps> = ({ scrollToSection, navigateToClub }) => {
+const HomePage: React.FC<HomePageProps> = ({ scrollToSection, navigateToClub, preselectedSubject }) => {
   useEffect(() => {
     const handleScroll = () => {
       const reveals = document.querySelectorAll('.reveal');
@@ -45,7 +46,7 @@ const HomePage: React.FC<HomePageProps> = ({ scrollToSection, navigateToClub }) 
       <StarsSection />
       <Partners onSponsorshipClick={navigateToClub} />
       <SocialImpact />
-      <ContactForm />
+      <ContactForm initialSubject={preselectedSubject} />
     </main>
   );
 };
