@@ -14,8 +14,9 @@ import MVPPage from './components/MVPPage.tsx';
 import CIBAPage from './components/CIBAPage.tsx';
 import TheSanctuaryPage from './components/TheSanctuaryPage.tsx';
 import TeamBuildingPage from './components/TeamBuildingPage.tsx';
+import PerformanceLabPage from './components/PerformanceLabPage.tsx';
 
-type ViewType = 'home' | 'legal' | 'club' | 'events' | 'skillcamp' | 'mvp' | 'ciba' | 'sanctuary' | 'teambuilding';
+type ViewType = 'home' | 'legal' | 'club' | 'events' | 'skillcamp' | 'mvp' | 'ciba' | 'sanctuary' | 'teambuilding' | 'performance-lab';
 
 function App() {
   const [view, setView] = useState<ViewType>('home');
@@ -70,6 +71,9 @@ function App() {
     } else if (path === '/team-building') {
       setView('teambuilding');
       window.scrollTo(0, 0);
+    } else if (path === '/performance-lab') {
+      setView('performance-lab');
+      window.scrollTo(0, 0);
     } else {
       setView('home');
       if (hash) {
@@ -120,6 +124,8 @@ function App() {
         return <TheSanctuaryPage onBack={navigateToEvents} />;
       case 'teambuilding':
         return <TeamBuildingPage onBack={navigateToHome} onContact={() => handleContactNavigation('Team Building')} />;
+      case 'performance-lab':
+        return <PerformanceLabPage onBack={navigateToHome} />;
       default:
         return <HomePage 
           scrollToSection={scrollToSection} 

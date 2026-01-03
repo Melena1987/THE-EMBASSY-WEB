@@ -4,8 +4,10 @@ import { Service } from '../types';
 export const SERVICES: Service[] = [
   { 
     title: 'Instalaciones', 
-    description: '2 canchas FIBA/NBA, sala fisioterapia equipada, vestuarios premium y sala audiovisual para scouting.', 
-    icon: '🏟️' 
+    description: '2 CANCHAS FIBA/NBA, SALA FISIOTERAPIA EQUIPADA, VESTUARIOS PREMIUM Y SALA AUDIOVISUAL PARA SCOUTING.', 
+    icon: '🏟️',
+    path: '#instalaciones',
+    buttonLabel: 'Ver Instalaciones'
   },
   { 
     title: 'Transporte & Seguridad', 
@@ -14,8 +16,10 @@ export const SERVICES: Service[] = [
   },
   { 
     title: 'Formación Técnica', 
-    description: 'Staff especializado y formación premium para todos los niveles, desde base hasta profesional.', 
-    icon: '🏀' 
+    description: 'STAFF ESPECIALIZADO Y FORMACIÓN PREMIUM PARA TODOS LOS NIVELES, DESDE BASE HASTA PROFESIONAL.', 
+    icon: '🏀',
+    path: '#contacto',
+    buttonLabel: 'Reservar Entrenamiento'
   },
   { 
     title: 'Experiencias VIP', 
@@ -24,17 +28,22 @@ export const SERVICES: Service[] = [
   },
   { 
     title: 'Alojamiento & VIP', 
-    description: 'Alojamientos estándar y VIP con acceso a servicios de restauración, ocio y bienestar.', 
-    icon: '🏨' 
+    description: 'ALOJAMIENTOS ESTÁNDAR Y VIP CON ACCESO A SERVICIOS DE RESTAURACIÓN, OCIO Y BIENESTAR.', 
+    icon: '🏨',
+    externalLink: 'https://higueronresort.com/en/hotel/',
+    buttonLabel: 'Visitar Hotel'
   },
   { 
     title: 'Eventos Corporativos', 
     description: 'Masterclasses, Team Building, charlas de estrellas y eventos deportivos de alto nivel.', 
-    icon: '🤝' 
+    icon: '🤝',
+    path: '/team-building'
   },
   { 
     title: 'Salud y Fisioterapia', 
-    description: 'Servicio de urgencias preferente en Hospital Quirónsalud y servicio de fisioterapia de élite.', 
-    icon: '🏥' 
+    description: 'SERVICIO DE URGENCIAS PREFERENTE EN HOSPITAL QUIRÓNSALUD Y SERVICIO DE FISIOTERAPIA DE ÉLITE.', 
+    icon: '🏥',
+    path: '/performance-lab',
+    buttonLabel: 'Performance Lab'
   }
 ];

@@ -3,6 +3,9 @@ export interface Service {
   title: string;
   description: string;
   icon: string;
+  path?: string;
+  externalLink?: string;
+  buttonLabel?: string;
 }
 
 export interface TeamMember {
