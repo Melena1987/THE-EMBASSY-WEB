@@ -48,7 +48,7 @@ const Hero: React.FC<HeroProps> = ({ onExplore }) => {
         </div>
       </div>
 
-      {/* Robust Next Event Widget (FIXED MOBILE OVERFLOW) */}
+      {/* Robust Next Event Widget with Moving Gold Border */}
       <div className="reveal active absolute inset-x-0 bottom-10 md:inset-x-auto md:bottom-auto md:top-32 md:right-12 z-20 flex justify-center md:block px-6 md:px-0">
         <a 
           href="https://avanceglobalcup.com" 
@@ -56,7 +56,7 @@ const Hero: React.FC<HeroProps> = ({ onExplore }) => {
           rel="noopener noreferrer"
           className="group block max-w-[90vw] md:max-w-none"
         >
-          <div className="flex items-center gap-3 md:gap-5 bg-black/50 backdrop-blur-2xl border border-white/10 p-2 pr-6 md:p-3 md:pr-8 rounded-full transition-all duration-500 hover:bg-black/70 hover:border-gold/50 hover:scale-105 shadow-2xl">
+          <div className="moving-gold-border flex items-center gap-3 md:gap-5 bg-black/60 backdrop-blur-2xl p-2 pr-6 md:p-3 md:pr-8 rounded-full transition-all duration-500 hover:bg-black/80 hover:scale-105 shadow-2xl">
             <div className="w-12 h-12 md:w-16 md:h-16 flex-shrink-0 flex items-center justify-center bg-white/5 rounded-full p-1.5">
               <img 
                 src={nextEventLogo} 

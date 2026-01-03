@@ -60,6 +60,33 @@
     .snap-center {
       scroll-snap-align: center;
     }
+
+    /* EFECTO MOVING GOLD BORDER */
+    .moving-gold-border {
+      position: relative;
+    }
+    
+    .moving-gold-border::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      border-radius: inherit;
+      padding: 1.5px; /* Grosor del borde */
+      background: linear-gradient(90deg, transparent, #D48C00, transparent, #D48C00, transparent);
+      background-size: 200% 100%;
+      -webkit-mask: 
+        linear-gradient(#fff 0 0) content-box, 
+        linear-gradient(#fff 0 0);
+      -webkit-mask-composite: xor;
+      mask-composite: exclude;
+      pointer-events: none;
+      animation: gold-beam-move 4s linear infinite;
+    }
+
+    @keyframes gold-beam-move {
+      from { background-position: 200% 0; }
+      to { background-position: 0 0; }
+    }
   </style>
   <script type="importmap">
 {
