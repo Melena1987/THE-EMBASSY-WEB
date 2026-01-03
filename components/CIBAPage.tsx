@@ -4,6 +4,7 @@ import React, { useEffect, useRef, useState } from 'react';
 const CIBAPage: React.FC<{ onBack: () => void }> = ({ onBack }) => {
   const sectionRef = useRef<HTMLDivElement>(null);
   const [isVideoPlaying, setIsVideoPlaying] = useState(false);
+  const [isLoaded, setIsLoaded] = useState(false);
   const videoRef = useRef<HTMLVideoElement>(null);
 
   const assets = {
@@ -15,6 +16,12 @@ const CIBAPage: React.FC<{ onBack: () => void }> = ({ onBack }) => {
 
   useEffect(() => {
     window.scrollTo(0, 0);
+
+    // Preload hero image
+    const img = new Image();
+    img.src = assets.hero;
+    img.onload = () => setIsLoaded(true);
+
     const observer = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
         if (entry.isIntersecting) entry.target.classList.add('active');
@@ -40,16 +47,29 @@ const CIBAPage: React.FC<{ onBack: () => void }> = ({ onBack }) => {
   return (
     <div ref={sectionRef} className="bg-black text-white min-h-screen font-sans selection:bg-gold overflow-x-hidden">
       
-      {/* HERO SECTION */}
+      {/* HERO SECTION - FIXED PARALLAX EFFECT */}
       <section className="relative h-[100svh] flex flex-col items-center justify-center overflow-hidden">
-        <div className="absolute inset-0 z-0">
-          <img 
-            src={assets.hero} 
-            className="w-full h-full object-cover brightness-50"
-            alt="CIBA Forum Hero"
-          />
+        {/* Fixed Background Layer */}
+        <div 
+          className={`absolute inset-0 z-0 transition-opacity duration-1000 ease-in-out ${isLoaded ? 'opacity-100' : 'opacity-0'}`}
+          style={{ 
+            backgroundImage: `url(${assets.hero})`,
+            backgroundPosition: 'center',
+            backgroundSize: 'cover',
+            backgroundAttachment: 'fixed', 
+          }}
+        >
+          {/* Elite Overlays */}
+          <div className="absolute inset-0 bg-black/60 mix-blend-multiply"></div>
           <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-transparent to-black"></div>
+          {/* Subtle noise/dust effect */}
+          <div className="absolute inset-0 opacity-[0.03] pointer-events-none bg-[url('https://grainy-gradients.vercel.app/noise.svg')]"></div>
         </div>
+
+        {/* Skeleton while loading */}
+        {!isLoaded && (
+          <div className="absolute inset-0 bg-neutral-900 z-0 animate-pulse"></div>
+        )}
 
         <div className="relative z-10 text-center px-6">
           <button 
@@ -216,35 +236,36 @@ const CIBAPage: React.FC<{ onBack: () => void }> = ({ onBack }) => {
         </div>
       </section>
 
-      {/* OBJECTIVE */}
-      <section className="py-32 bg-white text-black">
-        <div className="max-w-5xl mx-auto px-6 md:px-12 text-center">
-          <div className="reveal">
+      {/* OBJECTIVE & POSTER INTEGRATED */}
+      <section className="py-32 bg-white text-black overflow-hidden">
+        <div className="max-w-7xl mx-auto px-6 md:px-12 grid grid-cols-1 lg:grid-cols-5 gap-20 items-center">
+          
+          <div className="lg:col-span-3 reveal">
             <span className="text-gold text-xs font-black tracking-[0.5em] uppercase mb-8 block italic">Our Mission</span>
             <h2 className="text-4xl md:text-7xl font-black uppercase italic tracking-tighter mb-10 leading-none">NUESTRO <br/> <span className="text-gold">OBJETIVO</span></h2>
-            <p className="text-2xl md:text-4xl font-light uppercase tracking-tighter leading-relaxed text-gray-500 italic">
+            <p className="text-xl md:text-3xl font-light uppercase tracking-tighter leading-relaxed text-gray-500 italic mb-12">
               PROMOVER EL BALONCESTO COMO VEHÍCULO DE <span className="text-black font-black">INTEGRACIÓN, EDUCACIÓN, SALUD E INNOVACIÓN</span> PARA TODA LA FAMILIA.
             </p>
+            <div className="flex items-center gap-6 opacity-30">
+               <div className="h-[1px] w-20 bg-black"></div>
+               <span className="text-[10px] font-black uppercase tracking-[0.4em]">Official Vision 2025</span>
+            </div>
           </div>
-        </div>
-      </section>
 
-      {/* THE POSTER - FULL VIEW */}
-      <section className="py-32 bg-black">
-        <div className="max-w-7xl mx-auto px-6 md:px-12 text-center">
-          <div className="reveal mb-16">
-            <span className="text-gold text-[10px] font-black tracking-[0.5em] uppercase mb-6 block italic">Official Poster</span>
-            <h2 className="text-3xl md:text-6xl font-black uppercase italic tracking-tighter mb-4">CARTEL CIBA 2025</h2>
+          <div className="lg:col-span-2 reveal flex justify-center lg:justify-end">
+            <div className="relative group max-w-[320px] md:max-w-[400px]">
+              <div className="absolute -inset-4 bg-gold/10 blur-3xl rounded-[3rem] -z-10 opacity-0 group-hover:opacity-100 transition-opacity"></div>
+              <img 
+                src={assets.poster} 
+                alt="CIBA Cartel 2025" 
+                className="w-full h-auto rounded-[2rem] shadow-[0_30px_60px_rgba(0,0,0,0.15)] border border-black/5 transition-transform duration-700 group-hover:scale-[1.02]"
+              />
+              <div className="absolute top-4 left-4 bg-white/90 backdrop-blur-sm px-4 py-1.5 rounded-full border border-black/5">
+                <span className="text-[9px] font-black uppercase tracking-widest">Official Poster</span>
+              </div>
+            </div>
           </div>
           
-          <div className="reveal relative inline-block group">
-            <div className="absolute -inset-4 bg-gold/10 blur-3xl rounded-[3rem] -z-10 opacity-0 group-hover:opacity-100 transition-opacity"></div>
-            <img 
-              src={assets.poster} 
-              alt="CIBA Cartel 2025" 
-              className="max-w-full h-auto rounded-[2rem] shadow-[0_50px_100px_rgba(0,0,0,0.5)] border border-white/5"
-            />
-          </div>
         </div>
       </section>
 
@@ -290,6 +311,11 @@ const CIBAPage: React.FC<{ onBack: () => void }> = ({ onBack }) => {
       <style>{`
         .shadow-3xl {
           box-shadow: 0 50px 100px -20px rgba(0,0,0,0.7);
+        }
+        @media (max-width: 1024px) {
+          .z-0 {
+            background-attachment: scroll !important;
+          }
         }
       `}</style>
     </div>
