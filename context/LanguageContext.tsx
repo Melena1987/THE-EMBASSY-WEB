@@ -71,10 +71,10 @@ const translations: any = {
       nextEvent: 'PRÓXIMO EVENTO'
     },
     hero: {
-      badge: 'EL SANTUARIO DEL RENDIMIENTO',
-      description: 'Diseñado por Berni Rodríguez y José Manuel Calderón. 1500m2 de alto rendimiento FIBA/NBA en la Costa del Sol.',
-      cta: 'Reservar Pista',
-      explore: 'Explora el Training Center'
+      badge: 'THE SANCTUARY FOR PERFORMANCE',
+      description: 'Designed by Berni Rodríguez and José Manuel Calderón. 1500m2 of FIBA/NBA high performance in Costa del Sol.',
+      cta: 'Book Court',
+      explore: 'Explore Training Center'
     },
     vision: {
       subtitle: 'Filosofía de Élite',
