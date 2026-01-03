@@ -30,16 +30,7 @@ const Services: React.FC = () => {
     }
   };
 
-  const scrollToIndex = (index: number) => {
-    if (scrollContainerRef.current) {
-      const cardWidth = scrollContainerRef.current.children[0].clientWidth + 16;
-      scrollContainerRef.current.scrollTo({ left: index * cardWidth, behavior: 'smooth' });
-    }
-  };
-
   const getTranslatedService = (service: any) => {
-    // Note: In a production app, descriptions would also be in the dictionary
-    // For now we translate labels and headers
     let btnLabel = service.buttonLabel;
     if (btnLabel === 'VER INSTALACIONES') btnLabel = t('services', 'detailsBtn');
     if (btnLabel === 'SERVICIO PREMIUM') btnLabel = t('services', 'premiumBtn');
@@ -47,7 +38,12 @@ const Services: React.FC = () => {
     if (btnLabel === 'VISITAR HOTEL') btnLabel = t('services', 'hotelBtn');
     if (btnLabel === 'PERFORMANCE LAB') btnLabel = t('services', 'performanceBtn');
 
-    return { ...service, buttonLabel: btnLabel };
+    return { 
+      ...service, 
+      buttonLabel: btnLabel,
+      title: t('services_items', service.title),
+      description: t('services_items', service.title + '_desc')
+    };
   };
 
   return (

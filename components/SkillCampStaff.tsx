@@ -1,31 +1,33 @@
 
 import React, { useRef, useState } from 'react';
+import { useLanguage } from '../context/LanguageContext.tsx';
 
 const SkillCampStaff: React.FC = () => {
   const scrollContainerRef = useRef<HTMLDivElement>(null);
   const [activeIndex, setActiveIndex] = useState(0);
+  const { t } = useLanguage();
 
   const staff = [
     {
       name: "Alfonso Sánchez",
-      role: "Director y Entrenador",
+      role: t('skillcamp', 'roleDirector'),
       image: "https://firebasestorage.googleapis.com/v0/b/galeriaoficialapp.firebasestorage.app/o/users%2FI5KZz4BuUEfxcoAvSCAWllkQtwt1%2Fphotos%2F1766962810087_aaron_gordon.jpeg?alt=media&token=c7cd97ad-7a4c-40c7-b9b1-33c22bc3a234",
-      caption: "Aaron Gordon (Denver Nuggets) entrenando con Alfonso Sánchez.",
-      desc: "Exjugador de baloncesto profesional. Entrenador de desarrollo en The Embassy y Director de técnica individual en Academia 675."
+      caption: "Aaron Gordon (Denver Nuggets) training with Alfonso Sánchez.",
+      desc: "Former pro player. Performance development coach at The Embassy."
     },
     {
       name: "Fran Vázquez",
-      role: "Entrenador",
+      role: t('skillcamp', 'roleCoach'),
       image: "https://firebasestorage.googleapis.com/v0/b/galeriaoficialapp.firebasestorage.app/o/users%2FI5KZz4BuUEfxcoAvSCAWllkQtwt1%2Fphotos%2F1766962810087_d8dd6927-be46-44d9-a484-a812471d0aec.jpg?alt=media&token=556284d8-55cf-41d2-80ab-23a8b5127d46",
-      caption: "Fran Vázquez con Alberto Díaz (Selección Española).",
-      desc: "Máximo taponador histórico ACB y campeón de Euroliga. Especialista en desarrollo de jugadores interiores."
+      caption: "Fran Vázquez with Alberto Díaz (Spanish National Team).",
+      desc: "ACB's all-time leading blocker and EuroLeague champion."
     },
     {
       name: "Adam Waczynski",
-      role: "Entrenador",
+      role: t('skillcamp', 'roleCoach'),
       image: "https://firebasestorage.googleapis.com/v0/b/galeriaoficialapp.firebasestorage.app/o/users%2FI5KZz4BuUEfxcoAvSCAWllkQtwt1%2Fphotos%2F1766961925716_adam.jpg?alt=media&token=899fec3a-90cf-413c-9865-dbdef355232b",
-      caption: "Adam Waczynski en su campus en Polonia.",
-      desc: "Exjugador profesional 5x5, integrante de The Embassy 3x3. Shooting Skill Coach de élite."
+      caption: "Adam Waczynski at his camp in Poland.",
+      desc: "Pro player and 3x3 Embassy member. Elite shooting coach."
     }
   ];
 
@@ -54,10 +56,10 @@ const SkillCampStaff: React.FC = () => {
         <div className="flex flex-col md:flex-row justify-between items-end mb-24 gap-8">
           <div className="reveal">
             <span className="text-gold text-[10px] font-black tracking-[0.5em] uppercase mb-4 block italic">Top Level Coaching</span>
-            <h2 className="text-5xl md:text-8xl font-black uppercase italic tracking-tighter leading-none">STAFF <br/> TÉCNICO</h2>
+            <h2 className="text-5xl md:text-8xl font-black uppercase italic tracking-tighter leading-none">{t('skillcamp', 'staff')}</h2>
           </div>
           <p className="reveal max-w-sm text-gray-400 font-bold text-xs uppercase tracking-widest leading-loose">
-            Un equipo multidisciplinar de leyendas del baloncesto y especialistas en alto rendimiento para una formación 360º.
+            {t('skillcamp', 'staffDesc')}
           </p>
         </div>
         

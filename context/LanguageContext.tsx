@@ -122,13 +122,50 @@ const translations: any = {
       premiumBtn: 'Servicio Premium',
       performanceBtn: 'Performance Lab'
     },
+    services_items: {
+      'Instalaciones': 'Instalaciones',
+      'Instalaciones_desc': '2 CANCHAS FIBA/NBA, SALA FISIOTERAPIA EQUIPADA, VESTUARIOS PREMIUM Y SALA AUDIOVISUAL PARA SCOUTING.',
+      'Transporte & Seguridad': 'Transporte & Seguridad',
+      'Transporte & Seguridad_desc': 'Traslados privados y protocolo VIP para garantizar la máxima discreción y confort de los atletas.',
+      'Formación Técnica': 'Formación Técnica',
+      'Formación Técnica_desc': 'STAFF ESPECIALIZADO Y FORMACIÓN PREMIUM PARA TODOS LOS NIVELES, DESDE BASE HASTA PROFESIONAL.',
+      'Experiencias VIP': 'Experiencias VIP',
+      'Experiencias VIP_desc': 'Excursiones exclusivas por la Costa del Sol y entradas VIP a los eventos más destacados.',
+      'Alojamiento & VIP': 'Alojamiento & VIP',
+      'Alojamiento & VIP_desc': 'ALOJAMIENTOS ESTÁNDAR Y VIP CON ACCESO A SERVICIOS DE RESTAURACIÓN, OCIO Y BIENESTAR.',
+      'Eventos Corporativos': 'Eventos Corporativos',
+      'Eventos Corporativos_desc': 'Masterclasses, Team Building, charlas de estrellas y eventos deportivos de alto nivel.',
+      'Salud y Fisioterapia': 'Salud y Fisioterapia',
+      'Salud y Fisioterapia_desc': 'SERVICIO DE URGENCIAS PREFERENTE EN HOSPITAL QUIRÓNSALUD Y SERVICIO DE FISIOTERAPIA DE ÉLITE.'
+    },
     team: {
       subtitle: 'Elite Performance Staff',
       title: 'NUESTRO EQUIPO',
       desc: 'Liderado por campeones del mundo y especialistas de élite, uniendo la visión global de la NBA con el rigor táctico europeo.'
     },
+    team_members: {
+      'Berni Rodríguez': 'Berni Rodríguez',
+      'Berni Rodríguez_role': 'Co-Fundador',
+      'Berni Rodríguez_desc': 'Exjugador profesional con amplia experiencia en gestión deportiva y desarrollo de proyectos de baloncesto a nivel internacional. Medallista olímpico y referente en el baloncesto español.',
+      'Jose M. Calderón': 'Jose M. Calderón',
+      'Jose M. Calderón_role': 'Co-Fundador',
+      'Jose M. Calderón_desc': 'Exjugador NBA con una destacada carrera internacional. Aporta su visión global y contactos en el más alto nivel del baloncesto mundial para crear experiencias únicas.',
+      'Manuel Escobar': 'Manuel Escobar',
+      'Manuel Escobar_role': 'CEO',
+      'Manuel Escobar_desc': 'Especialista en gestión deportiva y desarrollo de eventos. Su experiencia en la organización de competiciones de alto nivel garantiza la excelencia en cada proyecto.',
+      'Manuel Elena': 'Manuel Elena',
+      'Manuel Elena_role': 'Manager & Digital',
+      'Manuel Elena_desc': 'Intersección entre tecnología y negocio. Desarrollador informático y marketing, gestión de la comunicación y el desarrollo digital, con especial énfasis en el sector de eventos deportivos. Gerente de las instalaciones de THE EMBASSY.',
+      'Adriana Rodríguez': 'Adriana Rodríguez',
+      'Adriana Rodríguez_role': 'Especialista en rendimiento deportivo',
+      'Adriana Rodríguez_desc': 'Especialista en rendimiento deportivo. Aplica su experiencia profesional en el baloncesto élite para optimizar la salud física del jugador/a y su actuación en la pista.',
+      'Alfonso Sánchez': 'Alfonso Sánchez',
+      'Alfonso Sánchez_role': 'Entrenador de desarrollo',
+      'Alfonso Sánchez_desc': 'Exjugador profesional con una destacada trayectoria en 5 clubes ACB. Actualmente, desempeña el rol de entrenador de desarrollo de jugadores y técnica individual en el Training Center.'
+    },
     stars: {
       subtitle: 'Global Basketball Hub',
+      title: 'PERSONAS QUE NOS DEFINEN',
       desc: 'Hay lugares que se definen por las personas que los habitan. Nos sentimos orgullosos de haber sido el campo de entrenamiento para algunos de los rostros más reconocidos del baloncesto mundial.'
     },
     partners: {
@@ -140,12 +177,15 @@ const translations: any = {
     social: {
       subtitle: 'Impacto en la Comunidad',
       title: 'COMPROMISO SOCIAL',
-      desc: 'Creemos que el baloncesto es una herramienta para formar a la próxima generación y crear un impacto positivo en la sociedad.'
+      desc: 'Creemos que el baloncesto es una herramienta para formar a la próxima generación y crear un impacto positivo en la sociedad. Estos proyectos definen nuestra visión fuera de la pista.'
     },
     contact: {
-      subtitle: 'Join the Elite',
+      subtitle: 'JOIN THE ELITE',
       title: 'VAMOS A HABLAR',
-      desc: 'Nuestro equipo de élite está listo para asesorarte. Reserva tu plaza en el Training Center más exclusivo de Europa.',
+      desc: 'NUESTRO EQUIPO DE ÉLITE ESTÁ LISTO PARA ASESORARTE. RESERVA TU PLAZA EN EL TRAINING CENTER MÁS EXCLUSIVO DE EUROPA.',
+      info_email: 'EMAIL DIRECTO',
+      info_location: 'UBICACIÓN',
+      info_location_val: 'LA COSTA DEL SOL, ESPAÑA',
       form_name: 'Nombre Completo',
       form_email: 'Email Corporativo',
       form_subject: 'Asunto / Servicio',
@@ -153,7 +193,13 @@ const translations: any = {
       form_message: 'Mensaje',
       form_privacy: 'Acepto la política de privacidad',
       form_submit: 'Enviar Solicitud',
-      sending: 'Enviando...'
+      sending: 'Enviando...',
+      subject_training: 'Entrenamiento Individual / Pro',
+      subject_teams: 'Equipos Profesionales',
+      subject_events: 'Eventos y Campus',
+      subject_vip: 'Experiencias VIP',
+      subject_sponsorship: 'Patrocinio / Partners',
+      subject_other: 'Otros asuntos'
     },
     footer: {
       desc: 'El santuario del baloncesto profesional en la Costa del Sol. Rendimiento, exclusividad y excelencia técnica.',
@@ -168,33 +214,6 @@ const translations: any = {
     cookie: {
       desc: 'Utilizamos cookies para optimizar tu experiencia en el Training Center digital. Al continuar navegando, aceptas nuestra política de cookies.',
       accept: 'Aceptar'
-    },
-    club: {
-      subtitle: 'Elite Networking',
-      title: 'CLUB DE EMPRESAS',
-      intro: 'Bienvenidos a nuestra propuesta exclusiva para formar parte del selecto grupo de empresas que conformarán The Embassy Club.',
-      benefitsTitle: 'Beneficios',
-      statsTitle: 'Impacto',
-      membersTitle: 'DATOS GENERALES',
-      obj: 'Objeto',
-      objVal: 'Generar un Club exclusivo para empresas, forjando alianzas sólidas.',
-      fees: 'Aportación',
-      feesVal: '7.000 € (+ IVA) en concepto de miembro de THE EMBASSY CLUB.',
-      duration: 'Duración',
-      durationVal: 'Bianual, renovable.'
-    },
-    events: {
-      subtitle: 'Elite Calendar',
-      title: 'CALENDARIO DE EVENTOS',
-      desc: 'Desde experiencias exclusivas NBA hasta programas de tecnificación de alto rendimiento. El epicentro del baloncesto profesional en Europa.'
-    },
-    performanceLab: {
-      title: 'PERFORMANCE LAB',
-      subtitle: 'UNDER CONSTRUCTION',
-      desc: 'ESTAMOS PREPARANDO EL ESPACIO DE ANÁLISIS BIOMECÁNICO MÁS AVANZADO DE EUROPA.',
-      biometry: 'Biometría',
-      recovery: 'Recuperación',
-      optimization: 'Optimización'
     }
   },
   en: {
@@ -270,13 +289,50 @@ const translations: any = {
       premiumBtn: 'Premium Service',
       performanceBtn: 'Performance Lab'
     },
+    services_items: {
+      'Instalaciones': 'Facilities',
+      'Instalaciones_desc': '2 FIBA/NBA COURTS, EQUIPPED PHYSIO ROOM, PREMIUM LOCKER ROOMS AND AUDIOVISUAL ROOM FOR SCOUTING.',
+      'Transporte & Seguridad': 'Transport & Security',
+      'Transporte & Seguridad_desc': 'Private transfers and VIP protocol to guarantee maximum discretion and comfort for athletes.',
+      'Formación Técnica': 'Technical Training',
+      'Formación Técnica_desc': 'SPECIALIZED STAFF AND PREMIUM TRAINING FOR ALL LEVELS, FROM YOUTH TO PROFESSIONAL.',
+      'Experiencias VIP': 'VIP Experiences',
+      'Experiencias VIP_desc': 'Exclusive excursions around the Costa del Sol and VIP tickets to the most prominent events.',
+      'Alojamiento & VIP': 'Accommodation & VIP',
+      'Alojamiento & VIP_desc': 'STANDARD AND VIP ACCOMMODATION WITH ACCESS TO CATERING, LEISURE, AND WELLNESS SERVICES.',
+      'Eventos Corporativos': 'Corporate Events',
+      'Eventos Corporativos_desc': 'Masterclasses, Team Building, star talks, and high-level sporting events.',
+      'Salud y Fisioterapia': 'Health & Physiotherapy',
+      'Salud y Fisioterapia_desc': 'PREFERRED EMERGENCY SERVICE AT QUIRÓNSALUD HOSPITAL AND ELITE PHYSIOTHERAPY SERVICE.'
+    },
     team: {
       subtitle: 'Elite Performance Staff',
       title: 'OUR TEAM',
       desc: 'Led by world champions and elite specialists, uniting NBA global vision with European tactical rigor.'
     },
+    team_members: {
+      'Berni Rodríguez': 'Berni Rodríguez',
+      'Berni Rodríguez_role': 'Co-Founder',
+      'Berni Rodríguez_desc': 'Former professional player with extensive experience in sports management and international basketball project development. Olympic medalist and key figure in Spanish basketball.',
+      'Jose M. Calderón': 'Jose M. Calderón',
+      'Jose M. Calderón_role': 'Co-Founder',
+      'Jose M. Calderón_desc': 'Former NBA player with a distinguished international career. He brings his global vision and high-level contacts to create unique basketball experiences.',
+      'Manuel Escobar': 'Manuel Escobar',
+      'Manuel Escobar_role': 'CEO',
+      'Manuel Escobar_desc': 'Specialist in sports management and event development. His experience in organizing high-level competitions guarantees excellence in every project.',
+      'Manuel Elena': 'Manuel Elena',
+      'Manuel Elena_role': 'Manager & Digital',
+      'Manuel Elena_desc': 'Intersection between technology and business. Developer and marketer, managing communication and digital development, focusing on the sports events sector. General Manager of THE EMBASSY.',
+      'Adriana Rodríguez': 'Adriana Rodríguez',
+      'Adriana Rodríguez_role': 'Sport Performance Specialist',
+      'Adriana Rodríguez_desc': 'Sports performance specialist. She applies her professional experience in elite basketball to optimize physical health and on-court performance.',
+      'Alfonso Sánchez': 'Alfonso Sánchez',
+      'Alfonso Sánchez_role': 'Development Coach',
+      'Alfonso Sánchez_desc': 'Former professional player with a notable career in 5 ACB clubs. Currently serves as a player development and individual technique coach at the Training Center.'
+    },
     stars: {
       subtitle: 'Global Basketball Hub',
+      title: 'PEOPLE WHO DEFINE US',
       desc: 'There are places defined by the people who inhabit them. We are proud to have been the training ground for some of the world’s most recognized basketball faces.'
     },
     partners: {
@@ -288,12 +344,15 @@ const translations: any = {
     social: {
       subtitle: 'Community Impact',
       title: 'SOCIAL COMMITMENT',
-      desc: 'We believe basketball is a tool to shape the next generation and create a positive impact on society.'
+      desc: 'We believe basketball is a tool to shape the next generation and create a positive impact on society. These projects define our vision off the court.'
     },
     contact: {
-      subtitle: 'Join the Elite',
+      subtitle: 'JOIN THE ELITE',
       title: "LET'S TALK",
-      desc: 'Our elite team is ready to assist you. Book your spot at Europe\'s most exclusive Training Center.',
+      desc: 'OUR ELITE TEAM IS READY TO ASSIST YOU. BOOK YOUR SPOT AT EUROPE\'S MOST EXCLUSIVE TRAINING CENTER.',
+      info_email: 'DIRECT EMAIL',
+      info_location: 'LOCATION',
+      info_location_val: 'THE COSTA DEL SOL, SPAIN',
       form_name: 'Full Name',
       form_email: 'Corporate Email',
       form_subject: 'Subject / Service',
@@ -301,7 +360,13 @@ const translations: any = {
       form_message: 'Message',
       form_privacy: 'I accept the privacy policy',
       form_submit: 'Send Request',
-      sending: 'Sending...'
+      sending: 'Sending...',
+      subject_training: 'Individual / Pro Training',
+      subject_teams: 'Professional Teams',
+      subject_events: 'Events & Camps',
+      subject_vip: 'VIP Experiences',
+      subject_sponsorship: 'Sponsorship / Partners',
+      subject_other: 'Other inquiries'
     },
     footer: {
       desc: 'The sanctuary for professional basketball on the Costa del Sol. Performance, exclusivity, and technical excellence.',
@@ -316,33 +381,6 @@ const translations: any = {
     cookie: {
       desc: 'We use cookies to optimize your experience in the digital Training Center. By continuing to browse, you accept our cookie policy.',
       accept: 'Accept'
-    },
-    club: {
-      subtitle: 'Elite Networking',
-      title: 'BUSINESS CLUB',
-      intro: 'Welcome to our exclusive proposal to join the select group of companies that will form The Embassy Club.',
-      benefitsTitle: 'Benefits',
-      statsTitle: 'Impact',
-      membersTitle: 'GENERAL DATA',
-      obj: 'Objective',
-      objVal: 'Create an exclusive club for companies, forging strong alliances.',
-      fees: 'Contribution',
-      feesVal: '€7,000 (+ VAT) as a member of THE EMBASSY CLUB.',
-      duration: 'Duration',
-      durationVal: 'Biannual, renewable.'
-    },
-    events: {
-      subtitle: 'Elite Calendar',
-      title: 'EVENTS CALENDAR',
-      desc: 'From exclusive NBA experiences to high-performance technical programs. The epicenter of professional basketball in Europe.'
-    },
-    performanceLab: {
-      title: 'PERFORMANCE LAB',
-      subtitle: 'UNDER CONSTRUCTION',
-      desc: 'WE ARE PREPARING EUROPE\'S MOST ADVANCED BIOMECHANICAL ANALYSIS SPACE.',
-      biometry: 'Biometry',
-      recovery: 'Recovery',
-      optimization: 'Optimization'
     }
   }
 };

@@ -1,28 +1,30 @@
 
 import React from 'react';
 import { PARTNERS } from '../constants';
+import { useLanguage } from '../context/LanguageContext.tsx';
 
 interface PartnersProps {
   onSponsorshipClick: () => void;
 }
 
 const Partners: React.FC<PartnersProps> = ({ onSponsorshipClick }) => {
+  const { t } = useLanguage();
   return (
     <section className="py-32 bg-black overflow-hidden border-t border-white/5">
       <div className="max-w-7xl mx-auto px-6 md:px-12">
         <div className="flex flex-col lg:flex-row gap-20 items-start">
           {/* Text Content */}
           <div className="lg:w-1/3 reveal">
-            <span className="text-gold text-[10px] font-black tracking-[0.4em] uppercase mb-4 block italic">GLOBAL NETWORK</span>
-            <h2 className="text-5xl font-black uppercase italic mb-8 tracking-tighter leading-none">NUESTROS <br/> PARTNERS</h2>
+            <span className="text-gold text-[10px] font-black tracking-[0.4em] uppercase mb-4 block italic">{t('partners', 'subtitle')}</span>
+            <h2 className="text-5xl font-black uppercase italic mb-8 tracking-tighter leading-none">{t('partners', 'title')}</h2>
             <p className="text-white/40 font-medium mb-12 text-sm tracking-widest uppercase leading-loose max-w-sm">
-              Colaboramos con instituciones y marcas de prestigio que comparten nuestra visión de excelencia y compromiso con el baloncesto.
+              {t('partners', 'desc')}
             </p>
             <button 
               onClick={onSponsorshipClick}
               className="inline-flex items-center gap-6 border border-white/20 px-10 py-4 rounded-full hover:bg-gold hover:border-gold hover:text-white transition-all group"
             >
-              <span className="text-[10px] font-black uppercase tracking-[0.3em]">Sponsorship Info</span>
+              <span className="text-[10px] font-black uppercase tracking-[0.3em]">{t('partners', 'cta')}</span>
               <svg className="w-4 h-4 group-hover:translate-x-2 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path d="M14 5l7 7-7 7M3 12h18" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
               </svg>

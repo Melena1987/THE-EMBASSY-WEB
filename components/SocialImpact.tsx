@@ -1,9 +1,11 @@
 
 import React, { useEffect, useRef } from 'react';
 import { SOCIAL_PROJECTS } from '../constants';
+import { useLanguage } from '../context/LanguageContext.tsx';
 
 const SocialImpact: React.FC = () => {
   const sectionRef = useRef<HTMLElement>(null);
+  const { t } = useLanguage();
 
   useEffect(() => {
     const observer = new IntersectionObserver((entries) => {
@@ -21,10 +23,10 @@ const SocialImpact: React.FC = () => {
     <section ref={sectionRef} className="py-32 bg-black border-t border-white/5 relative overflow-hidden">
       <div className="max-w-7xl mx-auto px-6 text-center">
         <div className="mb-20 reveal">
-          <span className="text-gold text-[10px] font-black tracking-[0.5em] uppercase mb-6 block italic">Impacto en la Comunidad</span>
-          <h2 className="text-4xl md:text-7xl font-black uppercase italic tracking-tighter mb-8 text-white">COMPROMISO SOCIAL</h2>
+          <span className="text-gold text-[10px] font-black tracking-[0.5em] uppercase mb-6 block italic">{t('social', 'subtitle')}</span>
+          <h2 className="text-4xl md:text-7xl font-black uppercase italic tracking-tighter mb-8 text-white">{t('social', 'title')}</h2>
           <p className="text-white/40 max-w-2xl mx-auto text-sm md:text-base font-medium uppercase tracking-[0.2em] leading-relaxed">
-            Creemos que el baloncesto es una herramienta para formar a la próxima generación y crear un impacto positivo en la sociedad. Estos proyectos definen nuestra visión fuera de la pista.
+            {t('social', 'desc')}
           </p>
         </div>
         
