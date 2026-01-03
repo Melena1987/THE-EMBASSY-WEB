@@ -1,12 +1,10 @@
 
 import React, { useState, useRef } from 'react';
 import { TEAM } from '../constants';
-import { useLanguage } from '../context/LanguageContext.tsx';
 
 const Team: React.FC = () => {
   const scrollContainerRef = useRef<HTMLDivElement>(null);
   const [activeIndex, setActiveIndex] = useState(0);
-  const { t } = useLanguage();
 
   const handleScroll = () => {
     if (scrollContainerRef.current) {
@@ -32,10 +30,10 @@ const Team: React.FC = () => {
       <div className="max-w-7xl mx-auto px-6 md:px-12">
         <div className="flex flex-col md:flex-row justify-between items-end mb-16 gap-8">
           <div className="max-w-3xl reveal active">
-            <span className="text-gold text-xs font-black tracking-[0.4em] uppercase mb-4 block italic">{t('team', 'subtitle')}</span>
-            <h2 className="text-4xl md:text-7xl font-black uppercase italic mb-6 tracking-tighter leading-none text-white">{t('team', 'title')}</h2>
+            <span className="text-gold text-xs font-black tracking-[0.4em] uppercase mb-4 block italic">Elite Performance Staff</span>
+            <h2 className="text-4xl md:text-7xl font-black uppercase italic mb-6 tracking-tighter leading-none text-white">NUESTRO <br/> EQUIPO</h2>
             <p className="text-white/40 text-base font-light uppercase tracking-widest leading-loose">
-              {t('team', 'desc')}
+              Liderado por campeones del mundo y especialistas de élite, uniendo la visión global de la NBA con el rigor táctico europeo.
             </p>
           </div>
         </div>
@@ -83,14 +81,14 @@ const Team: React.FC = () => {
                   </div>
 
                   <div className="absolute bottom-6 left-6 right-6">
-                     <span className="text-gold text-[9px] font-black tracking-[0.3em] uppercase mb-2 block italic">{t('team_members', member.name + '_role')}</span>
-                     <h3 className="text-2xl font-black uppercase italic tracking-tighter text-white leading-none">{t('team_members', member.name)}</h3>
+                     <span className="text-gold text-[9px] font-black tracking-[0.3em] uppercase mb-2 block italic">{member.role}</span>
+                     <h3 className="text-2xl font-black uppercase italic tracking-tighter text-white leading-none">{member.name}</h3>
                   </div>
                 </div>
                 
                 <div className="px-1">
                   <p className="text-white/40 font-medium text-xs leading-[1.6] uppercase tracking-[0.05em] mb-4 transition-all duration-500">
-                    {t('team_members', member.name + '_desc')}
+                    {member.description}
                   </p>
                   <div className="h-[2px] w-8 bg-gold group-hover:w-full transition-all duration-700"></div>
                 </div>

@@ -1,11 +1,11 @@
 
 import React from 'react';
-import { useLanguage } from '../context/LanguageContext.tsx';
 
 const SkillCampVisualMedia: React.FC = () => {
-  const { t } = useLanguage();
+  // Main featured image
   const raisaImg = "https://firebasestorage.googleapis.com/v0/b/galeriaoficialapp.firebasestorage.app/o/users%2FI5KZz4BuUEfxcoAvSCAWllkQtwt1%2Fphotos%2F1766961925716_WhatsApp_Image_2025-11-27_at_15.19.57.jpeg?alt=media&token=f4f4638d-2fe0-4b11-a268-6ad6ebbaa6c6";
   
+  // New infinite scroll images provided by user
   const raisaTapeImages = [
     "https://firebasestorage.googleapis.com/v0/b/galeriaoficialapp.firebasestorage.app/o/users%2FI5KZz4BuUEfxcoAvSCAWllkQtwt1%2Fphotos%2F1766996005556__DSC3692_400x400.jpg?alt=media&token=36954a7d-1107-4cc9-bd5e-ae08c978552b",
     "https://firebasestorage.googleapis.com/v0/b/galeriaoficialapp.firebasestorage.app/o/users%2FI5KZz4BuUEfxcoAvSCAWllkQtwt1%2Fphotos%2F1766913363907__DSC4913_400x400.jpg?alt=media&token=26aeb33a-6bba-49f9-9da0-6d89a75da6d6",
@@ -14,6 +14,7 @@ const SkillCampVisualMedia: React.FC = () => {
     "https://firebasestorage.googleapis.com/v0/b/galeriaoficialapp.firebasestorage.app/o/users%2FI5KZz4BuUEfxcoAvSCAWllkQtwt1%2Fphotos%2F1766784932279__DSC3650_400x400.jpg?alt=media&token=922220e0-a82a-4abc-960e-07b7082d1201"
   ];
 
+  // Duplicating for seamless loop
   const duplicatedTape = [...raisaTapeImages, ...raisaTapeImages, ...raisaTapeImages];
 
   return (
@@ -27,7 +28,7 @@ const SkillCampVisualMedia: React.FC = () => {
             </div>
             
             <h2 className="text-5xl md:text-8xl font-black tracking-tighter leading-[0.9] uppercase italic">
-              {t('skillcamp', 'raisaTitle')}
+              VISUAL <br/> <span className="text-gold">CONTENT</span>
             </h2>
             
             <div className="space-y-6 pt-6">
@@ -36,14 +37,14 @@ const SkillCampVisualMedia: React.FC = () => {
                 <span className="h-[2px] w-12 bg-gold"></span>
               </h3>
               <p className="text-lg md:text-xl font-light text-white/50 leading-relaxed max-w-md uppercase tracking-wide">
-                {t('skillcamp', 'raisaDesc')}
+                Fotógrafa oficial de <span className="text-white">The Embassy</span>. Capturando la esencia del baloncesto profesional con una estética cinematográfica única.
               </p>
               <div className="bg-white/5 p-6 rounded-2xl border border-white/10 inline-block">
                 <p className="text-sm font-black text-gold uppercase tracking-[0.2em] italic">
-                   &gt;&gt; {t('skillcamp', 'pack')}
+                   &gt;&gt; PACK FOTOGRÁFICO INCLUIDO
                 </p>
                 <p className="text-[10px] text-white/40 uppercase mt-2 tracking-widest font-bold">
-                  {t('skillcamp', 'packDesc')}
+                  Documentación profesional de cada jugador durante el campus.
                 </p>
               </div>
             </div>
@@ -57,6 +58,8 @@ const SkillCampVisualMedia: React.FC = () => {
                   className="w-full h-full object-cover grayscale transition-all duration-1000 group-hover:grayscale-0 group-hover:scale-110"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent opacity-60"></div>
+                
+                {/* Visual Accent */}
                 <div className="absolute top-8 right-8 w-20 h-20 border-t-2 border-r-2 border-gold/50 rounded-tr-3xl"></div>
                 <div className="absolute bottom-8 left-8">
                    <span className="text-4xl font-black italic text-white/20 select-none">POZO</span>
@@ -66,6 +69,7 @@ const SkillCampVisualMedia: React.FC = () => {
         </div>
       </div>
 
+      {/* Infinite Scrolling Image Tape */}
       <div className="reveal w-full relative">
         <div className="absolute inset-y-0 left-0 w-32 bg-gradient-to-r from-black to-transparent z-10 pointer-events-none"></div>
         <div className="absolute inset-y-0 right-0 w-32 bg-gradient-to-l from-black to-transparent z-10 pointer-events-none"></div>

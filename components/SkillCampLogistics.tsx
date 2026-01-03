@@ -1,9 +1,7 @@
 
 import React from 'react';
-import { useLanguage } from '../context/LanguageContext.tsx';
 
 const SkillCampLogistics: React.FC = () => {
-  const { t } = useLanguage();
   return (
     <section className="relative py-32 md:py-48 bg-black overflow-hidden flex items-center justify-center">
       <div className="max-w-5xl mx-auto px-6 text-center">
@@ -14,18 +12,19 @@ const SkillCampLogistics: React.FC = () => {
             THE EMBASSY
           </h2>
           <h3 className="text-5xl md:text-8xl font-black uppercase italic tracking-tighter leading-none text-white">
-            {t('skillcamp', 'title')}
+            SKILL CAMP 2025
           </h3>
         </div>
 
         {/* Description Text */}
         <div className="reveal space-y-12 max-w-4xl mx-auto">
           <p className="text-lg md:text-2xl text-white/80 font-light leading-relaxed tracking-tight uppercase">
-            {t('skillcamp', 'logistics1')}
+            Llega el campus de tecnificación de Navidad definitivo. Cinco días de entrenamiento de élite en THE EMBASSY (Fuengirola) diseñados <span className="text-gold font-black italic">por jugadores para jugadores</span> que buscan la excelencia.
           </p>
 
           <p className="text-lg md:text-2xl text-white/80 font-light leading-relaxed tracking-tight uppercase">
-            {t('skillcamp', 'logistics2')}
+            Perfecciona tus habilidades, compite al máximo nivel y aprende de tres referentes del baloncesto profesional: <br className="hidden md:block" />
+            <span className="text-white font-black italic">Adam Waczynski, Alfonso Sánchez y Fran Vázquez.</span>
           </p>
         </div>
 
@@ -35,7 +34,7 @@ const SkillCampLogistics: React.FC = () => {
             href="#galeria" 
             className="bg-gold text-white px-12 py-5 rounded-none font-black uppercase tracking-[0.1em] text-sm md:text-base hover:bg-white hover:text-black transition-all shadow-2xl"
           >
-            {t('skillcamp', 'gallery')}
+            Galería Oficial
           </a>
           
           {/* Subtle scroll indicator for this section */}
