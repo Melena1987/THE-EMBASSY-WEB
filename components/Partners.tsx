@@ -44,7 +44,7 @@ const Partners: React.FC<PartnersProps> = ({ onSponsorshipClick }) => {
                   <img 
                     src={partner.logoUrl} 
                     alt={partner.name} 
-                    className={`max-h-full max-w-full object-contain opacity-50 group-hover:opacity-100 transition-all duration-500 transform ${isQuiron ? 'scale-[2.4] group-hover:scale-[2.6]' : 'group-hover:scale-110'}`} 
+                    className={`max-h-full max-w-full object-contain opacity-50 group-hover:opacity-100 transition-all duration-500 transform ${isQuiron ? 'scale-[2.1] group-hover:scale-[2.3]' : 'group-hover:scale-110'}`} 
                   />
                 </a>
               );
