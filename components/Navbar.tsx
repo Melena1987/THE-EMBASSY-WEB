@@ -202,15 +202,15 @@ const Navbar: React.FC<NavbarProps> = ({
             Equipo
           </a>
 
-          <div className="flex items-center space-x-2 xl:space-x-4">
-            <a 
-              href="#contacto" 
-              onClick={(e) => handleLinkClick(e, { path: '#contacto' })}
-              className="bg-gold text-white px-4 xl:px-8 py-2.5 xl:py-3 rounded-full text-[9px] xl:text-[10px] font-black uppercase tracking-[0.2em] hover:bg-white hover:text-black transition-all shadow-lg shadow-gold/20 whitespace-nowrap"
-            >
-              Reservar Ahora
-            </a>
-            
+          <a 
+            href="#contacto" 
+            onClick={(e) => handleLinkClick(e, { path: '#contacto' })}
+            className="text-[10px] xl:text-[11px] font-bold transition-colors tracking-[0.2em] xl:tracking-[0.25em] uppercase text-white/70 hover:text-gold"
+          >
+            Contacto
+          </a>
+
+          <div className="flex items-center">
             <NextEventPill />
           </div>
         </div>
@@ -235,42 +235,41 @@ const Navbar: React.FC<NavbarProps> = ({
           <a 
             href="/eventos" 
             onClick={(e) => handleLinkClick(e, { path: '/eventos' })}
-            className={`text-2xl font-black tracking-[0.25em] uppercase transition-all duration-500 delay-[100ms] transform ${isMenuOpen ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'}`}
+            className={`text-2xl font-black tracking-[0.25em] uppercase transition-all duration-500 delay-[100ms] transform ${isMenuOpen ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'} hover:text-gold`}
           >
             Eventos
           </a>
           <a 
             href="#servicios" 
             onClick={(e) => handleLinkClick(e, { path: '#servicios' })}
-            className={`text-2xl font-black tracking-[0.25em] uppercase transition-all duration-500 delay-[150ms] transform ${isMenuOpen ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'}`}
+            className={`text-2xl font-black tracking-[0.25em] uppercase transition-all duration-500 delay-[150ms] transform ${isMenuOpen ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'} hover:text-gold`}
           >
             Servicios
           </a>
           <a 
             href="#instalaciones" 
             onClick={(e) => handleLinkClick(e, { path: '#instalaciones' })}
-            className={`text-2xl font-black tracking-[0.25em] uppercase transition-all duration-500 delay-[200ms] transform ${isMenuOpen ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'}`}
+            className={`text-2xl font-black tracking-[0.25em] uppercase transition-all duration-500 delay-[200ms] transform ${isMenuOpen ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'} hover:text-gold`}
           >
             Instalaciones
           </a>
           <a 
             href="#equipo" 
             onClick={(e) => handleLinkClick(e, { path: '#equipo' })}
-            className={`text-2xl font-black tracking-[0.25em] uppercase transition-all duration-500 delay-[250ms] transform ${isMenuOpen ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'}`}
+            className={`text-2xl font-black tracking-[0.25em] uppercase transition-all duration-500 delay-[250ms] transform ${isMenuOpen ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'} hover:text-gold`}
           >
             Equipo
           </a>
+          <a 
+            href="#contacto" 
+            onClick={(e) => handleLinkClick(e, { path: '#contacto' })}
+            className={`text-2xl font-black tracking-[0.25em] uppercase transition-all duration-500 delay-[300ms] transform ${isMenuOpen ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'} hover:text-gold`}
+          >
+            Contacto
+          </a>
           
-          <div className={`pt-4 transition-all duration-500 delay-[300ms] ${isMenuOpen ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'}`}>
-            <a 
-              href="#contacto" 
-              onClick={(e) => handleLinkClick(e, { path: '#contacto' })}
-              className="bg-gold text-white px-10 py-5 rounded-full text-[10px] font-black uppercase tracking-[0.3em] shadow-xl shadow-gold/20 inline-block"
-            >
-              Reservar Ahora
-            </a>
-            
-            <div className="mt-8 flex justify-center">
+          <div className={`pt-4 transition-all duration-500 delay-[350ms] ${isMenuOpen ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'}`}>
+            <div className="flex justify-center">
               <NextEventPill isMobile={true} />
             </div>
           </div>

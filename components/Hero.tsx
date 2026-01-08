@@ -55,13 +55,9 @@ const Hero: React.FC<HeroProps> = ({ onExplore }) => {
         </p>
         
         <div className="reveal active flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-6 md:gap-8">
-          <a href="#contacto" className="w-full sm:w-auto bg-gold text-white px-10 md:px-12 py-4 md:py-5 rounded-full font-black uppercase tracking-[0.2em] transition-all hover:scale-105 hover:bg-white hover:text-black shadow-xl shadow-gold/20 text-center text-xs md:text-sm">
-            Reservar Pista
-          </a>
-          
           <button 
             onClick={(e) => { e.preventDefault(); onExplore?.(); }}
-            className="w-full sm:w-auto text-white/80 px-8 sm:px-10 py-4 font-bold uppercase tracking-[0.15em] sm:tracking-[0.2em] hover:text-gold transition-all flex items-center justify-center gap-2 sm:gap-3 group border border-white/10 sm:border-transparent rounded-full sm:rounded-none whitespace-nowrap text-[9px] sm:text-xs md:text-sm"
+            className="w-full sm:w-auto bg-gold text-white px-10 md:px-12 py-4 md:py-5 rounded-full font-black uppercase tracking-[0.2em] transition-all hover:scale-105 hover:bg-white hover:text-black shadow-xl shadow-gold/20 flex items-center justify-center gap-2 sm:gap-3 group whitespace-nowrap text-xs md:text-sm"
           >
             Explora el Training Center
             <svg className="w-4 h-4 sm:w-5 sm:h-5 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M17 8l4 4m0 0l-4 4m4-4H3" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/></svg>
